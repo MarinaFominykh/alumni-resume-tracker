@@ -1,8 +1,5 @@
 name: Alert
-on:
-  workflow_dispatch:
-  push: push
-  
+on: push
 jobs:
   alert: 
     runs-on: ubuntu-latest
