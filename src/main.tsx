@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Search from './pages/Search/Search.tsx';
 import Favourites from './pages/Favourites/Favourites.tsx';
 import Vacancies from './pages/Vacancies/Vacancies.tsx';
+import Register from './pages/Register/Register.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/search" element={<Search />} />
         <Route path="/favourites" element={<Favourites />} />
         <Route path="/vacancies" element={<Vacancies />} />
+        <Route path="/sign-up" element={<Register />} />
       </Route>
     </Routes>
   </BrowserRouter>
