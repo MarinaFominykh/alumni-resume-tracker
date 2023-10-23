@@ -1,6 +1,6 @@
 # Сервис найма в Карьерном трекере Яндекс Практикум
 
 ## Запуск  проект
-npm install
-npm run dev
+* npm install
+* npm run dev
 
