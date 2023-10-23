@@ -5,19 +5,22 @@ import { Link, Typography } from '@mui/material';
 
 function Auth({ children }: object) {
   return (
-    <>
-      <main className="auth">
+    <section className="auth">
+      <div className="auth__content">
         <img src={logo} alt="Логотип проекта." className="logo" />
+        <div className="auth__dec-el auth__dec-el_1"></div>
+        <div className="auth__dec-el auth__dec-el_2"></div>
+        <div className="auth__dec-el auth__dec-el_3"></div>
         {children}
-      </main>
-      <footer className="auth__footer">
+      </div>
+      <div className="auth__footer">
         <Link variant="body2" underline="none" className="auth__footer-link">
           <img src={telegram} className="auth__footer-link-img" />
           <Typography variant="body2">Написать в поддержку</Typography>
         </Link>
         <Typography variant="body2">&copy; Карьерный трекер, 2023</Typography>
-      </footer>
-    </>
+      </div>
+    </section>
   );
 }
 
