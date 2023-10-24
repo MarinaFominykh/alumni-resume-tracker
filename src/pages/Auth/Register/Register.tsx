@@ -1,31 +1,22 @@
 // import { register } from '../../api/registerApi';
 import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { TextField } from '@mui/material';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router';
 import Typography from '@mui/material/Typography/Typography';
 import { Link } from '@mui/material';
 import Auth from '../Auth';
+import InputElement from '../../../components/elements/InputElement/InputElement';
+import { authStyles } from '../consts/authStyles';
 
 interface InputsValue {
   name: string;
-  email: string;
-  password: string;
 }
 
 const schema = yup.object().shape({
   name: yup.string().required('Поле должно быть заполнено.'),
-  email: yup
-    .string()
-    .email('Email должен соответствовать схеме email@example.com.')
-    .required('Поле должно быть заполнено.'),
-  password: yup
-    .string()
-    .min(6, 'Пароль должен содержать минимум 6 символов.')
-    .max(20, 'Пароль должен содержать не более 6 символов.')
-    .required('Поле должно быть заполнено.')
+  text: yup.string()
 });
 
 function Register() {
@@ -50,65 +41,27 @@ function Register() {
   return (
     <Auth>
       <form onSubmit={handleSubmit(registerSubmitHandler)} noValidate className="auth__form">
-        <Typography variant="h2">Карьерный трекер</Typography>
-        <Typography variant="body2">Зарегистрироваться</Typography>
-        <Controller
-          name="name"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="name"
-              label="Имя"
-              variant="outlined"
-              error={!!errors.name}
-              helperText={errors.name ? errors.name?.message : ''}
-            />
-          )}
-        />
-        <Controller
-          name="email"
-          control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="email"
-              label="Email"
-              variant="outlined"
-              error={!!errors.email}
-              helperText={errors.email ? errors.email?.message : ''}
-            />
-          )}
-        />
+        <Typography variant="h2">Добро пожаловать в Трекер</Typography>
+        <Typography variant="body2">Расскажите немного о вашей компании</Typography>
 
-        <Controller
-          name="password"
-          control={control}
+        <InputElement
+          name="name"
           defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="password"
-              label="Пароль"
-              variant="outlined"
-              error={!!errors.password}
-              helperText={errors.password ? errors.password?.message : ''}
-            />
-          )}
+          control={control}
+          type="text"
+          label="Название компании"
+          variant="outlined"
+          error={!!errors.name}
+          helperText={errors.name ? errors.name?.message : ''}
         />
 
         <ButtonElement variant="contained" type="submit">
-          Зарегистрироваться
+          Далее
         </ButtonElement>
-      </form>
-      <Typography variant="body2" alignSelf="center" marginTop="16px">
-        Уже есть аккаунт?{' '}
-        <Link variant="body2" underline="none" color="#fff" onClick={() => navigate('/sign-in')}>
-          Войти
+        <Link sx={authStyles.link} variant="body2" onClick={() => navigate('/sign-in')}>
+          Назад
         </Link>
-      </Typography>
+      </form>
     </Auth>
   );
 }

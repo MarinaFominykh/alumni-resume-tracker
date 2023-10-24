@@ -1,13 +1,14 @@
 import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { TextField } from '@mui/material';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import '../Auth.css';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router';
 import Typography from '@mui/material/Typography/Typography';
 import { Link } from '@mui/material';
 import Auth from '../Auth';
+import InputElement from '../../../components/elements/InputElement/InputElement';
+import { authStyles } from '../consts/authStyles';
 
 interface LoginInputs {
   email: string;
@@ -46,46 +47,29 @@ function Login() {
       <form onSubmit={handleSubmit(loginSubmitHandler)} noValidate className="auth__form">
         <Typography variant="h2">Карьерный трекер</Typography>
         <Typography variant="body2">Войти в аккаунт</Typography>
-        <Controller
+        <InputElement
           name="email"
-          control={control}
           defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="email"
-              label="Email"
-              variant="outlined"
-              error={!!errors.email}
-              helperText={errors.email ? errors.email?.message : ''}
-            />
-          )}
+          control={control}
+          type="email"
+          label="Email"
+          variant="outlined"
+          error={!!errors.email}
+          helperText={errors.email ? errors.email?.message : ''}
         />
 
-        <Controller
+        <InputElement
           name="password"
-          control={control}
           defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="password"
-              label="Пароль"
-              variant="outlined"
-              error={!!errors.password}
-              helperText={errors.password ? errors.password?.message : ''}
-            />
-          )}
+          control={control}
+          type="password"
+          label="Пароль"
+          variant="outlined"
+          error={!!errors.password}
+          helperText={errors.password ? errors.password?.message : ''}
         />
-        <Link
-          variant="body2"
-          underline="none"
-          color="#1D6BF3"
-          alignSelf="flex-start"
-          fontSize="13px"
-          fontWeight="500"
-          lineHeight="16px"
-        >
+
+        <Link sx={authStyles.formLink} variant="body2" onClick={() => navigate('/reset-password')}>
           Не помню пароль
         </Link>
 
@@ -93,10 +77,14 @@ function Login() {
           Войти
         </ButtonElement>
       </form>
-      <Typography variant="body2" alignSelf="center" marginTop="16px">
+      <Typography variant="body2" sx={authStyles.formCaption.fonts}>
         Новый пользователь?{' '}
-        <Link variant="body2" underline="none" color="#fff" onClick={() => navigate('/sign-up')}>
-          Зарегистрироваться
+        <Link
+          variant="body2"
+          sx={authStyles.formCaption.link}
+          onClick={() => navigate('/get-access')}
+        >
+          Получить доступ
         </Link>
       </Typography>
     </Auth>

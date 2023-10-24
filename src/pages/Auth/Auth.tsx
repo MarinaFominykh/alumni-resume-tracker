@@ -2,25 +2,32 @@ import './Auth.css';
 import logo from '../../../images/logo.svg';
 import telegram from '../../../images/telegram.svg';
 import { Link, Typography } from '@mui/material';
+import React from 'react';
+import Box from '@mui/material/Box';
+import { authStyles } from './consts/authStyles';
 
-function Auth({ children }: object) {
+interface Props {
+  children: React.ReactNode;
+}
+
+function Auth({ children }: Props) {
   return (
-    <section className="auth">
-      <div className="auth__content">
+    <Box sx={authStyles.wrapper}>
+      <Box sx={authStyles.content}>
         <img src={logo} alt="Логотип проекта." className="logo" />
-        <div className="auth__dec-el auth__dec-el_1"></div>
-        <div className="auth__dec-el auth__dec-el_2"></div>
-        <div className="auth__dec-el auth__dec-el_3"></div>
+        <Box sx={authStyles.firstElement}></Box>
+        <Box sx={authStyles.secondElement}></Box>
+        <Box sx={authStyles.thirdElement}></Box>
         {children}
-      </div>
-      <div className="auth__footer">
-        <Link variant="body2" underline="none" className="auth__footer-link">
+      </Box>
+      <Box sx={authStyles.footer}>
+        <Link variant="body2" sx={authStyles.link}>
           <img src={telegram} className="auth__footer-link-img" />
           <Typography variant="body2">Написать в поддержку</Typography>
         </Link>
         <Typography variant="body2">&copy; Карьерный трекер, 2023</Typography>
-      </div>
-    </section>
+      </Box>
+    </Box>
   );
 }
 
