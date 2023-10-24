@@ -69,7 +69,7 @@ function Login() {
           helperText={errors.password ? errors.password?.message : ''}
         />
 
-        <Link sx={authStyles.formLink} variant="body2">
+        <Link sx={authStyles.formLink} variant="body2" onClick={() => navigate('/reset-password')}>
           Не помню пароль
         </Link>
 

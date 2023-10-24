@@ -10,6 +10,7 @@ export const projectTheme = createTheme({
           textTransform: 'capitalize',
           borderRadius: '6px',
           padding: '18px 0',
+          height: '56px',
           '&.MuiButton-contained': {
             backgroundColor: '#5A9BFF',
             '&:hover': {
@@ -34,6 +35,12 @@ export const projectTheme = createTheme({
       color: '#000',
       textTransform: 'capitalize',
       lineHeight: '32px'
+    },
+    body1: {
+      fontSize: '16px',
+      fontWeight: 400,
+      color: '#1A1B22',
+      lineHeight: '20px'
     },
     body2: {
       fontSize: '14px',
