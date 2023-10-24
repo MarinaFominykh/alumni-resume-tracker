@@ -5,6 +5,7 @@ interface LoginInputs {
   name: string;
   email: string;
   password: string;
+  text: string;
 }
 
 interface InputProps {

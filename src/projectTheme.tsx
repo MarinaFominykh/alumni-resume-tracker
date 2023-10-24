@@ -40,7 +40,6 @@ export const projectTheme = createTheme({
       fontSize: '24px',
       fontWeight: 500,
       color: '#000',
-      textTransform: 'capitalize',
       lineHeight: '32px'
     },
     body1: {

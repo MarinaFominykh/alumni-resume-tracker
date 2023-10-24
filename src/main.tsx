@@ -9,6 +9,7 @@ import Login from './pages/Auth/Login/Login.tsx';
 import { ThemeProvider } from '@mui/material';
 import { projectTheme } from './projectTheme.tsx';
 import ResetPassword from './pages/Auth/ResetPassword/ResetPassword.tsx';
+import Access from './pages/Auth/Access/Access.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <ThemeProvider theme={projectTheme}>
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Route path="/sign-up" element={<Register />} />
         <Route path="/sign-in" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/get-access" element={<Access />} />
       </Routes>
     </BrowserRouter>
   </ThemeProvider>

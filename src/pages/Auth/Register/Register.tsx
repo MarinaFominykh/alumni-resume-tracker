@@ -12,21 +12,12 @@ import { authStyles } from '../consts/authStyles';
 
 interface InputsValue {
   name: string;
-  email: string;
-  password: string;
+  text: string;
 }
 
 const schema = yup.object().shape({
   name: yup.string().required('Поле должно быть заполнено.'),
-  email: yup
-    .string()
-    .email('Email должен соответствовать схеме email@example.com.')
-    .required('Поле должно быть заполнено.'),
-  password: yup
-    .string()
-    .min(6, 'Пароль должен содержать минимум 6 символов.')
-    .max(20, 'Пароль должен содержать не более 6 символов.')
-    .required('Поле должно быть заполнено.')
+  text: yup.string()
 });
 
 function Register() {
@@ -49,54 +40,47 @@ function Register() {
   };
 
   return (
-    <Auth>
+    <Auth
+      sx={
+        ((authStyles.wrapper.backgroundColor = '#fff'),
+        (authStyles.firstElement.display = 'none'),
+        (authStyles.secondElement.display = 'none'),
+        (authStyles.thirdElement.display = 'none'))
+      }
+    >
       <form onSubmit={handleSubmit(registerSubmitHandler)} noValidate className="auth__form">
-        <Typography variant="h2">Карьерный трекер</Typography>
-        <Typography variant="body2">Зарегистрироваться</Typography>
+        <Typography variant="h2">Добро пожаловать в Трекер</Typography>
+        <Typography variant="body2">Расскажите немного о вашей компании</Typography>
 
         <InputElement
           name="name"
           defaultValue=""
           control={control}
-          type="name"
-          label="Имя"
+          type="text"
+          label="Название компании"
           variant="outlined"
           error={!!errors.name}
-          helperText={errors.email ? errors.name?.message : ''}
+          helperText={errors.name ? errors.name?.message : ''}
         />
 
         <InputElement
-          name="email"
+          name="text"
           defaultValue=""
           control={control}
           type="email"
-          label="Email"
+          label="Описание компании(необязательно)"
           variant="outlined"
-          error={!!errors.email}
-          helperText={errors.email ? errors.email?.message : ''}
-        />
-
-        <InputElement
-          name="password"
-          defaultValue=""
-          control={control}
-          type="password"
-          label="Пароль"
-          variant="outlined"
-          error={!!errors.password}
-          helperText={errors.password ? errors.password?.message : ''}
+          error={!!errors.text}
+          helperText={errors.text ? errors.text?.message : ''}
         />
 
         <ButtonElement variant="contained" type="submit">
-          Зарегистрироваться
+          Далее
         </ButtonElement>
-      </form>
-      <Typography variant="body2" sx={authStyles.formCaption.fonts}>
-        Уже есть аккаунт?{' '}
-        <Link variant="body2" sx={authStyles.formCaption.link} onClick={() => navigate('/sign-in')}>
-          Войти
+        <Link sx={authStyles.formCaption.link} variant="body2" onClick={() => navigate('/sign-in')}>
+          Назад
         </Link>
-      </Typography>
+      </form>
     </Auth>
   );
 }
