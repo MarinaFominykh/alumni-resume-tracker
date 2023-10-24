@@ -33,14 +33,19 @@ export const projectTheme = createTheme({
       fontSize: '34px',
       fontWeight: 400,
       color: '#1A1B22',
-      textTransform: 'capitalize',
       lineHeight: '40px'
     },
     h2: {
       fontSize: '24px',
       fontWeight: 500,
-      color: '#000',
+      color: '#1A1B22',
       lineHeight: '32px'
+    },
+    h3: {
+      fontSize: '20px',
+      fontWeight: 400,
+      color: '#1A1B22',
+      lineHeight: '24px'
     },
     body1: {
       fontSize: '16px',
