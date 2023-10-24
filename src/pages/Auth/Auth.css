@@ -1,18 +1,3 @@
-.auth {
-  position: relative;
-  flex: 1 0 0;
-  overflow: hidden;
-}
-
-.auth__content {
-  background-color: #1a1b22;
-  display: flex;
-  flex-direction: column;
-  min-height: calc(100vh - 56px);
-  justify-content: center;
-  align-items: center;
-}
-
 .auth__form {
   margin: 0 auto;
   display: flex;
@@ -24,21 +9,6 @@
   border-radius: 20px;
   text-align: center;
   box-sizing: border-box;
-}
-
-.auth__footer {
-  background-color: #1a1b22;
-  padding: 0 32px 32px 32px;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-}
-
-.auth__footer-link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
 }
 
 .auth__footer-link-img {
@@ -53,36 +23,4 @@
   position: absolute;
   top: 32px;
   left: 32px;
-}
-
-.auth__dec-el {
-  display: block;
-  position: absolute;
-  z-index: auto;
-}
-
-.auth__dec-el_1 {
-  width: 697px;
-  height: 623px;
-  left: -380px;
-  top: 25vh;
-  z-index: 2;
-  background: url(../../../images/vector1.svg) no-repeat center / contain;
-}
-
-.auth__dec-el_2 {
-  width: 950px;
-  height: 950px;
-  top: -280px;
-  right: -211px;
-  background: url(../../../images/vector2.svg) no-repeat center / contain;
-}
-
-.auth__dec-el_3 {
-  width: 807px;
-  height: 873px;
-  right: -200px;
-  bottom: -207px;
-  z-index: 2;
-  background: url(../../../images/vector3.svg) no-repeat center / contain;
 }

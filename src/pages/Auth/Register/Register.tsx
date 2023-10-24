@@ -1,13 +1,14 @@
 // import { register } from '../../api/registerApi';
 import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, SubmitHandler, Controller } from 'react-hook-form';
-import { TextField } from '@mui/material';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router';
 import Typography from '@mui/material/Typography/Typography';
 import { Link } from '@mui/material';
 import Auth from '../Auth';
+import InputElement from '../../../components/elements/InputElement/InputElement';
+import { authStyles } from '../consts/authStyles';
 
 interface InputsValue {
   name: string;
@@ -52,60 +53,47 @@ function Register() {
       <form onSubmit={handleSubmit(registerSubmitHandler)} noValidate className="auth__form">
         <Typography variant="h2">Карьерный трекер</Typography>
         <Typography variant="body2">Зарегистрироваться</Typography>
-        <Controller
+
+        <InputElement
           name="name"
-          control={control}
           defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="name"
-              label="Имя"
-              variant="outlined"
-              error={!!errors.name}
-              helperText={errors.name ? errors.name?.message : ''}
-            />
-          )}
-        />
-        <Controller
-          name="email"
           control={control}
-          defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="email"
-              label="Email"
-              variant="outlined"
-              error={!!errors.email}
-              helperText={errors.email ? errors.email?.message : ''}
-            />
-          )}
+          type="name"
+          label="Имя"
+          variant="outlined"
+          error={!!errors.name}
+          helperText={errors.email ? errors.name?.message : ''}
         />
 
-        <Controller
-          name="password"
-          control={control}
+        <InputElement
+          name="email"
           defaultValue=""
-          render={({ field }) => (
-            <TextField
-              {...field}
-              type="password"
-              label="Пароль"
-              variant="outlined"
-              error={!!errors.password}
-              helperText={errors.password ? errors.password?.message : ''}
-            />
-          )}
+          control={control}
+          type="email"
+          label="Email"
+          variant="outlined"
+          error={!!errors.email}
+          helperText={errors.email ? errors.email?.message : ''}
+        />
+
+        <InputElement
+          name="password"
+          defaultValue=""
+          control={control}
+          type="password"
+          label="Пароль"
+          variant="outlined"
+          error={!!errors.password}
+          helperText={errors.password ? errors.password?.message : ''}
         />
 
         <ButtonElement variant="contained" type="submit">
           Зарегистрироваться
         </ButtonElement>
       </form>
-      <Typography variant="body2" alignSelf="center" marginTop="16px">
+      <Typography variant="body2" sx={authStyles.formCaption.fonts}>
         Уже есть аккаунт?{' '}
-        <Link variant="body2" underline="none" color="#fff" onClick={() => navigate('/sign-in')}>
+        <Link variant="body2" sx={authStyles.formCaption.link} onClick={() => navigate('/sign-in')}>
           Войти
         </Link>
       </Typography>
