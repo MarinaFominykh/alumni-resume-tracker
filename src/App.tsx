@@ -5,8 +5,12 @@ import Grid from '@mui/material/Grid';
 function App() {
   return (
     <Grid container>
-      <Navbar />
-      <Outlet />
+      <Grid item>
+        <Navbar />
+      </Grid>
+      <Grid item>
+        <Outlet />
+      </Grid>
     </Grid>
   );
 }
