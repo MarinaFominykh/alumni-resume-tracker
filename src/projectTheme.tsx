@@ -29,6 +29,13 @@ export const projectTheme = createTheme({
     }
   },
   typography: {
+    h1: {
+      fontSize: '34px',
+      fontWeight: 400,
+      color: '#1A1B22',
+      textTransform: 'capitalize',
+      lineHeight: '40px'
+    },
     h2: {
       fontSize: '24px',
       fontWeight: 500,
