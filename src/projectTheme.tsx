@@ -58,6 +58,12 @@ export const projectTheme = createTheme({
       fontWeight: 400,
       color: '#797981',
       lineHeight: '20px'
+    },
+    button: {
+      fontSize: '16px',
+      fontWeight: 500,
+      color: '#FF',
+      lineHeight: '20px'
     }
   }
 });
