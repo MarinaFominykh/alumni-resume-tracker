@@ -12,7 +12,6 @@ import { authStyles } from '../consts/authStyles';
 
 interface InputsValue {
   name: string;
-  text: string;
 }
 
 const schema = yup.object().shape({
@@ -40,14 +39,7 @@ function Register() {
   };
 
   return (
-    <Auth
-      sx={
-        ((authStyles.wrapper.backgroundColor = '#fff'),
-        (authStyles.firstElement.display = 'none'),
-        (authStyles.secondElement.display = 'none'),
-        (authStyles.thirdElement.display = 'none'))
-      }
-    >
+    <Auth>
       <form onSubmit={handleSubmit(registerSubmitHandler)} noValidate className="auth__form">
         <Typography variant="h2">Добро пожаловать в Трекер</Typography>
         <Typography variant="body2">Расскажите немного о вашей компании</Typography>
@@ -63,21 +55,10 @@ function Register() {
           helperText={errors.name ? errors.name?.message : ''}
         />
 
-        <InputElement
-          name="text"
-          defaultValue=""
-          control={control}
-          type="email"
-          label="Описание компании(необязательно)"
-          variant="outlined"
-          error={!!errors.text}
-          helperText={errors.text ? errors.text?.message : ''}
-        />
-
         <ButtonElement variant="contained" type="submit">
           Далее
         </ButtonElement>
-        <Link sx={authStyles.formCaption.link} variant="body2" onClick={() => navigate('/sign-in')}>
+        <Link sx={authStyles.link} variant="body2" onClick={() => navigate('/sign-in')}>
           Назад
         </Link>
       </form>

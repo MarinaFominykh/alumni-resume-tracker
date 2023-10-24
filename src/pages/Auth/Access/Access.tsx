@@ -14,7 +14,7 @@ function Access() {
         <Typography variant="body2">
           Чтобы получить доступ к трекеру напишите нам на почту
         </Typography>
-        <Link sx={authStyles.accessLink} variant="body2" href={`mailto:test@example.com`}>
+        <Link sx={authStyles.link} variant="body2" href={`mailto:test@example.com`}>
           tracker@yandex.ru
         </Link>
 
