@@ -1,17 +1,17 @@
-import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import '../Auth.css';
-import * as yup from 'yup';
-import { useNavigate } from 'react-router';
-import Typography from '@mui/material/Typography/Typography';
-import { IconButton, InputAdornment, Link } from '@mui/material';
-import Auth from '../Auth';
-import InputElement from '../../../components/elements/InputElement/InputElement';
-import { authStyles } from '../consts/authStyles';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import { useState } from 'react';
+import ButtonElement from "../../../components/elements/ButtonElement/ButtonElement";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, SubmitHandler } from "react-hook-form";
+import "../Auth.css";
+import * as yup from "yup";
+import { useNavigate } from "react-router";
+import Typography from "@mui/material/Typography/Typography";
+import { IconButton, InputAdornment, Link } from "@mui/material";
+import Auth from "../Auth";
+import InputElement from "../../../components/elements/InputElement/InputElement";
+import { authStyles } from "../consts/authStyles";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { useState } from "react";
 
 interface LoginInputs {
   email: string;
@@ -21,13 +21,13 @@ interface LoginInputs {
 const schema = yup.object().shape({
   email: yup
     .string()
-    .email('Email должен соответствовать схеме email@example.com.')
-    .required('Поле должно быть заполнено.'),
+    .email("Email должен соответствовать схеме email@example.com.")
+    .required("Поле должно быть заполнено."),
   password: yup
     .string()
-    .min(6, 'Пароль должен содержать минимум 6 символов.')
-    .max(20, 'Пароль должен содержать не более 6 символов.')
-    .required('Поле должно быть заполнено.')
+    .min(6, "Пароль должен содержать минимум 6 символов.")
+    .max(20, "Пароль должен содержать не более 6 символов.")
+    .required("Поле должно быть заполнено."),
 });
 
 function Login() {
@@ -36,14 +36,16 @@ function Login() {
   const {
     handleSubmit,
     control,
-    formState: { errors }
+    formState: { errors },
   } = useForm<LoginInputs>({
-    resolver: yupResolver(schema)
+    resolver: yupResolver(schema),
   });
 
-  const loginSubmitHandler: SubmitHandler<LoginInputs> = (data: LoginInputs) => {
-    console.log('form data is', data);
-    navigate('/');
+  const loginSubmitHandler: SubmitHandler<LoginInputs> = (
+    data: LoginInputs
+  ) => {
+    console.log("form data is", data);
+    navigate("/");
   };
 
   const EndAdornment = ({ visible, setVisible }: any) => {
@@ -58,7 +60,11 @@ function Login() {
 
   return (
     <Auth>
-      <form onSubmit={handleSubmit(loginSubmitHandler)} noValidate className="auth__form">
+      <form
+        onSubmit={handleSubmit(loginSubmitHandler)}
+        noValidate
+        className="auth__form"
+      >
         <Typography variant="h2">Карьерный трекер</Typography>
         <Typography variant="body2">Войти в аккаунт</Typography>
         <InputElement
@@ -69,27 +75,36 @@ function Login() {
           label="Email"
           variant="outlined"
           error={!!errors.email}
-          helperText={errors.email ? errors.email?.message : ''}
-          adornment={''}
+          helperText={errors.email ? errors.email?.message : ""}
+          adornment={""}
         />
 
         <InputElement
           name="password"
           defaultValue=""
           control={control}
-          type={visible ? 'text' : 'password'}
+          type={visible ? "text" : "password"}
           label="Пароль"
           variant="outlined"
           error={!!errors.password}
-          helperText={errors.password ? errors.password?.message : ''}
+          helperText={errors.password ? errors.password?.message : ""}
           adornment={<EndAdornment visible={visible} setVisible={setVisible} />}
         />
 
-        <Link sx={authStyles.formLink} variant="body2" onClick={() => navigate('/reset-password')}>
+        <Link
+          sx={authStyles.formLink}
+          variant="body2"
+          onClick={() => navigate("/reset-password")}
+        >
           Не помню пароль
         </Link>
 
-        <ButtonElement variant="contained" type="submit">
+        <ButtonElement
+          color="secondary"
+          variant="contained"
+          type="submit"
+          sx={{ padding: "18px 0", height: "56px" }}
+        >
           Войти
         </ButtonElement>
       </form>
