@@ -1,13 +1,14 @@
-import CustomizedTables from "../../components/Table/Table";
-import "./Search.css";
+import CustomizedTables from '../../components/Table/Table';
+import { Grid } from '@mui/material';
+import './Search.css';
 function Search() {
   return (
-    <div>
-      {/* <div className='search'> */}
-
+    <Grid item sx={{width: 1}} >
       <h1>Поиск</h1>
       <CustomizedTables />
-    </div>
+
+    </Grid>
+  
   );
 }
 
