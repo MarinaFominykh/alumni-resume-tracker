@@ -1,10 +1,4 @@
-import {
-  Button,
-  Container,
-  Grid,
-  Typography,
-  createSvgIcon,
-} from "@mui/material";
+import { Button, Grid, Typography, createSvgIcon } from "@mui/material";
 import CompanyIcon from "../../components/elements/CompanyIcon/CompanyIcon";
 import { COMPANY_DATA } from "./data/const";
 
@@ -42,8 +36,10 @@ function Vacancies() {
           >
             <Typography
               variant="button"
-              display={"block"}
-              whiteSpace={"nowrap"}
+              sx={{
+                display: "block",
+                whiteSpace: "nowrap",
+              }}
             >
               Новая Вакансия
             </Typography>
