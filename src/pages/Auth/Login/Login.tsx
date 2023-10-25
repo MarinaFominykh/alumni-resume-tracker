@@ -77,16 +77,6 @@ function Login() {
           Войти
         </ButtonElement>
       </form>
-      <Typography variant="body2" sx={authStyles.formCaption.fonts}>
-        Новый пользователь?{' '}
-        <Link
-          variant="body2"
-          sx={authStyles.formCaption.link}
-          onClick={() => navigate('/get-access')}
-        >
-          Получить доступ
-        </Link>
-      </Typography>
     </Auth>
   );
 }
