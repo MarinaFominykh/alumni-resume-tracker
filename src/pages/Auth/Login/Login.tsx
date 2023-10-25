@@ -5,10 +5,13 @@ import '../Auth.css';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router';
 import Typography from '@mui/material/Typography/Typography';
-import { Link } from '@mui/material';
+import { IconButton, InputAdornment, Link } from '@mui/material';
 import Auth from '../Auth';
 import InputElement from '../../../components/elements/InputElement/InputElement';
 import { authStyles } from '../consts/authStyles';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useState } from 'react';
 
 interface LoginInputs {
   email: string;
@@ -28,6 +31,7 @@ const schema = yup.object().shape({
 });
 
 function Login() {
+  const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
   const {
     handleSubmit,
@@ -40,6 +44,16 @@ function Login() {
   const loginSubmitHandler: SubmitHandler<LoginInputs> = (data: LoginInputs) => {
     console.log('form data is', data);
     navigate('/');
+  };
+
+  const EndAdornment = ({ visible, setVisible }: any) => {
+    return (
+      <InputAdornment position="end">
+        <IconButton onClick={() => setVisible(!visible)}>
+          {visible ? <VisibilityOffIcon /> : <VisibilityIcon />}
+        </IconButton>
+      </InputAdornment>
+    );
   };
 
   return (
@@ -56,17 +70,19 @@ function Login() {
           variant="outlined"
           error={!!errors.email}
           helperText={errors.email ? errors.email?.message : ''}
+          adornment={''}
         />
 
         <InputElement
           name="password"
           defaultValue=""
           control={control}
-          type="password"
+          type={visible ? 'text' : 'password'}
           label="Пароль"
           variant="outlined"
           error={!!errors.password}
           helperText={errors.password ? errors.password?.message : ''}
+          adornment={<EndAdornment visible={visible} setVisible={setVisible} />}
         />
 
         <Link sx={authStyles.formLink} variant="body2" onClick={() => navigate('/reset-password')}>

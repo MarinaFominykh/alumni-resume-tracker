@@ -1,5 +1,6 @@
 import { Controller } from 'react-hook-form';
 import { TextField, TextFieldProps } from '@mui/material';
+import React from 'react';
 
 interface LoginInputs {
   name: string;
@@ -8,7 +9,7 @@ interface LoginInputs {
   text: string;
 }
 
-interface InputProps {
+interface InputPropsTypes {
   name: keyof LoginInputs;
   defaultValue: string;
   type: string;
@@ -17,6 +18,7 @@ interface InputProps {
   error: boolean;
   helperText: React.ReactNode;
   control: any;
+  adornment: React.ReactNode;
 }
 
 function InputElement({
@@ -26,8 +28,10 @@ function InputElement({
   label,
   variant,
   error,
-  helperText
-}: InputProps) {
+  helperText,
+  adornment,
+  type
+}: InputPropsTypes) {
   return (
     <Controller
       name={name}
@@ -36,11 +40,12 @@ function InputElement({
       render={({ field }) => (
         <TextField
           {...field}
-          type={defaultValue}
+          type={type}
           label={label}
           variant={variant}
           error={error}
           helperText={helperText}
+          InputProps={{ endAdornment: adornment }}
         />
       )}
     />
