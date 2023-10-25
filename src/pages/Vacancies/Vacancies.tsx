@@ -1,6 +1,7 @@
-import { Button, Grid, Typography, createSvgIcon } from "@mui/material";
+import { Button, Grid, Table, Typography, createSvgIcon } from "@mui/material";
 import CompanyIcon from "../../components/elements/CompanyIcon/CompanyIcon";
 import { COMPANY_DATA } from "./data/const";
+import Tabs from "../../components/Tabs/Tabs";
 
 function Vacancies() {
   const PlusIcon = createSvgIcon(
@@ -49,6 +50,8 @@ function Vacancies() {
           <CompanyIcon {...COMPANY_DATA}></CompanyIcon>
         </Grid>
       </Grid>
+      <Tabs/>
+      <Table/>
     </>
   );
 }
