@@ -1,9 +1,10 @@
-import CustomizedTables from '../../components/Table/Table'
-import './Search.css';
+import CustomizedTables from "../../components/Table/Table";
+import "./Search.css";
 function Search() {
   return (
-    <div className='search'>
-      {' '}
+    <div>
+      {/* <div className='search'> */}
+
       <h1>Поиск</h1>
       <CustomizedTables />
     </div>

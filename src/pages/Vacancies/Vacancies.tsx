@@ -1,4 +1,12 @@
-import { Button, Container, Typography, createSvgIcon } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  Typography,
+  createSvgIcon,
+} from "@mui/material";
+import CompanyIcon from "../../components/elements/CompanyIcon/CompanyIcon";
+import { COMPANY_DATA } from "./data/const";
 
 function Vacancies() {
   const PlusIcon = createSvgIcon(
@@ -19,17 +27,33 @@ function Vacancies() {
     "Plus"
   );
   return (
-    <Container>
+    <>
       <Typography variant="h1">Мои вакансии</Typography>
-      {/* <Button variant="contained" sx={{bgcolor: vacanciesStyles.button.mainColor}}> */}
-      <Button
-        variant="contained"
-        startIcon={<PlusIcon />}
-        sx={{ padding: "10px 20px" }}
-      >
-        <Typography variant="button">Новая Вакансия</Typography>
-      </Button>
-    </Container>
+      <Grid container>
+        <Grid item xs={9} alignSelf={"center"}>
+          <Button
+            variant="contained"
+            startIcon={<PlusIcon />}
+            sx={{
+              boxSizing: "border-box",
+              height: "44px",
+              padding: "10px 20px",
+            }}
+          >
+            <Typography
+              variant="button"
+              display={"block"}
+              whiteSpace={"nowrap"}
+            >
+              Новая Вакансия
+            </Typography>
+          </Button>
+        </Grid>
+        <Grid item xs={3}>
+          <CompanyIcon {...COMPANY_DATA}></CompanyIcon>
+        </Grid>
+      </Grid>
+    </>
   );
 }
 
