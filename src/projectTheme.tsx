@@ -63,6 +63,7 @@ export const projectTheme = createTheme({
       lineHeight: '20px',
     },
     button: {
+      textTransform: "capitalize",
       fontSize: '16px',
       fontWeight: 500,
       color: '#FF',
