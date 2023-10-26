@@ -1,0 +1,6 @@
+@import url(./font.css);
+.body {
+  margin: 0;
+  font-family: 'YS Text';
+  font-style: normal;
+}

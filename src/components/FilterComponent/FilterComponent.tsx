@@ -23,6 +23,8 @@ function FilterComponent() {
   return (
     <Box
       sx={{
+        // Растягивать на весь экран?
+        maxWidth: '1164px',
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
@@ -35,7 +37,7 @@ function FilterComponent() {
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography variant="subtitle1" fontWeight={500}>
+        <Typography variant="subtitle1" sx={{fontFamily: 'YS Text', fontWeight: 500, fontSize: '18px', lineHeight: '24px' }}>
           Фильтры
         </Typography>
         <Button variant="text" sx={{ fontWeight: 400, fontSize: '14px', lineHeight: '20px' }}>

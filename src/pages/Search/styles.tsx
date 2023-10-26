@@ -3,5 +3,6 @@ export const searchStyles = {
         padding: '24px',
         borderBottom: '1px solid  #DDE0E4',
         marginBottom: '24px'
-    }
+    },
+
 }
