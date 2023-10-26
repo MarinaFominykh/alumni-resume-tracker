@@ -56,7 +56,12 @@ function ResetPassword() {
           adornment={<></>}
         />
 
-        <ButtonElement variant="contained" type="submit">
+        <ButtonElement
+          variant="contained"
+          type="submit"
+          color="secondary"
+          sx={{ padding: '18px 0', height: '56px' }}
+        >
           Восстановить пароль
         </ButtonElement>
       </form>
