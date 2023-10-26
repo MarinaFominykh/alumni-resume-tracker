@@ -53,6 +53,7 @@ function ResetPassword() {
           variant="outlined"
           error={!!errors.email}
           helperText={errors.email ? errors.email?.message : ''}
+          adornment={<></>}
         />
 
         <ButtonElement variant="contained" type="submit">

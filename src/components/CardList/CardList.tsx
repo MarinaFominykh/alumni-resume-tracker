@@ -4,9 +4,9 @@ import VacancyCard from '../elements/VacancyCard/VacancyCard';
 function CardList({ vacancies }: any) {
   return (
     <Stack direction={'row'} spacing={'20px'} sx={{ overflowX: 'scroll' }}>
-      {vacancies.slice(0, 6).map((vacancy: any, i: number) => (
+      {vacancies.slice(0, 6).map((vacancy: any) => (
         <VacancyCard
-          key={vacancy.i}
+          key={vacancy.id}
           vacancyName={vacancy.vacancy_name}
           place={vacancy.place}
           city={vacancy.city}

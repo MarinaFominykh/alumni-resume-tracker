@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Typography, Avatar, Box } from '@mui/material';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -18,42 +17,38 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import ActivityElement from '../elements/ActivityElement/ActivityElement';
 import ContactElement from '../elements/ContactElement/ContactElement';
 
-
 export default function CustomizedTables() {
   return (
-    <TableContainer
-      component={Paper}
-      sx={{ width: 1, margin: 'auto', border: 0, boxShadow: 0 }}
-    >
-      <Table sx={{ width: 1 }} aria-label='simple table'>
+    <TableContainer component={Paper} sx={{ width: 1, margin: 'auto', border: 0, boxShadow: 0 }}>
+      <Table sx={{ width: 1 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
             <TableCell>
-              <Typography variant='h4'>Студент</Typography>
+              <Typography variant="h4">Студент</Typography>
             </TableCell>
             <TableCell>
-              <Typography variant='h4'>Специальность</Typography>
+              <Typography variant="h4">Специальность</Typography>
             </TableCell>
             <TableCell>
-              <Typography variant='h4'>Опыт работы</Typography>
+              <Typography variant="h4">Опыт работы</Typography>
             </TableCell>
             <TableCell>
-              <Typography variant='h4'>Уровень</Typography>
+              <Typography variant="h4">Уровень</Typography>
             </TableCell>
             <TableCell>
-              <Typography variant='h4'>Активность</Typography>
+              <Typography variant="h4">Активность</Typography>
             </TableCell>
             <TableCell>
-              <Typography variant='h4'>Навыки</Typography>
+              <Typography variant="h4">Навыки</Typography>
             </TableCell>
             <TableCell>
-              <Typography variant='h4'>Контакты</Typography>
+              <Typography variant="h4">Контакты</Typography>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {testStudentsArray.map((row) => (
+          {testStudentsArray.map(row => (
             <TableRow key={row.id}>
               <TableCell>
                 {row.isLike ? (
@@ -62,26 +57,22 @@ export default function CustomizedTables() {
                   <FavoriteBorderOutlinedIcon sx={{ color: '#1D6BF3' }} />
                 )}
               </TableCell>
-              <TableCell component='th' scope='row'>
+              <TableCell component="th" scope="row">
                 <Box sx={{ display: 'flex', gap: '8px' }}>
                   <Avatar src={row.photo} sx={{ width: 36, height: 36 }} />
-                  <Typography variant='body2'>{row.name}</Typography>
+                  <Typography variant="body2">{row.name}</Typography>
                 </Box>
               </TableCell>
               <TableCell>{row.specialization}</TableCell>
+              <TableCell>{`${row.experience} ${row.experience < 5 ? 'год' : 'лет'}`}</TableCell>
               <TableCell>
-                {`${row.experience} ${row.experience < 5 ? 'год' : 'лет'}`}
-              </TableCell>
-              <TableCell>
-                <GradeElementTable
-                  experience={row.experience}
-                ></GradeElementTable>
+                <GradeElementTable experience={row.experience}></GradeElementTable>
               </TableCell>
               <TableCell>
                 <ActivityElement activity={row.activity} />
               </TableCell>
               <TableCell>
-                <Stack sx={tableStyles.chipList} direction='row' spacing={1}>
+                <Stack sx={tableStyles.chipList} direction="row" spacing={1}>
                   {row.skills.slice(0, 4).map((skill, i) => (
                     <ChipElement key={i} label={skill} sx={chipStyles.chip} />
                   ))}
