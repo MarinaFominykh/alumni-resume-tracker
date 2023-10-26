@@ -8,15 +8,15 @@ interface ContactElementProps {
     email?: string;
     telegram?: string;
   };
+  sx: object;
 }
 
-const ContactElement: FC<ContactElementProps> = ({ contacts }) => {
-    const {email, telegram} = contacts;
+const ContactElement: FC<ContactElementProps> = ({ contacts, sx }) => {
+  const { email, telegram } = contacts;
   return (
-    <Box sx={{ display: 'flex', gap: '8px' }}>
-      {telegram && <img src={tgIcon} />}
-
-      {email && <img src={emailIcon} />}
+    <Box sx={{display: 'flex', gap: '8px'}}>
+      <Box sx={sx}>{telegram && <img src={tgIcon} />}</Box>
+      <Box sx={sx}>{email && <img src={emailIcon} />}</Box>
     </Box>
   );
 };

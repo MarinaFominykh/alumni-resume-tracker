@@ -1,10 +1,11 @@
 import CustomizedTables from '../../components/Table/Table';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
+import { searchStyles } from './styles';
 import './Search.css';
 function Search() {
   return (
     <Grid item sx={{width: 1}} >
-      <h1>Поиск</h1>
+      <Typography variant="h1" sx={searchStyles.title}>Поиск кандидатов</Typography>
       <CustomizedTables />
 
     </Grid>

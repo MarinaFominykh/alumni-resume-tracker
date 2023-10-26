@@ -1,3 +1,4 @@
+import { useNavigate  } from 'react-router-dom'; 
 import {
   Typography,
   Avatar,
@@ -21,7 +22,13 @@ import ContactElement from '../elements/ContactElement/ContactElement';
 import { ChipsContainer } from '../ChipsContainer/ChipsContainer';
 import { tableStyles } from './styles';
 export default function CustomizedTables() {
+ const navigate = useNavigate();
+
+  const handleLocation = () => {
+    navigate("/student");
+  }
   return (
+    
     <TableContainer
       component={Paper}
       sx={{ maxWidth: '1164px', border: 0, boxShadow: 0 }}
@@ -55,7 +62,8 @@ export default function CustomizedTables() {
         </TableHead>
         <TableBody>
           {testStudentsArray.map(row => (
-            <TableRow key={row.id}>
+            
+            <TableRow key={row.id} sx={tableStyles.row} onClick={handleLocation}>
               <TableCell>
                 <Box sx={tableStyles.likeBox}>
                   {row.isLike ? (
@@ -103,7 +111,7 @@ export default function CustomizedTables() {
                 </ChipsContainer>
               </TableCell>
               <TableCell>
-                <ContactElement contacts={row.contacts} />
+                <ContactElement sx={tableStyles.contacts} contacts={row.contacts} />
               </TableCell>
             </TableRow>
           ))}
