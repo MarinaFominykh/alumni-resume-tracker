@@ -1,12 +1,11 @@
-import { Box } from '@mui/material';
-import CardList from '../../components/CardList/CardList';
-import { testVacancies } from '../../consts/testVacancy';
+import { Grid } from '@mui/material';
+import Header from '../../components/elements/Hader/Header';
 
 function Favourites() {
   return (
-    <Box>
-      <CardList vacancies={testVacancies} />
-    </Box>
+    <Grid container>
+      <Header title={'Избранное'} />
+    </Grid>
   );
 }
 
