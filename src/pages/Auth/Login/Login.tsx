@@ -89,7 +89,7 @@ function Login() {
           Не помню пароль
         </Link>
 
-        <ButtonElement variant="contained" type="submit">
+        <ButtonElement color="secondary" variant="contained" type="submit">
           Войти
         </ButtonElement>
       </form>
