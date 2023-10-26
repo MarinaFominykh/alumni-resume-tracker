@@ -6,10 +6,10 @@ export const chipStyles = {
     fontSize: '13px',
     fontWeight: 400,
     lineHeight: '16px',
-    paddingTop: '3px',
-    paddingBottom: '3px',
-    paddingLeft: '13px',
-    paddingRight: '13px',
+    // paddingTop: '3px',
+    // paddingBottom: '3px',
+    // paddingLeft: '13px',
+    // paddingRight: '13px',
    
   },
 };
