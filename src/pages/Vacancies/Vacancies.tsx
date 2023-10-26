@@ -1,16 +1,6 @@
 import { Button, Container, Typography, createSvgIcon } from "@mui/material";
 
 function Vacancies() {
-  // const vacanciesStyles = {
-  //   button: {
-  //     // mainColor: '#1D6BF3'
-  //     mainColor: 'white'
-
-  //   }
-  //   }
-
-  // И потом на кнопку вешаешь sx={{ vacanciesStyles.button}}
-
   const PlusIcon = createSvgIcon(
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -32,8 +22,11 @@ function Vacancies() {
     <Container>
       <Typography variant="h1">Мои вакансии</Typography>
       {/* <Button variant="contained" sx={{bgcolor: vacanciesStyles.button.mainColor}}> */}
-      <Button variant="contained">
-        <PlusIcon></PlusIcon>
+      <Button
+        variant="contained"
+        startIcon={<PlusIcon />}
+        sx={{ padding: "10px 20px" }}
+      >
         <Typography variant="button">Новая Вакансия</Typography>
       </Button>
     </Container>
