@@ -7,8 +7,13 @@ export const gradeElementTableStyles = {
     paddingBottom: '8px',
     paddingLeft: '12px',
     paddingRight: '12px',
+    alignText: 'center',
+    fontSize: '14px',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: '20px',
   },
-    middle: {
+  middle: {
     borderRadius: '4px',
     border: '1px solid #DDE0E4',
     backgroundColor: '#C2E5CE',
@@ -16,13 +21,25 @@ export const gradeElementTableStyles = {
     paddingBottom: '8px',
     paddingLeft: '12px',
     paddingRight: '12px',
+    alignText: 'center',
+    fontSize: '14px',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: '20px',
   },
-    senior: {
+  senior: {
     borderRadius: '4px',
     border: '1px solid #DDE0E4',
-    backgroundColor: '#ACCCFF',paddingTop: '8px',
+    backgroundColor: '#ACCCFF',
+    paddingTop: '8px',
     paddingBottom: '8px',
     paddingLeft: '12px',
     paddingRight: '12px',
+    alignText: 'center',
+    fontSize: '14px',
+    fontStyle: 'normal',
+    fontWeight: '400',
+    lineHeight: '20px',
   },
+
 };

@@ -1,0 +1,6 @@
+.chips-cntr {
+    width: 100%;
+    display: grid;
+    gap: 4px;
+    grid-template-columns: repeat(3, min-content);
+}
