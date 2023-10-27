@@ -39,7 +39,7 @@ const Navbar = () => {
           </List>
         </Box>
         <List>
-          <ListItemButton onClick={() => navigate('/sign-in')}>
+          <ListItemButton onClick={() => navigate('sign-in')}>
             <ListItemIcon sx={navbarStyles.icons}>{<LogoutIcon />}</ListItemIcon>
             <ListItemText sx={navbarStyles.text} primary="Выйти" />
           </ListItemButton>

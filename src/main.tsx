@@ -9,21 +9,23 @@ import { ThemeProvider } from '@mui/material';
 import { projectTheme } from './projectTheme.tsx';
 import ResetPassword from './pages/Auth/ResetPassword/ResetPassword.tsx';
 import StudentPage from './pages/StudentPage/StudentPage.tsx';
+import NewVacancy from './pages/Vacancies/NewVacancy/NewVacancy.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <ThemeProvider theme={projectTheme}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
-          <Route path="/search" element={<Search />} />
-          <Route path="/favourites" element={<Favourites />} />
-          <Route path="/vacancies" element={<Vacancies />} />
-          <Route path="/student" element={<StudentPage />} />
+          <Route path="search" element={<Search />} />
+          <Route path="favourites" element={<Favourites />} />
+          <Route path="vacancies" element={<Vacancies />} />
+          <Route path="vacancies/new" element={<NewVacancy />} />
+          <Route path="student" element={<StudentPage />} />
         </Route>
       </Routes>
       <Routes>
-        <Route path="/sign-in" element={<Login />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="sign-in" element={<Login />} />
+        <Route path="reset-password" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   </ThemeProvider>

@@ -37,7 +37,10 @@ function FilterComponent() {
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-        <Typography variant="subtitle1" sx={{fontFamily: 'YS Text', fontWeight: 500, fontSize: '18px', lineHeight: '24px' }}>
+        <Typography
+          variant="subtitle1"
+          sx={{ fontFamily: 'YS Text', fontWeight: 500, fontSize: '18px', lineHeight: '24px' }}
+        >
           Фильтры
         </Typography>
         <Button variant="text" sx={{ fontWeight: 400, fontSize: '14px', lineHeight: '20px' }}>
@@ -65,7 +68,7 @@ function FilterComponent() {
           <Typography variant="caption" fontWeight={500}>
             Навыки
           </Typography>
-          <MultipleSelect skills={testStudent.skills} />
+          <MultipleSelect skills={testStudent.skills} fullwidth={false} />
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <Typography variant="caption" fontWeight={500}>

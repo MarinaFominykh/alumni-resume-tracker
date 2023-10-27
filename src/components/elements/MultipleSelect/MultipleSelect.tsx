@@ -18,9 +18,10 @@ const MenuProps = {
 
 interface SelectTypes {
   skills: any;
+  fullwidth: boolean;
 }
 
-function MultipleSelect({ skills }: SelectTypes) {
+function MultipleSelect({ skills, fullwidth }: SelectTypes) {
   const [skill, setSkill] = React.useState<string[]>([]);
 
   const handleChange = (event: SelectChangeEvent<typeof skill>) => {
@@ -41,6 +42,7 @@ function MultipleSelect({ skills }: SelectTypes) {
           size="small"
           input={<OutlinedInput placeholder="Навыки" />}
           MenuProps={MenuProps}
+          fullWidth={fullwidth}
         >
           {skills.map(skill => (
             <MenuItem key={skill} value={skill}>

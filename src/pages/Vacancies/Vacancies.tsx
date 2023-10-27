@@ -1,9 +1,11 @@
-import { Button, Grid, Table, Typography, createSvgIcon } from "@mui/material";
-import CompanyIcon from "../../components/elements/CompanyIcon/CompanyIcon";
-import { COMPANY_DATA } from "./data/const";
-import Tabs from "../../components/Tabs/Tabs";
+import { Button, Grid, Table, Typography, createSvgIcon } from '@mui/material';
+import CompanyIcon from '../../components/elements/CompanyIcon/CompanyIcon';
+import { COMPANY_DATA } from './data/const';
+import Tabs from '../../components/Tabs/Tabs';
+import { useNavigate } from 'react-router';
 
 function Vacancies() {
+  const navigate = useNavigate();
   const PlusIcon = createSvgIcon(
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,33 +15,32 @@ function Vacancies() {
       stroke="currentColor"
       className="h-6 w-6"
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M12 4.5v15m7.5-7.5h-15"
-      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
     </svg>,
-    "Plus"
+    'Plus'
   );
   return (
     <>
       <Typography variant="h1">Мои вакансии</Typography>
       <Grid container>
-        <Grid item xs={9} alignSelf={"center"}>
+        <Grid item xs={9} alignSelf={'center'}>
           <Button
             variant="contained"
             startIcon={<PlusIcon />}
             sx={{
-              boxSizing: "border-box",
-              height: "44px",
-              padding: "10px 20px",
+              boxSizing: 'border-box',
+              height: '44px',
+              padding: '10px 20px'
+            }}
+            onClick={() => {
+              navigate('/vacancies/new');
             }}
           >
             <Typography
               variant="button"
               sx={{
-                display: "block",
-                whiteSpace: "nowrap",
+                display: 'block',
+                whiteSpace: 'nowrap'
               }}
             >
               Новая Вакансия
@@ -50,8 +51,8 @@ function Vacancies() {
           <CompanyIcon {...COMPANY_DATA}></CompanyIcon>
         </Grid>
       </Grid>
-      <Tabs/>
-      <Table/>
+      <Tabs />
+      <Table />
     </>
   );
 }
