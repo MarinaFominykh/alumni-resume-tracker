@@ -4,7 +4,7 @@ import FilterComponent from '../../components/FilterComponent/FilterComponent';
 
 function Favourites() {
   return (
-    <Grid container>
+    <Grid sx={{paddingLeft: '56px', margin: 0}} container>
       <Header title={'Избранное'} />
       <FilterComponent />
     </Grid>

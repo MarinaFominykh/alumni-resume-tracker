@@ -32,7 +32,7 @@ function Header({ title }: HeaderTypes) {
           size="small"
         />
       </Box>
-      <Divider variant="middle" sx={{ width: '100%', marginLeft: '-15px' }} />
+      <Divider variant="middle" sx={{ width: '100%', marginLeft: '-15px', marginBottom: '24px' }} />
     </>
   );
 }

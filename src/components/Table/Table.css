@@ -1,0 +1,14 @@
+.filter-icon {
+width: 24px;
+height: 24px;
+background-image: url(../../../images/iconamoon_sorting-left.svg);
+background-position: center;
+background-repeat: no-repeat;
+}
+.arrow-icon {
+    width: 24px;
+height: 24px;
+background-image: url(../../../images/arrow_down.svg);
+background-position: center;
+background-repeat: no-repeat;
+}

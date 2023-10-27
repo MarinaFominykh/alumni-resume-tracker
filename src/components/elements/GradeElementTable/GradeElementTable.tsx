@@ -9,18 +9,20 @@ const GradeElementTable: FC<GradeElementTableProps> = ({ experience }) => {
     <div>
       {experience < 2 ? (
         <Box sx={gradeElementTableStyles.junior}>
-          <Typography variant='body2'>
-            Junior
-          </Typography>
+          <Typography sx={gradeElementTableStyles.text}>Junior</Typography>
         </Box>
       ) : experience >= 2 && experience <= 3 ? (
-        <Typography variant='body2' sx={gradeElementTableStyles.middle}>
-          Middle
-        </Typography>
+        <Box sx={gradeElementTableStyles.middle}>
+          <Typography sx={gradeElementTableStyles.text}>
+            Middle
+          </Typography>
+        </Box>
       ) : (
-        <Typography variant='body2' sx={gradeElementTableStyles.senior}>
-          Senior
-        </Typography>
+        <Box sx={gradeElementTableStyles.senior}>
+          <Typography sx={gradeElementTableStyles.text}>
+            Senior
+          </Typography>
+        </Box>
       )}
     </div>
   );

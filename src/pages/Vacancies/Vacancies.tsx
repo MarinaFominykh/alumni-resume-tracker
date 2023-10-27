@@ -1,4 +1,4 @@
-import { Button, Grid, Table, Typography, createSvgIcon } from '@mui/material';
+import { Button, Grid, Table, Typography, createSvgIcon, Box } from '@mui/material';
 import CompanyIcon from '../../components/elements/CompanyIcon/CompanyIcon';
 import { COMPANY_DATA } from './data/const';
 import Tabs from '../../components/Tabs/Tabs';
@@ -20,8 +20,7 @@ function Vacancies() {
     'Plus'
   );
   return (
-    <>
-      <Typography variant="h1">Мои вакансии</Typography>
+    <Box sx={{paddingLeft: '56px', margin: 0}}><Typography variant="h1">Мои вакансии</Typography>
       <Grid container>
         <Grid item xs={9} alignSelf={'center'}>
           <Button
@@ -52,8 +51,9 @@ function Vacancies() {
         </Grid>
       </Grid>
       <Tabs />
-      <Table />
-    </>
+      <Table /></Box>
+      
+   
   );
 }
 

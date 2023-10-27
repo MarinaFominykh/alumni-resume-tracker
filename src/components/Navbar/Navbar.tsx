@@ -22,7 +22,7 @@ const Navbar = () => {
   }
 
   return (
-    <Box>
+    <Box >
       <Drawer sx={navbarStyles.drawer} variant="permanent" anchor="left">
         <Box>
           <Avatar sx={navbarStyles.avatar} {...stringAvatar('TipTop Systems')} />

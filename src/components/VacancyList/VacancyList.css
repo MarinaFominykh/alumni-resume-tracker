@@ -1,0 +1,25 @@
+.swiper {
+    margin: 0;
+}
+.slider {
+    /* max-width: 1920px; */
+   
+}
+.swiper-wrapper {
+    gap: 12px;
+    justify-content: flex-start;
+   
+}
+.swiper-slide {
+    margin: 0;
+}
+
+.link__vacancies {
+    color: #1D6BF3;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.link__vacancies:hover {
+    text-decoration: underline;
+}

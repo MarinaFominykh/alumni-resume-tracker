@@ -1,4 +1,7 @@
 import { Card, CardContent, Typography } from '@mui/material';
+import { vacancyStyles } from './styles';
+import { Link } from 'react-router-dom'; 
+import './VacancyCard.css'
 
 interface CardProps {
   vacancyName: string;
@@ -10,18 +13,21 @@ interface CardProps {
 function VacancyCard({ vacancyName, place, city, experience }: CardProps) {
   return (
     <Card
-      variant="outlined"
+      variant='outlined'
       onClick={() => console.log('clicked')}
-      sx={{ width: 334, flexShrink: '0' }}
+      sx={vacancyStyles.card}
     >
-      <CardContent>
-        <Typography variant="subtitle1">{vacancyName}</Typography>
-        <Typography variant="caption">{place}</Typography>
-        <Typography variant="body1">{city}</Typography>
-        <Typography variant="body1">{`От ${experience} ${
+      <Link to='/vacancies' className='link'>
+         <CardContent sx={vacancyStyles.wrapper}>
+        <Typography sx={vacancyStyles.title}>{vacancyName}</Typography>
+        <Typography sx={vacancyStyles.place}>{place}</Typography>
+        <Typography sx={vacancyStyles.text}>{city}</Typography>
+        <Typography sx={vacancyStyles.text}>{`От ${experience} ${
           experience === 1 ? 'года' : 'лет'
         }`}</Typography>
       </CardContent>
+      </Link>
+      
     </Card>
   );
 }

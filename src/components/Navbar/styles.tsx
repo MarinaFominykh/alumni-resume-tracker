@@ -2,6 +2,7 @@ export const navbarStyles = {
   drawer: {
     width: 200,
     flexShrink: 0,
+   
 
     '& .MuiDrawer-paper': {
       width: 200,
@@ -27,7 +28,8 @@ export const navbarStyles = {
     color: '#B5B5B7',
     fontSize: '20px',
     fontWeight: 400,
-    lineHeight: '40px'
+    lineHeight: '40px',
+     
   },
   icons: {
     color: '#B5B5B7',
