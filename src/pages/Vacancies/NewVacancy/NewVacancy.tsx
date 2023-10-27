@@ -431,14 +431,36 @@ function NewVacancy() {
             </Box>
           </Grid>
         </Grid>
-        <ButtonElement
-          color="secondary"
-          variant="contained"
-          type="submit"
-          sx={{ padding: '18px 0', height: '56px' }}
+        <Box
+          sx={{
+            display: 'flex',
+            gap: '16px',
+            justifyContent: 'flex-end',
+            maxWidth: '690px',
+            margin: '24px auto 0'
+          }}
         >
-          Сохранить
-        </ButtonElement>
+          <ButtonElement
+            color="secondary"
+            variant="outlined"
+            type="button"
+            sx={{ padding: '10px 19px', height: '40px' }}
+          >
+            <Typography variant="body1" fontWeight={500} color={'#1D6BF3'}>
+              Опубликовать позже
+            </Typography>
+          </ButtonElement>
+          <ButtonElement
+            color="secondary"
+            variant="contained"
+            type="submit"
+            sx={{ padding: '10px 58px', height: '40px' }}
+          >
+            <Typography variant="body1" fontWeight={500} color={'#fff'}>
+              Сохранить
+            </Typography>
+          </ButtonElement>
+        </Box>
       </form>
     </>
   );
