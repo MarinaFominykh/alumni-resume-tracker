@@ -5,10 +5,11 @@ import Grid from '@mui/material/Grid';
 function App() {
   return (
     <Grid container>
-      <Grid item>
+      <Grid item xs={1}>
         <Navbar />
+        
       </Grid>
-      <Grid item xs={true} sx={{padding:'20px 10px 0 30px'}}>
+      <Grid item xs={11} sx={{padding:'20px 10px 0 30px'}}>
         <Outlet />
       </Grid>
     </Grid>

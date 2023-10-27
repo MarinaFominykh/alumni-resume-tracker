@@ -1,9 +1,43 @@
 export const tableStyles = {
+  table: {
+    // maxWidth: '1164px',
+    width: '1',
+    // border: 0,
+    boxShadow: 0,
+  },
+  toolbarfilter: {
+    borderTopLeftRadius: '20px',
+    borderTopRightRadius: '20px',
+    width: 1,
+    height: '60px',
+    background: 'black',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  filter: {
+    padding: '18px',
+    color: '#fff',
+    cursor: 'pointer',
+    fontFamily: 'YS Text, Arial, sans-serif',
+      fontSize: '16px',
+      fontWeight: 400,
+    
+      lineHeight: '20px'
+  },
+  textfilter: {
+    color: '#fff',
+  },
+button: {
+  display: 'flex',
+  gap: '12px',
+  alignItems: 'center',
+},
   row: {
     cursor: 'pointer',
     transition: '0.3s',
     '&:hover': {
-      background: '#F1F6FF'
+      background: '#F1F6FF',
     },
   },
   likeBox: {

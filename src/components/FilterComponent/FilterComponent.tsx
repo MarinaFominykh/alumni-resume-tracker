@@ -24,7 +24,7 @@ function FilterComponent() {
     <Box
       sx={{
         // Растягивать на весь экран?
-        maxWidth: '1164px',
+        // maxWidth: '1164px',
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
