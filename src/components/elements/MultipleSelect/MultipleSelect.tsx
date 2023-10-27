@@ -44,7 +44,7 @@ function MultipleSelect({ skills, fullwidth }: SelectTypes) {
           MenuProps={MenuProps}
           fullWidth={fullwidth}
         >
-          {skills.map(skill => (
+          {skills.map((skill: string) => (
             <MenuItem key={skill} value={skill}>
               {skill}
             </MenuItem>
