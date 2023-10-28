@@ -79,6 +79,7 @@ button: {
     cursor: 'pointer',
     transition: '0.3s',
     padding: '8px',
+    borderRadius: '6px',
     '&:hover': {
       border: '1px #5A9BFF solid',
     },
