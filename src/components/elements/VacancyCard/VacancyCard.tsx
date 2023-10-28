@@ -8,7 +8,7 @@ interface CardProps {
   place: string;
   city: string;
   experience: number;
-  sx: object;
+  sx?: object;
 }
 
 function VacancyCard({ vacancyName, place, city, experience, sx }: CardProps) {

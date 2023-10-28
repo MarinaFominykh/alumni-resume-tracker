@@ -1,50 +1,57 @@
 import { FC, ReactNode } from 'react';
-import {
-  Card,
-  Box,
-
-  CardContent,
-  Button,
-  Typography,
-  CardActions,
-} from '@mui/material';
+import { Card, Box, CardContent, Typography } from '@mui/material';
 
 import { vacancyRowStyle } from './styles';
 import ButtonElement from '../elements/ButtonElement/ButtonElement';
 import { ContexMenu } from '../elements/ContexMenu/ContexMenu';
-
+import { IVacancy } from '../../models/IVacancy';
 interface VacancyRowProps {
   children?: ReactNode;
+  vacancy: IVacancy;
 }
 
-export const VacancyRow: FC<VacancyRowProps> = ({ children }) => {
+const getText = (experience: number) => {
+  if (experience === 1) {
+    return `От 1 года`;
+  } else if (experience >= 2 && experience < 5) {
+    return `${experience} года`;
+  } else return `${experience} лет`;
+};
+
+export const VacancyRow: FC<VacancyRowProps> = ({ children, vacancy }) => {
   return (
     <Card sx={vacancyRowStyle.card}>
       <CardContent sx={vacancyRowStyle.cardContent}>
         <Box sx={vacancyRowStyle.menu}>
-            <ContexMenu />
+          <ContexMenu />
         </Box>
         <Box sx={vacancyRowStyle.data}>
           <Box sx={vacancyRowStyle.description}>
             {' '}
-            <Typography>Junior UX/UI Designer</Typography>
-            <Typography>Департамент технологий</Typography>
-            <Typography>22.10.2023</Typography>
+            <Typography sx={vacancyRowStyle.title}>
+              {vacancy.vacancy_name}
+            </Typography>
+            <Typography sx={vacancyRowStyle.subtitle}>
+              {vacancy.place}
+            </Typography>
+            <Typography sx={vacancyRowStyle.date}>{vacancy.date}</Typography>
           </Box>
-          <Typography>Москва</Typography>
-          <Typography>От 1 года</Typography>
-          <Typography>Удаленно</Typography>
+          <Box sx={vacancyRowStyle.centerContent}>
+            <Typography>{vacancy.city}</Typography>
+            <Typography>{getText(vacancy.experience)}</Typography>
+            <Typography>{vacancy.format}</Typography>
+          </Box>
+
           <Box>
-            <ButtonElement>
-              <Typography>63 кандидата</Typography>
+            <ButtonElement sx={vacancyRowStyle.button}>
+              <Typography sx={vacancyRowStyle.buttonText}>
+                63 кандидата
+              </Typography>
             </ButtonElement>
             {children}
           </Box>
         </Box>
       </CardContent>
-      <CardActions>
-        <Button size='small'>Learn More</Button>
-      </CardActions>
     </Card>
   );
 };

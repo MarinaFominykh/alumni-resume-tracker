@@ -6,7 +6,8 @@ export const testVacancies = [
     specialization: 'UX/UI Дизайнер',
     city: 'Москва',
     experience: 1,
-    date: 'TodayDate'
+    date: 'TodayDate',
+    format: 'Удаленно',
   },
   {
     id: '2',
@@ -15,7 +16,8 @@ export const testVacancies = [
     specialization: 'UX/UI Дизайнер',
     city: 'Москва',
     experience: 1,
-    date: 'TodayDate'
+    date: 'TodayDate',
+    format: 'Удаленно',
   },
   {
     id: '3',
@@ -24,7 +26,8 @@ export const testVacancies = [
     specialization: 'UX/UI Дизайнер',
     city: 'Москва',
     experience: 4,
-    date: 'TodayDate'
+    date: 'TodayDate',
+    format: 'Гибрид',
   },
   {
     id: '4',
@@ -33,7 +36,8 @@ export const testVacancies = [
     specialization: 'UX/UI Дизайнер',
     city: 'Москва',
     experience: 8,
-    date: 'TodayDate'
+    date: 'TodayDate',
+    format: 'Офис',
   },
   {
     id: '5',

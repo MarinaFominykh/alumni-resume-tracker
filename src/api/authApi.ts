@@ -1,4 +1,5 @@
-export const BASE_URL = "http://51.250.12.63";
+// export const BASE_URL = "http://51.250.12.63";
+export const BASE_URL = "http://localhost:3000";
 
 // Обработка ответа сервера
 export const checkResponse = (res: Response) => {
