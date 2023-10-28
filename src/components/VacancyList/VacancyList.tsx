@@ -24,43 +24,40 @@ export const VacancyList: FC = () => {
   return (
     <>
       <Box sx={vacancyListStyle.wrapper}>
-        <Typography sx={vacancyListStyle.subtitle}>
-          Подобрать по вакансиям компании
-        </Typography>
+        <Typography sx={vacancyListStyle.subtitle}>Подобрать по вакансиям компании</Typography>
         <Typography sx={vacancyListStyle.link}>
-          <Link to='/vacancies' className='link link__vacancies'>
+          <Link to="/all-vacancies" className="link link__vacancies">
             Все вакансии
           </Link>
         </Typography>
       </Box>
-          <Box>
-          <Swiper
-            spaceBetween={1}
-            slidesPerView={'auto'}
-            speed={1000}
-            className='slider'
-            breakpoints={{
-              960: {
-                slidesPerView: 5,
-              },
-              0: {
-                slidesPerView: 4,
-              },
-            }}
-          >
-            {
-              testVacancies.map((vacancy) => (
-                <SwiperSlide key={vacancy.id}>
-                  <VacancyCard
-                    vacancyName={vacancy.vacancy_name}
-                    place={vacancy.place}
-                    city={vacancy.city}
-                    experience={vacancy.experience}
-                  />
-                </SwiperSlide>
-              ))}
-          </Swiper>
-        </Box>
+      <Box>
+        <Swiper
+          spaceBetween={1}
+          slidesPerView={'auto'}
+          speed={1000}
+          className="slider"
+          breakpoints={{
+            960: {
+              slidesPerView: 5
+            },
+            0: {
+              slidesPerView: 4
+            }
+          }}
+        >
+          {testVacancies.map(vacancy => (
+            <SwiperSlide key={vacancy.id}>
+              <VacancyCard
+                vacancyName={vacancy.vacancy_name}
+                place={vacancy.place}
+                city={vacancy.city}
+                experience={vacancy.experience}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Box>
     </>
   );
 };

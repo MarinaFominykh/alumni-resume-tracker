@@ -10,6 +10,7 @@ import { projectTheme } from './projectTheme.tsx';
 import ResetPassword from './pages/Auth/ResetPassword/ResetPassword.tsx';
 import StudentPage from './pages/StudentPage/StudentPage.tsx';
 import NewVacancy from './pages/Vacancies/NewVacancy/NewVacancy.tsx';
+import AllVacancies from './pages/AllVacancies/AllVacancies.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <ThemeProvider theme={projectTheme}>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="search" element={<Search />} />
           <Route path="favourites" element={<Favourites />} />
           <Route path="vacancies" element={<Vacancies />} />
+          <Route path="all-vacancies" element={<AllVacancies />} />
           <Route path="vacancies/new" element={<NewVacancy />} />
           <Route path="student" element={<StudentPage />} />
         </Route>
