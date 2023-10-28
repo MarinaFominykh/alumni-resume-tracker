@@ -1,4 +1,4 @@
-import {Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {
   Typography,
   Avatar,
@@ -11,77 +11,70 @@ import {
   TableRow,
   Paper,
   Button,
-} from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import ChipElement from '../elements/ChipElement/ChipElement';
-import { chipStyles } from '../elements/ChipElement/styles';
-import GradeElementTable from '../elements/GradeElementTable/GradeElementTable';
-import { testStudentsArray } from '../../consts/testStudentsArray';
-import ActivityElement from '../elements/ActivityElement/ActivityElement';
-import ContactElement from '../elements/ContactElement/ContactElement';
-import { ChipsContainer } from '../ChipsContainer/ChipsContainer';
-import { tableStyles } from './styles';
-import './Table.css';
-export default function CustomizedTables() {
+} from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import ChipElement from "../elements/ChipElement/ChipElement";
+import { chipStyles } from "../elements/ChipElement/styles";
+import GradeElementTable from "../elements/GradeElementTable/GradeElementTable";
+import { testStudentsArray } from "../../consts/testStudentsArray";
+import ActivityElement from "../elements/ActivityElement/ActivityElement";
+import ContactElement from "../elements/ContactElement/ContactElement";
+import { ChipsContainer } from "../ChipsContainer/ChipsContainer";
+import { tableStyles } from "./styles";
+import "./Table.css";
+import { ContextMenuTwo } from "../elements/ContexMenu/ContextMenuTwo";
 
+export default function CustomizedTables() {
   return (
     <>
       <Box sx={tableStyles.toolbarfilter}>
         <Box sx={tableStyles.filter}>
-          <Button sx={tableStyles.button}>
-            <div className='filter-icon'></div>
-            <Typography sx={tableStyles.textfilter}>Сортировка</Typography>
-            <div className='arrow-icon'></div>
-          </Button>
+          <ContextMenuTwo />
         </Box>
       </Box>
       <TableContainer component={Paper} sx={tableStyles.table}>
-        <Table sx={{ width: 1 }} aria-label='simple table'>
+        <Table sx={{ width: 1 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell></TableCell>
-              <TableCell sx={{ width: '100px' }}>
-                <Typography variant='h4'>Студент</Typography>
+              <TableCell sx={{ width: "100px" }}>
+                <Typography variant="h4">Студент</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant='h4'>Специальность</Typography>
+                <Typography variant="h4">Специальность</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant='h4'>Опыт работы</Typography>
+                <Typography variant="h4">Опыт работы</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant='h4'>Уровень</Typography>
+                <Typography variant="h4">Уровень</Typography>
               </TableCell>
-              <TableCell sx={{ maxWidth: '112px' }}>
-                <Typography variant='h4'>Активность</Typography>
+              <TableCell sx={{ maxWidth: "112px" }}>
+                <Typography variant="h4">Активность</Typography>
               </TableCell>
-              <TableCell sx={{ minWidth: '212px' }}>
-                <Typography variant='h4'>Навыки</Typography>
+              <TableCell sx={{ minWidth: "212px" }}>
+                <Typography variant="h4">Навыки</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant='h4'>Контакты</Typography>
+                <Typography variant="h4">Контакты</Typography>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {testStudentsArray.map((row) => (
-              <TableRow
-                key={row.id}
-                sx={tableStyles.row}
-            
-              >
+              <TableRow key={row.id} sx={tableStyles.row}>
                 <TableCell>
                   <Box sx={tableStyles.likeBox}>
                     {row.isLike ? (
-                      <FavoriteIcon sx={{ color: '#1D6BF3' }} />
+                      <FavoriteIcon sx={{ color: "#1D6BF3" }} />
                     ) : (
-                      <FavoriteBorderOutlinedIcon sx={{ color: '#1D6BF3' }} />
+                      <FavoriteBorderOutlinedIcon sx={{ color: "#1D6BF3" }} />
                     )}
                   </Box>
                 </TableCell>
-                <TableCell component='th' scope='row'>
-                  <Link className='link' to='/student'>
+                <TableCell component="th" scope="row">
+                  <Link className="link" to="/student">
                     <Box sx={tableStyles.nameBox}>
                       <Avatar src={row.photo} sx={{ width: 36, height: 36 }} />
                       <Typography sx={tableStyles.text}>{row.name}</Typography>
@@ -89,17 +82,17 @@ export default function CustomizedTables() {
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <Link className='link' to='/student'>
+                  <Link className="link" to="/student">
                     <Typography sx={tableStyles.text}>
-                      {' '}
+                      {" "}
                       {row.specialization}
                     </Typography>
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <Link className='link' to='/student'>
+                  <Link className="link" to="/student">
                     <Typography sx={tableStyles.text}>
-                      {row.experience === 0 && 'Без опыта'}
+                      {row.experience === 0 && "Без опыта"}
                       {row.experience === 1 && `${row.experience} год`}
                       {row.experience > 1 &&
                         row.experience < 5 &&
@@ -109,22 +102,22 @@ export default function CustomizedTables() {
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <Link className='link' to='/student'>
+                  <Link className="link" to="/student">
                     <GradeElementTable
                       experience={row.experience}
                     ></GradeElementTable>
                   </Link>
                 </TableCell>
                 <TableCell sx={tableStyles.activityChell}>
-                  <Link className='link' to='/student'>
+                  <Link className="link" to="/student">
                     <ActivityElement
                       activity={row.activity}
-                      sx={{ display: 'flex', justifyContent: 'center' }}
+                      sx={{ display: "flex", justifyContent: "center" }}
                     />
                   </Link>
                 </TableCell>
                 <TableCell sx={tableStyles.skillsChell}>
-                  <Link className='link' to='/student'>
+                  <Link className="link" to="/student">
                     <ChipsContainer>
                       {row.skills.slice(0, 4).map((skill, i) => (
                         <ChipElement
