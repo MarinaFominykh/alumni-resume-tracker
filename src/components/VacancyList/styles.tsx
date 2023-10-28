@@ -2,6 +2,7 @@ export const vacancyListStyle = {
   wrapper: {
     display: 'flex',
     justifyContent: 'space-between',
+    width: '100%'
    
   },
   subtitle: {
