@@ -2,9 +2,9 @@ import React from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Typography from '@mui/material/Typography/Typography';
 import { Box, Grid, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
-import Header from '../../../components/Haders/Header';
 import { testStudent } from '../../../consts/testStudent';
 import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
+import BackIconHeader from '../../../components/Haders/BackIconHeader';
 
 const cities = [
   {
@@ -107,11 +107,11 @@ function NewVacancy() {
 
   return (
     <>
-      <Header title="Новая вакансия" />
       <form onSubmit={handleSubmit(createVacancySubmitHandler)} noValidate>
         <Grid container columnSpacing={'16px'} justifyContent={'center'} marginTop={'8px'}>
+          <BackIconHeader title="Новая вакансия" />
           <Grid item sx={{ width: '337px' }} boxSizing={'initial'}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <Typography variant="caption" fontWeight={500}>
                 Организация
               </Typography>
@@ -290,7 +290,7 @@ function NewVacancy() {
             </Box>
           </Grid>
           <Grid item sx={{ width: '337px' }} boxSizing={'initial'}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
               <Typography variant="caption" fontWeight={500}>
                 Подразделение
               </Typography>

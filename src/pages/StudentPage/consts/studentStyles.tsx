@@ -6,7 +6,8 @@ export const studentStyles = {
   header: {
     display: 'flex',
     gap: '46px',
-    marginBottom: '24px'
+    marginBottom: '24px',
+    marginTop: '24px'
   },
   info: {
     display: 'flex',
@@ -59,7 +60,5 @@ export const studentStyles = {
       color: '#1D6BF3'
     }
   },
-  activity: {
-    
-  }
+  activity: {}
 };

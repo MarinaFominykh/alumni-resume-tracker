@@ -6,7 +6,7 @@ import ActivityElement from '../../components/elements/ActivityElement/ActivityE
 import GradeElement from '../../components/elements/GradeElement/GradeElement';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import { studentStyles } from './consts/studentStyles';
-import BackButton from '../../components/elements/BackButton/BackButton';
+import BackLink from '../../components/elements/BackLink/BackLink';
 import LikeButton from '../../components/elements/LikeButton/LikeButton';
 import { chipStyles } from '../../components/elements/ChipElement/styles';
 import { EmailIcon, CopyIcon, TelegramIcon, PdfIcon } from '../../consts/icons';
@@ -14,7 +14,7 @@ import { EmailIcon, CopyIcon, TelegramIcon, PdfIcon } from '../../consts/icons';
 function StudentPage() {
   return (
     <Container sx={studentStyles.wrapper}>
-      <BackButton />
+      <BackLink />
       <Box sx={studentStyles.header}>
         <Avatar alt="Аватар выпускника" src={testStudent.photo} sx={{ width: 72, height: 72 }} />
         <Box sx={studentStyles.info}>
