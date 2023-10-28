@@ -8,14 +8,16 @@ interface CardProps {
   place: string;
   city: string;
   experience: number;
+  sx: object;
 }
 
-function VacancyCard({ vacancyName, place, city, experience }: CardProps) {
+function VacancyCard({ vacancyName, place, city, experience, sx }: CardProps) {
   return (
     <Card
       variant='outlined'
       onClick={() => console.log('clicked')}
-      sx={vacancyStyles.card}
+      sx={sx}
+      // sx={vacancyStyles.card}
     >
       <Link to='/vacancies' className='link'>
          <CardContent sx={vacancyStyles.wrapper}>

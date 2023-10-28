@@ -3,5 +3,6 @@
   margin: 0;
   font-family: 'YS Text';
   font-style: normal;
+ overflow-x: hidden;
 }
 

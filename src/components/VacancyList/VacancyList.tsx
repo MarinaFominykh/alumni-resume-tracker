@@ -49,6 +49,7 @@ export const VacancyList: FC = () => {
           {testVacancies.map(vacancy => (
             <SwiperSlide key={vacancy.id}>
               <VacancyCard
+              sx={vacancyListStyle.card}
                 vacancyName={vacancy.vacancy_name}
                 place={vacancy.place}
                 city={vacancy.city}
