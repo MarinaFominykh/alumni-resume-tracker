@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import {Link } from 'react-router-dom';
 import {
   Typography,
   Avatar,
@@ -10,7 +10,7 @@ import {
   TableHead,
   TableRow,
   Paper,
-  Button
+  Button,
 } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
@@ -24,53 +24,53 @@ import { ChipsContainer } from '../ChipsContainer/ChipsContainer';
 import { tableStyles } from './styles';
 import './Table.css';
 export default function CustomizedTables() {
-  const navigate = useNavigate();
 
-  const handleLocation = () => {
-    navigate('/student');
-  };
   return (
     <>
       <Box sx={tableStyles.toolbarfilter}>
         <Box sx={tableStyles.filter}>
           <Button sx={tableStyles.button}>
-            <div className="filter-icon"></div>
+            <div className='filter-icon'></div>
             <Typography sx={tableStyles.textfilter}>Сортировка</Typography>
-            <div className="arrow-icon"></div>
+            <div className='arrow-icon'></div>
           </Button>
         </Box>
       </Box>
       <TableContainer component={Paper} sx={tableStyles.table}>
-        <Table sx={{ width: 1 }} aria-label="simple table">
+        <Table sx={{ width: 1 }} aria-label='simple table'>
           <TableHead>
             <TableRow>
               <TableCell></TableCell>
               <TableCell sx={{ width: '100px' }}>
-                <Typography variant="h4">Студент</Typography>
+                <Typography variant='h4'>Студент</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h4">Специальность</Typography>
+                <Typography variant='h4'>Специальность</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h4">Опыт работы</Typography>
+                <Typography variant='h4'>Опыт работы</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h4">Уровень</Typography>
+                <Typography variant='h4'>Уровень</Typography>
               </TableCell>
               <TableCell sx={{ maxWidth: '112px' }}>
-                <Typography variant="h4">Активность</Typography>
+                <Typography variant='h4'>Активность</Typography>
               </TableCell>
               <TableCell sx={{ minWidth: '212px' }}>
-                <Typography variant="h4">Навыки</Typography>
+                <Typography variant='h4'>Навыки</Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="h4">Контакты</Typography>
+                <Typography variant='h4'>Контакты</Typography>
               </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {testStudentsArray.map(row => (
-              <TableRow key={row.id} sx={tableStyles.row} onClick={handleLocation}>
+            {testStudentsArray.map((row) => (
+              <TableRow
+                key={row.id}
+                sx={tableStyles.row}
+            
+              >
                 <TableCell>
                   <Box sx={tableStyles.likeBox}>
                     {row.isLike ? (
@@ -80,41 +80,67 @@ export default function CustomizedTables() {
                     )}
                   </Box>
                 </TableCell>
-                <TableCell component="th" scope="row">
-                  <Box sx={tableStyles.nameBox}>
-                    <Avatar src={row.photo} sx={{ width: 36, height: 36 }} />
-                    <Typography sx={tableStyles.text}>{row.name}</Typography>
-                  </Box>
+                <TableCell component='th' scope='row'>
+                  <Link className='link' to='/student'>
+                    <Box sx={tableStyles.nameBox}>
+                      <Avatar src={row.photo} sx={{ width: 36, height: 36 }} />
+                      <Typography sx={tableStyles.text}>{row.name}</Typography>
+                    </Box>
+                  </Link>
                 </TableCell>
                 <TableCell>
-                  <Typography sx={tableStyles.text}> {row.specialization}</Typography>
+                  <Link className='link' to='/student'>
+                    <Typography sx={tableStyles.text}>
+                      {' '}
+                      {row.specialization}
+                    </Typography>
+                  </Link>
                 </TableCell>
                 <TableCell>
-                  <Typography sx={tableStyles.text}>
-                    {row.experience === 0 && 'Без опыта'}
-                    {row.experience === 1 && `${row.experience} год`}
-                    {row.experience > 1 && row.experience < 5 && `${row.experience} года`}
-                    {row.experience >= 5 && `${row.experience} лет`}
-                  </Typography>
+                  <Link className='link' to='/student'>
+                    <Typography sx={tableStyles.text}>
+                      {row.experience === 0 && 'Без опыта'}
+                      {row.experience === 1 && `${row.experience} год`}
+                      {row.experience > 1 &&
+                        row.experience < 5 &&
+                        `${row.experience} года`}
+                      {row.experience >= 5 && `${row.experience} лет`}
+                    </Typography>
+                  </Link>
                 </TableCell>
                 <TableCell>
-                  <GradeElementTable experience={row.experience}></GradeElementTable>
+                  <Link className='link' to='/student'>
+                    <GradeElementTable
+                      experience={row.experience}
+                    ></GradeElementTable>
+                  </Link>
                 </TableCell>
                 <TableCell sx={tableStyles.activityChell}>
-                  <ActivityElement
-                    activity={row.activity}
-                    sx={{ display: 'flex', justifyContent: 'center' }}
-                  />
+                  <Link className='link' to='/student'>
+                    <ActivityElement
+                      activity={row.activity}
+                      sx={{ display: 'flex', justifyContent: 'center' }}
+                    />
+                  </Link>
                 </TableCell>
                 <TableCell sx={tableStyles.skillsChell}>
-                  <ChipsContainer>
-                    {row.skills.slice(0, 4).map((skill, i) => (
-                      <ChipElement key={i} label={skill} sx={chipStyles.chip} />
-                    ))}
-                  </ChipsContainer>
+                  <Link className='link' to='/student'>
+                    <ChipsContainer>
+                      {row.skills.slice(0, 4).map((skill, i) => (
+                        <ChipElement
+                          key={i}
+                          label={skill}
+                          sx={chipStyles.chip}
+                        />
+                      ))}
+                    </ChipsContainer>
+                  </Link>
                 </TableCell>
                 <TableCell>
-                  <ContactElement sx={tableStyles.contacts} contacts={row.contacts} />
+                  <ContactElement
+                    sx={tableStyles.contacts}
+                    contacts={row.contacts}
+                  />
                 </TableCell>
               </TableRow>
             ))}
