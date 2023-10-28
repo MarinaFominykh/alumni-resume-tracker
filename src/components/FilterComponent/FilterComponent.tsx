@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack, Box, Typography, Button, TextField } from '@mui/material';
+import { Stack, Box, Typography, Button, TextField, OutlinedInput } from '@mui/material';
 import MultipleSelect from '../elements/MultipleSelect/MultipleSelect';
 import { testStudent } from '../../consts/testStudent';
 import MenuItem from '@mui/material/MenuItem';
@@ -48,7 +48,7 @@ function FilterComponent() {
         </Button>
       </Box>
 
-      <Stack direction={'row'} spacing={'16px'}>
+      <Stack direction={'row'} spacing={'16px'} alignItems={'flex-end'}>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <Typography variant="caption" fontWeight={500}>
             Город
@@ -87,14 +87,19 @@ function FilterComponent() {
             Активность
           </Typography>
           <FormControl sx={{ width: 112 }} size="small">
-            <Select value={activity} onChange={handleActivityChange}>
+            <Select
+              input={<OutlinedInput />}
+              value={activity}
+              onChange={handleActivityChange}
+              displayEmpty
+            >
               <MenuItem value={'Низкая'}>Низкая</MenuItem>
               <MenuItem value={'Средняя'}>Средняя</MenuItem>
               <MenuItem value={'Высокая'}>Высокая</MenuItem>
             </Select>
           </FormControl>
         </Box>
-        <FormControlLabel control={<Checkbox />} label="Релевантный опыт" />
+        <FormControlLabel control={<Checkbox />} label="С опытом" />
       </Stack>
     </Box>
   );
