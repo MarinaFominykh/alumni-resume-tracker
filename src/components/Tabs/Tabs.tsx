@@ -3,7 +3,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import VacTable from '../VacTable/VacTable';
+
+import { VacancyRow } from '../VacancyRow/VacancyRow';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -48,7 +49,7 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Box>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Активные (3)" {...a11yProps(0)} />
           <Tab label="Неопубликованные" {...a11yProps(1)} />
@@ -56,13 +57,13 @@ export default function BasicTabs() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <VacTable />
+        <VacancyRow />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <VacTable />
+        <VacancyRow />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <VacTable />
+        <VacancyRow />
       </CustomTabPanel>
     </Box>
   );
