@@ -22,7 +22,7 @@ function BackIconHeader({ title }: HeaderTypes) {
         }}
       >
         <BackLink />
-        <Typography variant="h1" paddingBottom={'20px'} marginTop={'-4px'}>
+        <Typography variant="h1" marginTop={'-4px'}>
           {title}
         </Typography>
         <Divider
