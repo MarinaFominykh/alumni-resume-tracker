@@ -8,7 +8,7 @@ function ButtonElement({
   variant,
   sx,
   type,
-  onClick
+  onClick,
 }: ButtonProps) {
   return (
     <Button

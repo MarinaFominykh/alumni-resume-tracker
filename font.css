@@ -16,5 +16,14 @@
    
 
 }
+@font-face {
+    font-family: 'YS Display';
+    font-style: normal;
+    font-display: wrap;
+    font-weight: 500;
+    src: url(./src/vendor/fonts/YS_Display-Medium.ttf) format('truetype');
+   
+
+}
 
 

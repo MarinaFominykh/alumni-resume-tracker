@@ -11,6 +11,7 @@ import { authStyles } from '../consts/authStyles';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { useState } from 'react';
+// import { authorize } from '../../../api/authApi';
 
 interface LoginInputs {
   email: string;
@@ -46,8 +47,27 @@ function Login() {
   });
 
   const loginSubmitHandler: SubmitHandler<LoginInputs> = (data: LoginInputs) => {
+    // const {email, password} = data;
+    // authorize(email, password)
+    // .then((jwt) => {
+    //     if (jwt.token) {
+    //       localStorage.setItem("token", jwt.token);
+    //        navigate('/vacancies');
+    //     }
+    //     console.log('Токен не передан или передан не в том формате');
+    //   })
+    //   .catch((error) => {
+    //     if (error === 400) {
+    //       console.log('Переданы некорректные данные');
+    //     } else if (error === 401) {
+    //       console.log('Ошибка авторизации');
+    //     } else {
+    //       console.log('Неизвестная ошибка сервера');
+    //     }
+    //   });
+    navigate('/vacancies');
     console.log('form data is', data);
-    navigate('/');
+    
   };
 
   const EndAdornment = ({ visible, setVisible }: EndAdornmentTypes) => {

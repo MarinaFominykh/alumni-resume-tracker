@@ -3,8 +3,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
-import { VacancyRow } from '../VacancyRow/VacancyRow';
+import { VacTable } from '../VacTable/VacTable';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -17,7 +16,7 @@ function CustomTabPanel(props: TabPanelProps) {
 
   return (
     <div
-      role="tabpanel"
+      role='tabpanel'
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
@@ -35,7 +34,7 @@ function CustomTabPanel(props: TabPanelProps) {
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`
+    'aria-controls': `simple-tabpanel-${index}`,
   };
 }
 
@@ -50,20 +49,24 @@ export default function BasicTabs() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Активные (3)" {...a11yProps(0)} />
-          <Tab label="Неопубликованные" {...a11yProps(1)} />
-          <Tab label="Архив" {...a11yProps(2)} />
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label='basic tabs example'
+        >
+          <Tab label='Активные (3)' {...a11yProps(0)} />
+          <Tab label='Неопубликованные' {...a11yProps(1)} />
+          <Tab label='Архив' {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <VacancyRow />
+        <VacTable />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <VacancyRow />
+        <VacTable />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <VacancyRow />
+        <VacTable />
       </CustomTabPanel>
     </Box>
   );
