@@ -11,7 +11,7 @@ function CompanyInfoHeader() {
   }
   return (
     <>
-      <Grid container>
+      <Grid container justifyContent={'space-between'}>
         <Grid item xs={9} alignSelf={'center'} alignItems={'center'}>
           <Typography variant="h1" marginBottom={'20px'}>
             Мои вакансии
