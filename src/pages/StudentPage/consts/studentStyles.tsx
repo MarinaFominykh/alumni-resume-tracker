@@ -58,5 +58,8 @@ export const studentStyles = {
       cursor: 'pointer',
       color: '#1D6BF3'
     }
+  },
+  activity: {
+    
   }
 };

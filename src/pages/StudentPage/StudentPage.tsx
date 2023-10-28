@@ -94,7 +94,9 @@ function StudentPage() {
               Опыт работы
             </Typography>
             <Typography variant="body2" sx={{ color: '#1A1B22' }}>
-              {testStudent.experience}
+              {testStudent.experience === 0 ? 'Без опыта' : 
+              testStudent.experience === 1 ? `${testStudent.experience} год` : 
+              testStudent.experience < 5 ? `${testStudent.experience} годa` : `${testStudent.experience} лет`}
             </Typography>
           </Box>
 
@@ -103,7 +105,7 @@ function StudentPage() {
               Активность
             </Typography>
 
-            <ActivityElement activity={testStudent.activity} />
+            <ActivityElement activity={testStudent.activity} sx={studentStyles.activity} />
           </Box>
         </Stack>
         <Stack sx={studentStyles.about}>
