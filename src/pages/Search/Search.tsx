@@ -6,6 +6,7 @@ import Directions from '../../components/Directions/Directions';
 import './Search.css';
 import { Box } from '@mui/material';
 function Search() {
+  
   return (
     <Box sx={{ paddingLeft: '56px', margin: 0 }}>
       <Header title="Поиск кандидатов" />
