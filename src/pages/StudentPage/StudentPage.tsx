@@ -1,8 +1,5 @@
 import { Avatar, Box, Typography, Link, Container } from '@mui/material';
 import { testStudent } from '../../consts/testStudent';
-import IconButton from '@mui/material/IconButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Stack from '@mui/material/Stack';
 import ChipElement from '../../components/elements/ChipElement/ChipElement';
 import ActivityElement from '../../components/elements/ActivityElement/ActivityElement';
@@ -11,22 +8,25 @@ import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import { studentStyles } from './consts/studentStyles';
 import LinkIcon from '../../../images/link.svg';
 import TelegramIcon from '@mui/icons-material/Telegram';
+import BackButton from '../../components/elements/BackButton/BackButton';
+import LikeButton from '../../components/elements/LikeButton/LikeButton';
+import { chipStyles } from '../../components/elements/ChipElement/styles';
 
 function StudentPage() {
   return (
     <Container sx={studentStyles.wrapper}>
-      <IconButton aria-label="back" sx={studentStyles.back}>
-        <ArrowBackIcon />
-      </IconButton>
-
+      <BackButton />
       <Box sx={studentStyles.header}>
         <Avatar alt="Аватар выпускника" src={testStudent.photo} sx={{ width: 72, height: 72 }} />
         <Box sx={studentStyles.info}>
-          <Typography variant="h1" fontWeight={'500'} margin={'4px 0'}>
+          <Typography
+            variant="h1"
+            fontWeight={'500'}
+            margin={'4px 0'}
+            sx={{ display: 'flex', gap: '12px' }}
+          >
             {`${testStudent.first_name} ${testStudent.last_name}`}
-            <IconButton aria-label="like" sx={studentStyles.like}>
-              <FavoriteBorderIcon color="primary" />
-            </IconButton>
+            <LikeButton isLiked={true} />
           </Typography>
 
           <Typography variant="body2" sx={{ color: '#1A1B22' }}>
@@ -119,9 +119,9 @@ function StudentPage() {
             <Typography variant="subtitle1" fontWeight={'500'}>
               Активность
             </Typography>
-            <Stack sx={studentStyles.chipList} flexWrap="wrap" direction="row">
+            <Stack sx={studentStyles.chipList} flexWrap="wrap" direction="row" gap={'8px 4px'}>
               {testStudent.skills.map(chip => (
-                <ChipElement label={chip} sx={studentStyles.chip} />
+                <ChipElement label={chip} sx={chipStyles.chip} />
               ))}
             </Stack>
           </Box>

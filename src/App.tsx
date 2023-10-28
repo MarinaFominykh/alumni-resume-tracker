@@ -7,9 +7,8 @@ function App() {
     <Grid container>
       <Grid item xs={1}>
         <Navbar />
-        
       </Grid>
-      <Grid item xs={11} sx={{padding:'20px 10px 0 30px'}}>
+      <Grid item xs={11} sx={{ padding: '0 10px 0 30px' }}>
         <Outlet />
       </Grid>
     </Grid>

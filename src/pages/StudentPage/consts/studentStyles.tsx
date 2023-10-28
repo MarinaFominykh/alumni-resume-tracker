@@ -1,28 +1,17 @@
 export const studentStyles = {
   wrapper: {
-    marginTop: '52px',
-    marginLeft: '175px'
+    padding: '52px 0 0 175px'
   },
-  back: {
-    marginBottom: '24px',
-    color: '#1D6BF3'
-  },
+
   header: {
     display: 'flex',
     gap: '46px',
-    marginBottom: '40px'
+    marginBottom: '24px'
   },
   info: {
     display: 'flex',
     flexDirection: 'column',
     gap: '4px'
-  },
-  like: {
-    marginLeft: '12px',
-    width: '36px',
-    height: '36px',
-    boxShadow: 'rgba(176, 190, 197, 0.30)',
-    borderRadius: '6px'
   },
   mainInfo: {
     display: 'flex',
@@ -48,12 +37,12 @@ export const studentStyles = {
   leftSide: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '12px'
+    gap: '24px'
   },
   stack: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '8px'
+    gap: '12px'
   },
   iconLink: {
     display: 'flex',
