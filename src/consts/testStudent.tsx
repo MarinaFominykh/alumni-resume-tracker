@@ -11,8 +11,14 @@ export const testStudent = {
     telegram: '@musgaliev'
   },
   resume: {
-    resume_pdf: 'Мусгалиев_Резюме.pdf',
-    resume_url: 'https://www.example-link.test.com'
+    file: {
+      resume_pdf: 'Мусгалиев_Резюме.pdf',
+      resume_url: 'https://www.example-link.test.com'
+    },
+    platform: {
+      name: 'Notion',
+      url: 'https://www.notion.com'
+    }
   },
   portfolio: {
     pageName: 'Behance',

@@ -6,11 +6,10 @@ import ActivityElement from '../../components/elements/ActivityElement/ActivityE
 import GradeElement from '../../components/elements/GradeElement/GradeElement';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import { studentStyles } from './consts/studentStyles';
-import LinkIcon from '../../../images/link.svg';
-import TelegramIcon from '@mui/icons-material/Telegram';
 import BackButton from '../../components/elements/BackButton/BackButton';
 import LikeButton from '../../components/elements/LikeButton/LikeButton';
 import { chipStyles } from '../../components/elements/ChipElement/styles';
+import { EmailIcon, CopyIcon, TelegramIcon, PdfIcon } from '../../consts/icons';
 
 function StudentPage() {
   return (
@@ -49,12 +48,16 @@ function StudentPage() {
               <Typography variant="body2">{testStudent.contacts.phone}</Typography>
             </Box>
             <Box sx={studentStyles.iconLink}>
-              <PhoneInTalkOutlinedIcon />
-              <Link sx={studentStyles.link}>{testStudent.contacts.email}</Link>
+              <EmailIcon />
+              <Link sx={studentStyles.link} href={`mailto:${testStudent.contacts.email}`}>
+                {testStudent.contacts.email}
+              </Link>
             </Box>
             <Box sx={studentStyles.iconLink}>
               <TelegramIcon />
-              <Link sx={studentStyles.link}>{testStudent.contacts.telegram}</Link>
+              <Link sx={studentStyles.link} href={`${testStudent.contacts.telegram}`}>
+                {testStudent.contacts.telegram}
+              </Link>
             </Box>
           </Box>
 
@@ -62,10 +65,17 @@ function StudentPage() {
             <Typography variant="subtitle1" fontWeight={'500'}>
               Резюме
             </Typography>
+
             <Box sx={studentStyles.iconLink}>
-              <img src={LinkIcon} alt="Иконка копирования" />
-              <Link sx={studentStyles.link} href={`mailto:${testStudent.resume.resume_url}`}>
-                {testStudent.resume.resume_pdf}
+              <PdfIcon />
+              <Link sx={studentStyles.link} href={testStudent.resume.file.resume_pdf} download>
+                {testStudent.resume.file.resume_pdf}
+              </Link>
+            </Box>
+            <Box sx={studentStyles.iconLink}>
+              <CopyIcon />
+              <Link sx={studentStyles.link} href={testStudent.resume.platform.url}>
+                {testStudent.resume.platform.name}
               </Link>
             </Box>
           </Box>
@@ -75,8 +85,8 @@ function StudentPage() {
               Портфолио
             </Typography>
             <Box sx={studentStyles.iconLink}>
-              <img src={LinkIcon} alt="Иконка копирования" />
-              <Link sx={studentStyles.link} href={`${testStudent.portfolio.portfolio_url}`}>
+              <CopyIcon />
+              <Link sx={studentStyles.link} href={testStudent.portfolio.portfolio_url}>
                 {testStudent.portfolio.pageName}
               </Link>
             </Box>
@@ -94,9 +104,13 @@ function StudentPage() {
               Опыт работы
             </Typography>
             <Typography variant="body2" sx={{ color: '#1A1B22' }}>
-              {testStudent.experience === 0 ? 'Без опыта' : 
-              testStudent.experience === 1 ? `${testStudent.experience} год` : 
-              testStudent.experience < 5 ? `${testStudent.experience} годa` : `${testStudent.experience} лет`}
+              {testStudent.experience === 0
+                ? 'Без опыта'
+                : testStudent.experience === 1
+                ? `${testStudent.experience} год`
+                : testStudent.experience < 5
+                ? `${testStudent.experience} годa`
+                : `${testStudent.experience} лет`}
             </Typography>
           </Box>
 
