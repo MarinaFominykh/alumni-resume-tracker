@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Typography from '@mui/material/Typography/Typography';
 import { Box, Grid, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
-import Header from '../../../components/Hader/Header';
+import Header from '../../../components/Haders/Header';
 import { testStudent } from '../../../consts/testStudent';
 import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
 

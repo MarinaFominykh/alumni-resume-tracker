@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import Header from '../../components/Hader/Header';
+import Header from '../../components/Haders/Header';
 import FilterComponent from '../../components/FilterComponent/FilterComponent';
 
 function Favourites() {
