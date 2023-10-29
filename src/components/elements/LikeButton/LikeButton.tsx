@@ -1,17 +1,19 @@
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import { Box } from '@mui/material';
+import { Button } from '@mui/material';
+import { MouseEventHandler } from 'react';
 
 interface LikeProps {
   isLiked?: boolean;
+  handleLikeClick?: MouseEventHandler;
 }
 
-function LikeButton({ isLiked }: LikeProps) {
+function LikeButton({ isLiked, handleLikeClick }: LikeProps) {
   return (
-    <Box
+    <Button
+      onClick={handleLikeClick}
+      size="small"
       sx={{
-        width: '36px',
-        height: '36px',
         border: '1px #fff solid',
         borderRadius: '6px',
         background: '#FFF',
@@ -31,7 +33,7 @@ function LikeButton({ isLiked }: LikeProps) {
       ) : (
         <FavoriteBorderOutlinedIcon sx={{ color: '#1D6BF3' }} />
       )}
-    </Box>
+    </Button>
   );
 }
 

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import {
   Typography,
   Avatar,
@@ -9,23 +9,46 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper,
-  
-} from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
-import ChipElement from "../elements/ChipElement/ChipElement";
-import { chipStyles } from "../elements/ChipElement/styles";
-import GradeElementTable from "../elements/GradeElementTable/GradeElementTable";
-import { testStudentsArray } from "../../consts/testStudentsArray";
-import ActivityElement from "../elements/ActivityElement/ActivityElement";
-import ContactElement from "../elements/ContactElement/ContactElement";
-import { ChipsContainer } from "../ChipsContainer/ChipsContainer";
-import { tableStyles } from "./styles";
-import "./Table.css";
-import { ContextMenuTwo } from "../elements/ContexMenu/ContextMenuTwo";
+  Paper
+} from '@mui/material';
+import ChipElement from '../elements/ChipElement/ChipElement';
+import { chipStyles } from '../elements/ChipElement/styles';
+import GradeElementTable from '../elements/GradeElementTable/GradeElementTable';
+import { testStudentsArray } from '../../consts/testStudentsArray';
+import ActivityElement from '../elements/ActivityElement/ActivityElement';
+import ContactElement from '../elements/ContactElement/ContactElement';
+import { ChipsContainer } from '../ChipsContainer/ChipsContainer';
+import { tableStyles } from './styles';
+import './Table.css';
+import { ContextMenuTwo } from '../elements/ContexMenu/ContextMenuTwo';
+import { useState } from 'react';
+import LikeButton from '../elements/LikeButton/LikeButton';
+import ModalElement from '../ModalElement/ModalElement';
 
 export default function CustomizedTables() {
+  const [watched, setWatched] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+  const [modalOpened, setModalOpened] = useState(false);
+
+  function handleLikeClick() {
+    // переписать логику на проверку id и вынести ее в app
+    if (isLiked) {
+      setModalOpened(true);
+    }
+    if (!isLiked) {
+      setIsLiked(true);
+    }
+  }
+
+  function handleCancelClick() {
+    setModalOpened(false);
+  }
+
+  function handleDeleteClick() {
+    setIsLiked(false);
+    setModalOpened(false);
+  }
+
   return (
     <>
       <Box sx={tableStyles.toolbarfilter}>
@@ -38,22 +61,22 @@ export default function CustomizedTables() {
           <TableHead>
             <TableRow>
               <TableCell></TableCell>
-              <TableCell sx={{ width: "100px" }}>
-                <Typography variant="h4">Студент</Typography>
+              <TableCell size="medium">
+                <Typography variant="h4">Кандидат</Typography>
               </TableCell>
-              <TableCell>
+              <TableCell size="medium">
                 <Typography variant="h4">Специальность</Typography>
               </TableCell>
-              <TableCell>
+              <TableCell size="small">
                 <Typography variant="h4">Опыт работы</Typography>
               </TableCell>
               <TableCell>
                 <Typography variant="h4">Уровень</Typography>
               </TableCell>
-              <TableCell sx={{ maxWidth: "112px" }}>
+              <TableCell size="medium">
                 <Typography variant="h4">Активность</Typography>
               </TableCell>
-              <TableCell sx={{ minWidth: "212px" }}>
+              <TableCell size="medium">
                 <Typography variant="h4">Навыки</Typography>
               </TableCell>
               <TableCell>
@@ -62,57 +85,45 @@ export default function CustomizedTables() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {testStudentsArray.map((row) => (
+            {testStudentsArray.map(row => (
               <TableRow key={row.id} sx={tableStyles.row}>
-                <TableCell>
-                  <Box sx={tableStyles.likeBox}>
-                    {row.isLike ? (
-                      <FavoriteIcon sx={{ color: "#1D6BF3" }} />
-                    ) : (
-                      <FavoriteBorderOutlinedIcon sx={{ color: "#1D6BF3" }} />
-                    )}
-                  </Box>
+                <TableCell size="small">
+                  <LikeButton handleLikeClick={handleLikeClick} isLiked={isLiked} />
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  <Link className="link" to="/student">
+                  <Link className="link" to="/student" onClick={() => setWatched(true)}>
                     <Box sx={tableStyles.nameBox}>
                       <Avatar src={row.photo} sx={{ width: 36, height: 36 }} />
                       <Typography sx={tableStyles.text}>{row.name}</Typography>
+                      {watched ? <Typography variant="caption">Просмотрено</Typography> : ''}
                     </Box>
                   </Link>
                 </TableCell>
                 <TableCell>
                   <Link className="link" to="/student">
-                    <Typography sx={tableStyles.text}>
-                      {" "}
-                      {row.specialization}
-                    </Typography>
+                    <Typography sx={tableStyles.text}> {row.specialization}</Typography>
                   </Link>
                 </TableCell>
                 <TableCell>
                   <Link className="link" to="/student">
                     <Typography sx={tableStyles.text}>
-                      {row.experience === 0 && "Без опыта"}
+                      {row.experience === 0 && 'Без опыта'}
                       {row.experience === 1 && `${row.experience} год`}
-                      {row.experience > 1 &&
-                        row.experience < 5 &&
-                        `${row.experience} года`}
+                      {row.experience > 1 && row.experience < 5 && `${row.experience} года`}
                       {row.experience >= 5 && `${row.experience} лет`}
                     </Typography>
                   </Link>
                 </TableCell>
                 <TableCell>
                   <Link className="link" to="/student">
-                    <GradeElementTable
-                      experience={row.experience}
-                    ></GradeElementTable>
+                    <GradeElementTable experience={row.experience}></GradeElementTable>
                   </Link>
                 </TableCell>
                 <TableCell sx={tableStyles.activityChell}>
                   <Link className="link" to="/student">
                     <ActivityElement
                       activity={row.activity}
-                      sx={{ display: "flex", justifyContent: "center" }}
+                      sx={{ display: 'flex', justifyContent: 'center' }}
                     />
                   </Link>
                 </TableCell>
@@ -120,26 +131,35 @@ export default function CustomizedTables() {
                   <Link className="link" to="/student">
                     <ChipsContainer>
                       {row.skills.slice(0, 4).map((skill, i) => (
-                        <ChipElement
-                          key={i}
-                          label={skill}
-                          sx={chipStyles.chip}
-                        />
+                        <ChipElement key={i} label={skill} sx={chipStyles.chip} />
                       ))}
                     </ChipsContainer>
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <ContactElement
-                    sx={tableStyles.contacts}
-                    contacts={row.contacts}
-                  />
+                  <ContactElement sx={tableStyles.contacts} contacts={row.contacts} />
                 </TableCell>
               </TableRow>
             ))}
+            {testStudentsArray.length === 0 && (
+              <Box display={'flex'} justifyContent={'center'} gap={'10px'}>
+                <Typography variant="h2" fontWeight={500}>
+                  Пока ничего нет
+                </Typography>
+                <Typography variant="subtitle1">Попробуйте обновить критерии поиска</Typography>
+              </Box>
+            )}
           </TableBody>
         </Table>
       </TableContainer>
+
+      {modalOpened && (
+        <ModalElement
+          open={modalOpened}
+          handleCancelClick={handleCancelClick}
+          handleDeleteClick={handleDeleteClick}
+        />
+      )}
     </>
   );
 }

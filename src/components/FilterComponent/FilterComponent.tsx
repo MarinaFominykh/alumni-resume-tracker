@@ -53,7 +53,7 @@ function FilterComponent() {
           <Typography variant="caption" fontWeight={500}>
             Город
           </Typography>
-          <TextField size="small" placeholder="Город" />
+          <TextField size="small" />
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <Typography variant="caption" fontWeight={500}>
