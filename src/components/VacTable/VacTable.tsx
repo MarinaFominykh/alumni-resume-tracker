@@ -1,9 +1,12 @@
 import { Stack, Box, Typography } from '@mui/material';
-import { VacancyRow } from '../VacancyRow/VacancyRow';
-import { testVacancies } from '../../consts/testVacancy';
 import { vacTableStyle } from './styles';
+import { ReactNode } from 'react';
 
-export const VacTable = () => {
+interface VacTableProps {
+  children?: ReactNode;
+}
+
+export const VacTable = ({ children }: VacTableProps) => {
   return (
     <>
       <Box sx={vacTableStyle.titlebar}>
@@ -15,10 +18,8 @@ export const VacTable = () => {
         </Box>
         <Typography sx={vacTableStyle.leftEl}></Typography>
       </Box>
-      <Stack direction='column' spacing={2} sx={vacTableStyle.panel}>
-        {testVacancies.map((vacancy) => (
-          <VacancyRow key={vacancy.id} vacancy={vacancy} />
-        ))}
+      <Stack direction="column" spacing={2} sx={vacTableStyle.panel}>
+        {children}
       </Stack>
     </>
   );

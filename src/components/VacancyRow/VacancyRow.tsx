@@ -8,6 +8,7 @@ import { IVacancy } from '../../models/IVacancy';
 interface VacancyRowProps {
   children?: ReactNode;
   vacancy: IVacancy;
+  buttonText?: string;
 }
 
 const getText = (experience: number) => {
@@ -18,7 +19,7 @@ const getText = (experience: number) => {
   } else return `${experience} лет`;
 };
 
-export const VacancyRow: FC<VacancyRowProps> = ({ children, vacancy }) => {
+export const VacancyRow: FC<VacancyRowProps> = ({ children, vacancy, buttonText }) => {
   return (
     <Card sx={vacancyRowStyle.card}>
       <CardContent sx={vacancyRowStyle.cardContent}>
@@ -28,12 +29,8 @@ export const VacancyRow: FC<VacancyRowProps> = ({ children, vacancy }) => {
         <Box sx={vacancyRowStyle.data}>
           <Box sx={vacancyRowStyle.description}>
             {' '}
-            <Typography sx={vacancyRowStyle.title}>
-              {vacancy.vacancy_name}
-            </Typography>
-            <Typography sx={vacancyRowStyle.subtitle}>
-              {vacancy.place}
-            </Typography>
+            <Typography sx={vacancyRowStyle.title}>{vacancy.vacancy_name}</Typography>
+            <Typography sx={vacancyRowStyle.subtitle}>{vacancy.place}</Typography>
             <Typography sx={vacancyRowStyle.date}>{vacancy.date}</Typography>
           </Box>
           <Box sx={vacancyRowStyle.centerContent}>
@@ -44,9 +41,7 @@ export const VacancyRow: FC<VacancyRowProps> = ({ children, vacancy }) => {
 
           <Box>
             <ButtonElement sx={vacancyRowStyle.button}>
-              <Typography sx={vacancyRowStyle.buttonText}>
-                63 кандидата
-              </Typography>
+              <Typography sx={vacancyRowStyle.buttonText}>{buttonText}</Typography>
             </ButtonElement>
             {children}
           </Box>

@@ -4,6 +4,8 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { VacTable } from '../VacTable/VacTable';
+import { testVacancies } from '../../consts/testVacancy';
+import { VacancyRow } from '../VacancyRow/VacancyRow';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -16,7 +18,7 @@ function CustomTabPanel(props: TabPanelProps) {
 
   return (
     <div
-      role='tabpanel'
+      role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
@@ -34,7 +36,7 @@ function CustomTabPanel(props: TabPanelProps) {
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`
   };
 }
 
@@ -48,25 +50,33 @@ export default function BasicTabs() {
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Box>
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          aria-label='basic tabs example'
-        >
-          <Tab label='Активные (3)' {...a11yProps(0)} />
-          <Tab label='Неопубликованные' {...a11yProps(1)} />
-          <Tab label='Архив' {...a11yProps(2)} />
+      <Box padding={0}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label={`Активные (${testVacancies.length})`} {...a11yProps(0)} />
+          <Tab label="Неопубликованные" {...a11yProps(1)} />
+          <Tab label="Архив" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <VacTable />
+        <VacTable>
+          {testVacancies.map(vacancy => (
+            <VacancyRow key={vacancy.id} vacancy={vacancy} buttonText="63 кандидата" />
+          ))}
+        </VacTable>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <VacTable />
+        <VacTable>
+          {testVacancies.map(vacancy => (
+            <VacancyRow key={vacancy.id} vacancy={vacancy} buttonText="Опубликовать" />
+          ))}
+        </VacTable>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <VacTable />
+        <VacTable>
+          {testVacancies.map(vacancy => (
+            <VacancyRow key={vacancy.id} vacancy={vacancy} buttonText="Восстановить" />
+          ))}
+        </VacTable>
       </CustomTabPanel>
     </Box>
   );
