@@ -11,7 +11,7 @@ import {
 import { tableStyles } from "../../Table/styles";
 import { ArrowIcon, SortingIcon } from "../../../consts/icons";
 
-export const ContextMenuTwo = () => {
+export const CandidatesContexMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -22,21 +22,21 @@ export const ContextMenuTwo = () => {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
         <Tooltip title="Account settings">
           <IconButton
             onClick={handleClick}
             size="small"
-            sx={{ ml: 2 }}
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
+            sx={{ p: 0, h: "100%" }}
           >
-            <SortingIcon/>
+            <SortingIcon sx={{ mr: 2 }} />
             <Typography sx={tableStyles.textfilter}>Сортировка</Typography>
-          
-            <ArrowIcon/>
+
+            <ArrowIcon sx={{ ml: 2 }} />
           </IconButton>
         </Tooltip>
       </Box>
@@ -46,10 +46,10 @@ export const ContextMenuTwo = () => {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+        transformOrigin={{ horizontal: "right", vertical: "top" }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleClose} sx={{ width: "188px", height: "36px" }}>
           <Typography>Сначала новые</Typography>
         </MenuItem>
         <MenuItem onClick={handleClose}>
@@ -62,6 +62,6 @@ export const ContextMenuTwo = () => {
           <Typography>Сначала новички</Typography>
         </MenuItem>
       </Menu>
-    </React.Fragment>
+    </>
   );
 };
