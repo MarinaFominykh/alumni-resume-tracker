@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Typography from '@mui/material/Typography/Typography';
 import {
@@ -105,7 +105,7 @@ function NewVacancy() {
   const [currency, setCurrency] = React.useState('');
   const [skills, setSkills] = React.useState<string[]>([]);
   const [createVacancy, 
-    // { isSuccess }
+    { isSuccess }
   ] = vacancyAPI.useCreateVacancyMutation();
 
   const {
@@ -157,12 +157,14 @@ function NewVacancy() {
       level,
       contract,
     } as IVacancy);
-    // if (isSuccess) {
-    //   navigate('/vacancies');
-    // }
-     navigate('/vacancies');
-  };
 
+  };
+useEffect(() => {
+if(isSuccess) {
+navigate('/vacancies');
+console.log('вакансия успешно добавлена')
+} else console.log('что-то пошло не так...')
+}, [createVacancySubmitHandler])
   return (
     <>
       <form onSubmit={handleSubmit(createVacancySubmitHandler)} noValidate>

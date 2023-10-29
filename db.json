@@ -10,7 +10,13 @@
       "requirements": "Уметь сидеть, уметь писать код",
       "experienceMin": "1",
       "experienceMax": "3",
-      "skills": ["UX", "Design", "Figma", "UX исследования", "UX-копирайтинг"],
+      "skills": [
+        "UX",
+        "Design",
+        "Figma",
+        "UX исследования",
+        "UX-копирайтинг"
+      ],
       "departmentName": "Канцелярия",
       "format": "Офис",
       "responsibilities": "Сидеть и писать код",
@@ -30,7 +36,11 @@
       "requirements": "знание figma, photoshop",
       "experienceMin": "5",
       "experienceMax": "10",
-      "skills": ["UX", "Design", "Figma"],
+      "skills": [
+        "UX",
+        "Design",
+        "Figma"
+      ],
       "departmentName": "отдел дизайна",
       "format": "Удаленный",
       "responsibilities": "Создание макетов",
@@ -63,6 +73,72 @@
       "level": "Junior",
       "contract": "",
       "id": 3
+    },
+    {
+      "companyName": "TipTop Systems",
+      "vacName": "fdsfs",
+      "salaryMin": "1",
+      "salaryMax": "3",
+      "currency": "",
+      "description": "sdfe",
+      "requirements": "wew",
+      "experienceMin": "1",
+      "experienceMax": "2",
+      "skills": [
+        "Notion"
+      ],
+      "departmentName": "efef",
+      "format": "Удаленный",
+      "responsibilities": "wefwe",
+      "conditions": "sdfs",
+      "city": "Санкт-Петербург",
+      "level": "Middle",
+      "contract": "",
+      "id": 4
+    },
+    {
+      "companyName": "TipTop Systems",
+      "vacName": "werwer",
+      "salaryMin": "1",
+      "salaryMax": "2",
+      "currency": "",
+      "description": "werwe",
+      "requirements": "wefwe",
+      "experienceMin": "1",
+      "experienceMax": "2",
+      "skills": [
+        "А/В и коридорные тестирования",
+        "Прототипирование",
+        "Адаптивность"
+      ],
+      "departmentName": "wwer",
+      "format": "Удаленный",
+      "responsibilities": "wefwef",
+      "conditions": "wefwe",
+      "city": "Санкт-Петербург",
+      "level": "Middle",
+      "contract": "Cамозанятость",
+      "id": 5
+    },
+    {
+      "companyName": "TipTop Systems",
+      "vacName": "ewf",
+      "salaryMin": "2",
+      "salaryMax": 0,
+      "currency": "",
+      "description": "edqw",
+      "requirements": "sdf",
+      "experienceMin": 0,
+      "experienceMax": 0,
+      "skills": "",
+      "departmentName": "erfe",
+      "format": "Удаленный",
+      "responsibilities": "",
+      "conditions": "sdf",
+      "city": "Нижний Новгород",
+      "level": "",
+      "contract": "",
+      "id": 6
     }
   ],
   "applicant": [
