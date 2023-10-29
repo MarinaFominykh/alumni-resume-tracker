@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
+
 import Box from '@mui/material/Box';
 import { VacTable } from '../VacTable/VacTable';
 import { testVacancies } from '../../consts/testVacancy';
 import { VacancyRow } from '../VacancyRow/VacancyRow';
-
+import { vacancyAPI } from '../../services/vacancyService';
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -15,6 +15,8 @@ interface TabPanelProps {
 
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
+ 
+  
 
   return (
     <div
@@ -26,7 +28,7 @@ function CustomTabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Box>{children}</Box>
         </Box>
       )}
     </div>
@@ -42,6 +44,8 @@ function a11yProps(index: number) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+    const {data: vacancies, isError, isLoading} = vacancyAPI.useFetchAllVacancyQuery('');
+   console.log(vacancies)
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     event.preventDefault();
@@ -57,23 +61,26 @@ export default function BasicTabs() {
           <Tab label="Архив" {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
+       <CustomTabPanel value={value} index={0}>
         <VacTable>
-          {testVacancies.map(vacancy => (
+          {vacancies?.map(vacancy => (
             <VacancyRow key={vacancy.id} vacancy={vacancy} buttonText="63 кандидата" />
           ))}
         </VacTable>
       </CustomTabPanel>
+      <CustomTabPanel value={value} index={0} >
+        <VacTable />
+      </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <VacTable>
-          {testVacancies.map(vacancy => (
+          {vacancies?.map(vacancy => (
             <VacancyRow key={vacancy.id} vacancy={vacancy} buttonText="Опубликовать" />
           ))}
         </VacTable>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <VacTable>
-          {testVacancies.map(vacancy => (
+          {vacancies?.map(vacancy => (
             <VacancyRow key={vacancy.id} vacancy={vacancy} buttonText="Восстановить" />
           ))}
         </VacTable>
