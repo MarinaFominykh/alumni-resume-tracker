@@ -17,7 +17,11 @@ export const projectTheme = createTheme({
   },
   components: {
     MuiMenu: {
-      styleOverrides: { root: { }, paper: {borderRadius: 0}, list: { padding: 0,   } },
+      styleOverrides: {
+        root: {},
+        paper: { borderRadius: '0 0 4px 4px', boxShadow: 'none', border: "1px solid #DDE0E4" },
+        list: { padding: 0 },
+      },
     },
     MuiButton: {
       styleOverrides: {
