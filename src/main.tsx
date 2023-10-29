@@ -24,12 +24,12 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           <Route path="all-vacancies" element={<AllVacancies />} />
           <Route path="vacancies/new" element={<NewVacancy />} />
           <Route path="student" element={<StudentPage />} />
-          <Route path="*" element={<Error404 />} />
         </Route>
       </Routes>
       <Routes>
-        <Route path="sign-in" element={<Login />} />
-        <Route path="reset-password" element={<ResetPassword />} />
+        <Route path="/sign-in" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
   </ThemeProvider>
