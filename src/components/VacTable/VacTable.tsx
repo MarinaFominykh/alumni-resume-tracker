@@ -1,9 +1,12 @@
 import { Stack, Box, Typography } from '@mui/material';
 import { VacancyRow } from '../VacancyRow/VacancyRow';
-import { testVacancies } from '../../consts/testVacancy';
+// import { testVacancies } from '../../consts/testVacancy';
 import { vacTableStyle } from './styles';
+import { vacancyAPI } from '../../services/vacancyService';
 
 export const VacTable = () => {
+   const {data: vacancies, isError, isLoading} = vacancyAPI.useFetchAllVacancyQuery('');
+   console.log(vacancies)
   return (
     <>
       <Box sx={vacTableStyle.titlebar}>
@@ -16,7 +19,9 @@ export const VacTable = () => {
         <Typography sx={vacTableStyle.leftEl}></Typography>
       </Box>
       <Stack direction='column' spacing={2} sx={vacTableStyle.panel}>
-        {testVacancies.map((vacancy) => (
+        {isLoading && <h1>Идет загрузка...</h1>}
+        {isError && <h1>Ошибка при загрузк</h1>}
+        {vacancies?.map((vacancy) => (
           <VacancyRow key={vacancy.id} vacancy={vacancy} />
         ))}
       </Stack>

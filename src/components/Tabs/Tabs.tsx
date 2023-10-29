@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
+
 import Box from '@mui/material/Box';
 import { VacTable } from '../VacTable/VacTable';
 
@@ -13,6 +13,8 @@ interface TabPanelProps {
 
 function CustomTabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
+ 
+  
 
   return (
     <div
@@ -24,7 +26,7 @@ function CustomTabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <Box>{children}</Box>
         </Box>
       )}
     </div>
@@ -59,7 +61,7 @@ export default function BasicTabs() {
           <Tab label='Архив' {...a11yProps(2)} />
         </Tabs>
       </Box>
-      <CustomTabPanel value={value} index={0}>
+      <CustomTabPanel value={value} index={0} >
         <VacTable />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>

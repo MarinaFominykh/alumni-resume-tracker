@@ -12,9 +12,13 @@ import StudentPage from './pages/StudentPage/StudentPage.tsx';
 import NewVacancy from './pages/Vacancies/NewVacancy/NewVacancy.tsx';
 import AllVacancies from './pages/AllVacancies/AllVacancies.tsx';
 import Error404 from './pages/Error404/Error404.tsx';
+import { Provider } from 'react-redux';
+import { setupStore } from './store/store.ts';
 
+const store = setupStore()
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <ThemeProvider theme={projectTheme}>
+  <Provider store={store}>
+    <ThemeProvider theme={projectTheme}>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />}>
@@ -33,4 +37,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       </Routes>
     </BrowserRouter>
   </ThemeProvider>
+
+  </Provider>
+  
 );
