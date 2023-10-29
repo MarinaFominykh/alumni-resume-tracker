@@ -29,13 +29,13 @@ export const VacancyRow: FC<VacancyRowProps> = ({ children, vacancy, buttonText 
         <Box sx={vacancyRowStyle.data}>
           <Box sx={vacancyRowStyle.description}>
             {' '}
-            <Typography sx={vacancyRowStyle.title}>{vacancy.vacancy_name}</Typography>
-            <Typography sx={vacancyRowStyle.subtitle}>{vacancy.place}</Typography>
-            <Typography sx={vacancyRowStyle.date}>{vacancy.date}</Typography>
+            <Typography sx={vacancyRowStyle.title}>{vacancy.vacName}</Typography>
+            <Typography sx={vacancyRowStyle.subtitle}>{vacancy.city}</Typography>
+            {/* <Typography sx={vacancyRowStyle.date}>{vacancy.date}</Typography> */}
           </Box>
           <Box sx={vacancyRowStyle.centerContent}>
             <Typography>{vacancy.city}</Typography>
-            <Typography>{getText(vacancy.experience)}</Typography>
+            <Typography>{getText(vacancy.experienceMin || 0)}</Typography>
             <Typography>{vacancy.format}</Typography>
           </Box>
 

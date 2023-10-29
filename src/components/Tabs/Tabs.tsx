@@ -44,8 +44,8 @@ function a11yProps(index: number) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-    const {data: vacancies, isError, isLoading} = vacancyAPI.useFetchAllVacancyQuery('');
-   console.log(vacancies)
+    const {data: vacancies} = vacancyAPI.useFetchAllVacancyQuery('');
+   
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     event.preventDefault();
@@ -63,25 +63,23 @@ export default function BasicTabs() {
       </Box>
        <CustomTabPanel value={value} index={0}>
         <VacTable>
-          {vacancies?.map(vacancy => (
-            <VacancyRow key={vacancy.id} vacancy={vacancy} buttonText="63 кандидата" />
+          {vacancies?.map((vacancy) => (
+            <VacancyRow key={vacancy.vacName} vacancy={vacancy} buttonText="63 кандидата" />
           ))}
         </VacTable>
       </CustomTabPanel>
-      <CustomTabPanel value={value} index={0} >
-        <VacTable />
-      </CustomTabPanel>
+     
       <CustomTabPanel value={value} index={1}>
         <VacTable>
-          {vacancies?.map(vacancy => (
-            <VacancyRow key={vacancy.id} vacancy={vacancy} buttonText="Опубликовать" />
+          {vacancies?.map((vacancy) => (
+            <VacancyRow  key={vacancy.vacName} vacancy={vacancy} buttonText="Опубликовать" />
           ))}
         </VacTable>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <VacTable>
-          {vacancies?.map(vacancy => (
-            <VacancyRow key={vacancy.id} vacancy={vacancy} buttonText="Восстановить" />
+          {vacancies?.map((vacancy) => (
+            <VacancyRow key={vacancy.vacName} vacancy={vacancy} buttonText="Восстановить" />
           ))}
         </VacTable>
       </CustomTabPanel>
