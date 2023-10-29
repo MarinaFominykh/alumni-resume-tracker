@@ -1,5 +1,5 @@
-// export const BASE_URL = "http://51.250.12.63";
-export const BASE_URL = "http://localhost:3000";
+export const BASE_URL = "http://51.250.12.63";
+// export const BASE_URL = "http://localhost:3000";
 
 // Обработка ответа сервера
 export const checkResponse = (res: Response) => {
@@ -26,7 +26,7 @@ export const register = (name: string, email: string, password: string) => {
 };
 
 //Авторизация
-export const authorize = (login: string, password: string) => {
+export const authorize = (email: string, password: string) => {
   return fetch(`${BASE_URL}/api/v1/auth/sign-in`, {
     method: "POST",
     headers: {
@@ -34,7 +34,7 @@ export const authorize = (login: string, password: string) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      login,
+      email,
       password,
     }),
   }).then(checkResponse);
