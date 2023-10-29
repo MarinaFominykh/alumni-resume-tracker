@@ -20,7 +20,7 @@ import ContactElement from '../elements/ContactElement/ContactElement';
 import { ChipsContainer } from '../ChipsContainer/ChipsContainer';
 import { tableStyles } from './styles';
 import './Table.css';
-import { ContextMenuTwo } from '../elements/ContexMenu/ContextMenuTwo';
+import { CandidatesContexMenu } from '../elements/ContexMenu/CandidatesContexMenu';
 import { useState } from 'react';
 import LikeButton from '../elements/LikeButton/LikeButton';
 import ModalElement from '../ModalElement/ModalElement';
@@ -53,7 +53,7 @@ export default function CustomizedTables() {
     <>
       <Box sx={tableStyles.toolbarfilter}>
         <Box sx={tableStyles.filter}>
-          <ContextMenuTwo />
+          <CandidatesContexMenu />
         </Box>
       </Box>
       <TableContainer component={Paper} sx={tableStyles.table}>
