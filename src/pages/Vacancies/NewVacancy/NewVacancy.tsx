@@ -1,66 +1,76 @@
 import React from 'react';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import Typography from '@mui/material/Typography/Typography';
-import { Box, Grid, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
+import {
+  Box,
+  Grid,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  TextField,
+} from '@mui/material';
 import { testStudent } from '../../../consts/testStudent';
 import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
 import BackIconHeader from '../../../components/Haders/BackIconHeader';
+import { IVacancy } from '../../../models/IVacancy';
+import { vacancyAPI } from '../../../services/vacancyService';
+import { useNavigate } from 'react-router';
 
 const cities = [
   {
-    value: 'Mосква'
+    value: 'Mосква',
   },
   {
-    value: 'Санкт-Петербург'
+    value: 'Санкт-Петербург',
   },
   {
-    value: 'Казань'
+    value: 'Казань',
   },
   {
-    value: 'Нижний Новгород'
+    value: 'Нижний Новгород',
   },
   {
-    value: 'Владивосток'
+    value: 'Владивосток',
   },
   {
-    value: 'Калининград'
-  }
+    value: 'Калининград',
+  },
 ];
 
 const currencies = [
   {
     value: 'RUB',
-    label: '₽'
+    label: '₽',
   },
   {
     value: 'USD',
-    label: '$'
+    label: '$',
   },
   {
     value: 'EUR',
-    label: '€'
-  }
+    label: '€',
+  },
 ];
 
-interface NewVacancyInputs {
-  companyName?: string;
-  vacName?: string;
-  salaryMin?: number;
-  salaryMax?: number;
-  currency?: string;
-  description?: string;
-  requirements?: string;
-  experienceMin?: number;
-  experienceMax?: number;
-  skills?: string;
-  departmentName?: string;
-  format?: string;
-  responsibilities?: string;
-  conditions?: string;
-  city?: string;
-  level?: string;
-  contract?: string;
-}
+// interface NewVacancyInputs {
+//   companyName?: string;
+//   vacName?: string;
+//   salaryMin?: number;
+//   salaryMax?: number;
+//   currency?: string;
+//   description?: string;
+//   requirements?: string;
+//   experienceMin?: number;
+//   experienceMax?: number;
+//   skills?: string;
+//   departmentName?: string;
+//   format?: string;
+//   responsibilities?: string;
+//   conditions?: string;
+//   city?: string;
+//   level?: string;
+//   contract?: string;
+// }
 
 {
   /* const schema = yup.object().shape({
@@ -87,94 +97,183 @@ interface NewVacancyInputs {
 }
 
 function NewVacancy() {
+  const navigate = useNavigate();
   const [contract, setContract] = React.useState('');
   const [level, setLevel] = React.useState('');
   const [city, setCity] = React.useState('');
   const [format, setFormat] = React.useState('');
   const [currency, setCurrency] = React.useState('');
   const [skills, setSkills] = React.useState<string[]>([]);
+  const [createVacancy, 
+    // { isSuccess }
+  ] = vacancyAPI.useCreateVacancyMutation();
 
   const {
     handleSubmit,
     control,
     register,
-    formState: { errors }
-  } = useForm<NewVacancyInputs>();
+    formState: { errors },
+  } = useForm<IVacancy>();
 
-  const createVacancySubmitHandler: SubmitHandler<NewVacancyInputs> = (data: NewVacancyInputs) => {
+  const createVacancySubmitHandler: SubmitHandler<IVacancy> = async (
+    data: IVacancy
+  ) => {
     console.log('form data is', data);
+    const {
+      companyName,
+      vacName,
+      salaryMin,
+      salaryMax,
+      currency,
+      description,
+      requirements,
+      experienceMin,
+      experienceMax,
+      skills,
+      departmentName,
+      format,
+      responsibilities,
+      conditions,
+      city,
+      level,
+      contract,
+    } = data;
+    await createVacancy({
+      companyName,
+      vacName,
+      salaryMin,
+      salaryMax,
+      currency,
+      description,
+      requirements,
+      experienceMin,
+      experienceMax,
+      skills,
+      departmentName,
+      format,
+      responsibilities,
+      conditions,
+      city,
+      level,
+      contract,
+    } as IVacancy);
+    // if (isSuccess) {
+    //   navigate('/vacancies');
+    // }
+     navigate('/vacancies');
   };
 
   return (
     <>
       <form onSubmit={handleSubmit(createVacancySubmitHandler)} noValidate>
-        <Grid container columnSpacing={'16px'} justifyContent={'center'} marginTop={'8px'}>
-          <BackIconHeader title="Новая вакансия" />
+        <Grid
+          container
+          columnSpacing={'16px'}
+          justifyContent={'center'}
+          marginTop={'8px'}
+        >
+          <BackIconHeader title='Новая вакансия' />
           <Grid item sx={{ width: '337px' }} boxSizing={'initial'}>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <Typography variant="caption" fontWeight={500}>
+              <Typography variant='caption' fontWeight={500}>
                 Организация
               </Typography>
               <Controller
-                name="companyName"
+                name='companyName'
                 control={control}
-                defaultValue="TipTop Systems"
+                defaultValue='TipTop Systems'
                 render={({ field }) => (
-                  <TextField {...field} type="text" variant="outlined" size="small" fullWidth />
+                  <TextField
+                    {...field}
+                    type='text'
+                    variant='outlined'
+                    size='small'
+                    fullWidth
+                  />
                 )}
               />
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Название
               </Typography>
-              <Box display="flex">
+              <Box display='flex'>
                 <Controller
-                  name="vacName"
+                  name='vacName'
                   control={control}
-                  defaultValue=""
+                  defaultValue=''
                   render={({ field }) => (
-                    <TextField {...field} type="text" variant="outlined" size="small" fullWidth />
+                    <TextField
+                      {...field}
+                      type='text'
+                      variant='outlined'
+                      size='small'
+                      fullWidth
+                    />
                   )}
                 />
               </Box>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Зарплата
               </Typography>
               <Box sx={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
                 <Controller
-                  name="salaryMin"
+                  name='salaryMin'
                   control={control}
                   defaultValue={0}
                   render={({ field }) => (
-                    <TextField {...field} type="number" variant="outlined" size="small" />
+                    <TextField
+                      {...field}
+                      type='number'
+                      variant='outlined'
+                      size='small'
+                    />
                   )}
                 />
-                <Typography variant="caption" fontWeight={500}>
+                <Typography variant='caption' fontWeight={500}>
                   -
                 </Typography>
                 <Controller
-                  name="salaryMax"
+                  name='salaryMax'
                   defaultValue={0}
                   control={control}
                   render={({ field }) => (
-                    <TextField {...field} type="number" variant="outlined" size="small" />
+                    <TextField
+                      {...field}
+                      type='number'
+                      variant='outlined'
+                      size='small'
+                    />
                   )}
                 />
 
                 <Select
-                  labelId="currency-label"
+                  labelId='currency-label'
                   {...register('currency')}
-                  size="small"
+                  size='small'
                   onChange={(event: SelectChangeEvent<typeof currency>) => {
                     setCurrency(event.target.value);
                   }}
                   value={currency}
                   defaultValue={'RUB'}
                 >
-                  {currencies.map(currency => (
+                  {currencies.map((currency) => (
                     <MenuItem key={currency.value} value={currency.value}>
                       {currency.label}
                     </MenuItem>
@@ -182,106 +281,145 @@ function NewVacancy() {
                 </Select>
               </Box>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Описание
               </Typography>
               <Controller
-                name="description"
+                name='description'
                 control={control}
-                defaultValue=""
+                defaultValue=''
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    type="text"
-                    variant="outlined"
-                    size="small"
+                    type='text'
+                    variant='outlined'
+                    size='small'
                     fullWidth
                     multiline
                     rows={3}
                   />
                 )}
               />
-              <Typography variant="caption" color={'#B5B5B7'}>
+              <Typography variant='caption' color={'#B5B5B7'}>
                 Расскажите подробнее о вакансии
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Требования
               </Typography>
               <Controller
-                name="requirements"
+                name='requirements'
                 control={control}
-                defaultValue=""
+                defaultValue=''
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    type="text"
-                    variant="outlined"
-                    size="small"
+                    type='text'
+                    variant='outlined'
+                    size='small'
                     fullWidth
                     multiline
                     rows={3}
                   />
                 )}
               />
-              <Typography variant="caption" color={'#B5B5B7'}>
+              <Typography variant='caption' color={'#B5B5B7'}>
                 Опишите, что вы ждете от соискателя
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Опыт
               </Typography>
               <Box sx={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
                 <Controller
-                  name="experienceMin"
-                  control={control}
-                  defaultValue={0}
-                  render={({ field }) => (
-                    <TextField {...field} type="number" variant="outlined" size="small" />
-                  )}
-                />
-                <Typography variant="caption" fontWeight={500}>
-                  -
-                </Typography>
-                <Controller
-                  name="experienceMax"
+                  name='experienceMin'
                   control={control}
                   defaultValue={0}
                   render={({ field }) => (
                     <TextField
                       {...field}
-                      type="number"
-                      variant="outlined"
+                      type='number'
+                      variant='outlined'
+                      size='small'
+                    />
+                  )}
+                />
+                <Typography variant='caption' fontWeight={500}>
+                  -
+                </Typography>
+                <Controller
+                  name='experienceMax'
+                  control={control}
+                  defaultValue={0}
+                  render={({ field }) => (
+                    <TextField
+                      {...field}
+                      type='number'
+                      variant='outlined'
                       error={!!errors.experienceMax}
-                      helperText={errors.experienceMax ? errors.experienceMax?.message : ''}
-                      size="small"
+                      helperText={
+                        errors.experienceMax
+                          ? errors.experienceMax?.message
+                          : ''
+                      }
+                      size='small'
                     />
                   )}
                 />
               </Box>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Навыки
               </Typography>
 
               <Select
-                labelId="skills-label"
-                size="small"
+                labelId='skills-label'
+                size='small'
                 {...register('skills')}
                 onChange={(event: SelectChangeEvent<typeof skills>) => {
                   const {
-                    target: { value }
+                    target: { value },
                   } = event;
-                  setSkills(typeof value === 'string' ? value.split(',') : value);
+                  setSkills(
+                    typeof value === 'string' ? value.split(',') : value
+                  );
                 }}
                 value={skills}
                 multiple
               >
-                {testStudent.skills.map(skill => (
+                {testStudent.skills.map((skill) => (
                   <MenuItem key={skill} value={skill}>
                     {skill}
                   </MenuItem>
@@ -291,47 +429,67 @@ function NewVacancy() {
           </Grid>
           <Grid item sx={{ width: '337px' }} boxSizing={'initial'}>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <Typography variant="caption" fontWeight={500}>
+              <Typography variant='caption' fontWeight={500}>
                 Подразделение
               </Typography>
               <Controller
-                name="departmentName"
+                name='departmentName'
                 control={control}
-                defaultValue=""
+                defaultValue=''
                 render={({ field }) => (
-                  <TextField {...field} type="text" variant="outlined" size="small" fullWidth />
+                  <TextField
+                    {...field}
+                    type='text'
+                    variant='outlined'
+                    size='small'
+                    fullWidth
+                  />
                 )}
               />
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Город
               </Typography>
 
               <Select
-                labelId="city-label"
-                size="small"
+                labelId='city-label'
+                size='small'
                 {...register('city')}
                 onChange={(event: SelectChangeEvent<typeof level>) => {
                   setCity(event.target.value);
                 }}
                 value={city}
               >
-                {cities.map(city => (
+                {cities.map((city) => (
                   <MenuItem key={city.value} value={city.value}>
                     {city.value}
                   </MenuItem>
                 ))}
               </Select>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Формат работы
               </Typography>
 
               <Select
-                labelId="format-label"
-                size="small"
+                labelId='format-label'
+                size='small'
                 {...register('format')}
                 onChange={(event: SelectChangeEvent<typeof format>) => {
                   setFormat(event.target.value);
@@ -343,63 +501,84 @@ function NewVacancy() {
                 <MenuItem value={'Гибрид'}>Гибрид</MenuItem>
               </Select>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Обязанности
               </Typography>
               <Controller
-                name="responsibilities"
+                name='responsibilities'
                 control={control}
-                defaultValue=""
+                defaultValue=''
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    type="text"
-                    variant="outlined"
-                    size="small"
+                    type='text'
+                    variant='outlined'
+                    size='small'
                     fullWidth
                     multiline
                     rows={3}
                   />
                 )}
               />
-              <Typography variant="caption" color={'#B5B5B7'}>
+              <Typography variant='caption' color={'#B5B5B7'}>
                 Чем предстоит заниматься соискателю
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Условия
               </Typography>
               <Controller
-                name="conditions"
+                name='conditions'
                 control={control}
-                defaultValue=""
+                defaultValue=''
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    type="text"
-                    variant="outlined"
-                    size="small"
+                    type='text'
+                    variant='outlined'
+                    size='small'
                     fullWidth
                     multiline
                     rows={3}
                   />
                 )}
               />
-              <Typography variant="caption" color={'#B5B5B7'}>
+              <Typography variant='caption' color={'#B5B5B7'}>
                 Что вы предлагаете соискателю
               </Typography>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Уровень
               </Typography>
 
               <Select
-                labelId="level-label"
+                labelId='level-label'
                 {...register('level')}
-                size="small"
+                size='small'
                 onChange={(event: SelectChangeEvent<typeof level>) => {
                   setLevel(event.target.value);
                 }}
@@ -410,14 +589,21 @@ function NewVacancy() {
                 <MenuItem value={'Senior'}>Senior</MenuItem>
               </Select>
             </Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '20px' }}>
-              <Typography variant="caption" fontWeight={500}>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+                marginTop: '20px',
+              }}
+            >
+              <Typography variant='caption' fontWeight={500}>
                 Оформление
               </Typography>
 
               <Select
-                labelId="contract-label"
-                size="small"
+                labelId='contract-label'
+                size='small'
                 {...register('contract')}
                 onChange={(event: SelectChangeEvent<typeof contract>) => {
                   setContract(event.target.value);
@@ -437,26 +623,26 @@ function NewVacancy() {
             gap: '16px',
             justifyContent: 'flex-end',
             maxWidth: '690px',
-            margin: '24px auto 0'
+            margin: '24px auto 0',
           }}
         >
           <ButtonElement
-            color="secondary"
-            variant="outlined"
-            type="button"
+            color='secondary'
+            variant='outlined'
+            type='button'
             sx={{ padding: '10px 19px', height: '40px' }}
           >
-            <Typography variant="body1" fontWeight={500} color={'#1D6BF3'}>
+            <Typography variant='body1' fontWeight={500} color={'#1D6BF3'}>
               Опубликовать позже
             </Typography>
           </ButtonElement>
           <ButtonElement
-            color="secondary"
-            variant="contained"
-            type="submit"
+            color='secondary'
+            variant='contained'
+            type='submit'
             sx={{ padding: '10px 58px', height: '40px' }}
           >
-            <Typography variant="body1" fontWeight={500} color={'#fff'}>
+            <Typography variant='body1' fontWeight={500} color={'#fff'}>
               Сохранить
             </Typography>
           </ButtonElement>
