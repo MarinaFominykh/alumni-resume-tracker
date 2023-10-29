@@ -1,6 +1,6 @@
 import CustomizedTables from '../../components/Table/Table';
 import FilterComponent from '../../components/FilterComponent/FilterComponent';
-import Header from '../../components/Haders/Header';
+import Header from '../../components/Headers/Header';
 import { VacancyList } from '../../components/VacancyList/VacancyList';
 import Directions from '../../components/Directions/Directions';
 import './Search.css';

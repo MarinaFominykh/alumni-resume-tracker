@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material';
-import BackIconHeader from '../../components/Haders/BackIconHeader';
+import BackIconHeader from '../../components/Headers/BackIconHeader';
 import VacancyCard from '../../components/elements/VacancyCard/VacancyCard';
 import { testVacancies } from '../../consts/testVacancy';
 import { allVacanciesStyle } from './styles';

@@ -1,7 +1,7 @@
 import { Table, Box } from '@mui/material';
 import Tabs from '../../components/Tabs/Tabs';
 
-import CompanyInfoHeader from '../../components/Haders/CompanyInfoHeader';
+import CompanyInfoHeader from '../../components/Headers/CompanyInfoHeader';
 
 function Vacancies() {
   return (
