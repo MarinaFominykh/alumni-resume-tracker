@@ -11,7 +11,6 @@ import ResetPassword from './pages/Auth/ResetPassword/ResetPassword.tsx';
 import StudentPage from './pages/StudentPage/StudentPage.tsx';
 import NewVacancy from './pages/Vacancies/NewVacancy/NewVacancy.tsx';
 import AllVacancies from './pages/AllVacancies/AllVacancies.tsx';
-import Error404 from './pages/Error404/Error404.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <ThemeProvider theme={projectTheme}>
@@ -29,7 +28,6 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/sign-in" element={<Login />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="*" element={<Error404 />} />
       </Routes>
     </BrowserRouter>
   </ThemeProvider>
