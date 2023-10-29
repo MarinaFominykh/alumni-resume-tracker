@@ -4,14 +4,14 @@ import {
   Box,
   Menu,
   MenuItem,
-  ListItemIcon,
   IconButton,
   Typography,
 } from "@mui/material";
 
-import { ArchiveIcon, DeleteIcon, EditIcon } from "../../../consts/icons";
+import { tableStyles } from "../../Table/styles";
+import { ArrowIcon, SortingIcon } from "../../../consts/icons";
 
-export const ContexMenu = () => {
+export const ContextMenuTwo = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -20,6 +20,7 @@ export const ContexMenu = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
@@ -32,8 +33,10 @@ export const ContexMenu = () => {
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
           >
-            <Typography>...</Typography>
-            {/* <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>  */}
+            <SortingIcon/>
+            <Typography sx={tableStyles.textfilter}>Сортировка</Typography>
+          
+            <ArrowIcon/>
           </IconButton>
         </Tooltip>
       </Box>
@@ -43,52 +46,20 @@ export const ContexMenu = () => {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        PaperProps={{
-          elevation: 0,
-          sx: {
-            overflow: "visible",
-            filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-            mt: 1.5,
-            "& .MuiAvatar-root": {
-              width: 32,
-              height: 32,
-              ml: -0.5,
-              mr: 1,
-            },
-            "&:before": {
-              content: '""',
-              display: "block",
-              position: "absolute",
-              top: 0,
-              right: 14,
-              width: 10,
-              height: 10,
-              bgcolor: "background.paper",
-              transform: "translateY(-50%) rotate(45deg)",
-              zIndex: 0,
-            },
-          },
-        }}
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <EditIcon />
-          </ListItemIcon>
-          Редактировать
+          <Typography>Сначала новые</Typography>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <ArchiveIcon />
-          </ListItemIcon>
-          В архив
+          <Typography>Сначала активные</Typography>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <DeleteIcon />
-          </ListItemIcon>
-          Удалить
+          <Typography>Сначала опытные</Typography>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+          <Typography>Сначала новички</Typography>
         </MenuItem>
       </Menu>
     </React.Fragment>
