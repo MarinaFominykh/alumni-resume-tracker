@@ -75,7 +75,7 @@ function StudentPage() {
             <Box sx={studentStyles.iconLink}>
               <PdfIcon />
               <Link sx={studentStyles.link} href={applicant?.resume_pdf} download>
-                {applicant?.resume_pdf}
+                Скачать резюме
               </Link>
             </Box>
             <Box sx={studentStyles.iconLink}>
