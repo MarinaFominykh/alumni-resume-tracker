@@ -1,7 +1,7 @@
 export const chipStyles = {
  chip: {
     backgroundColor: 'rgba(169, 145, 117, 0.26)',
-    borderRadius: '12px',
+    borderRadius: '',
     color: '#1A1B22',
     fontSize: '13px',
     fontWeight: 400,
