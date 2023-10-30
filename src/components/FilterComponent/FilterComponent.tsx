@@ -1,6 +1,13 @@
-import React, {ChangeEvent} from 'react';
+import { ChangeEvent } from 'react';
 
-import { Stack, Box, Typography, Button, TextField, OutlinedInput } from '@mui/material';
+import {
+  Stack,
+  Box,
+  Typography,
+  Button,
+  TextField,
+  OutlinedInput,
+} from '@mui/material';
 import MultipleSelect from '../elements/MultipleSelect/MultipleSelect';
 import { testStudent } from '../../consts/testStudent';
 import MenuItem from '@mui/material/MenuItem';
@@ -9,19 +16,33 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import {activityValue, cityValue, levelValue, filteredApplicants} from '../../store/reducers/filterSlice'
+import {
+  activityValue,
+  cityValue,
+  levelValue,
+  filteredApplicants,
+} from '../../store/reducers/filterSlice';
 import { filteredForTextApplicants } from '../../functions/functions';
 import { applicantAPI } from '../../services/applicantService';
+// import { IApplicant } from '../../models/IApplicant';
 function FilterComponent() {
   // const [level, setLevel] = React.useState('');
-    // const [activity, setActivity] = React.useState('');
- // const [city, setCity] = React.useState('');
-   const dispatch = useAppDispatch();
- const {city, activity, level} = useAppSelector((state => state.filterReducer))
-    const {data: applicants} = applicantAPI.useFetchAllApplicantQuery('');
- const handleLevelChange = (event: SelectChangeEvent<typeof level>) => {
+  // const [activity, setActivity] = React.useState('');
+  // const [city, setCity] = React.useState('');
+  const dispatch = useAppDispatch();
+  const { city, activity, level } = useAppSelector(
+    (state) => state.filterReducer
+  );
+  const { data: applicants } = applicantAPI.useFetchAllApplicantQuery('');
+  const handleLevelChange = (event: SelectChangeEvent<typeof level>) => {
     dispatch(levelValue(event.target.value));
-    dispatch(filteredApplicants(filteredForTextApplicants(applicants, event.target.value)))
+    if (applicants) {
+      dispatch(
+        filteredApplicants(
+          filteredForTextApplicants(applicants, event.target.value)
+        )
+      );
+    }
   };
 
   const handleActivityChange = (event: SelectChangeEvent<typeof activity>) => {
@@ -30,7 +51,13 @@ function FilterComponent() {
 
   const handleCityChange = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(cityValue(event.target.value));
-    dispatch(filteredApplicants(filteredForTextApplicants(applicants, event.target.value)))
+    if (applicants) {
+      dispatch(
+        filteredApplicants(
+          filteredForTextApplicants(applicants, event.target.value)
+        )
+      );
+    }
   };
 
   return (
@@ -46,48 +73,56 @@ function FilterComponent() {
         borderRadius: '5px',
         padding: '16px',
         marginLeft: '-15px',
-        marginTop: '24px'
+        marginTop: '24px',
       }}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Typography
-          variant="subtitle1"
-          sx={{ fontFamily: 'YS Text', fontWeight: 500, fontSize: '18px', lineHeight: '24px' }}
+          variant='subtitle1'
+          sx={{
+            fontFamily: 'YS Text',
+            fontWeight: 500,
+            fontSize: '18px',
+            lineHeight: '24px',
+          }}
         >
           Фильтры
         </Typography>
-        <Button variant="text" sx={{ fontWeight: 400, fontSize: '14px', lineHeight: '20px' }}>
+        <Button
+          variant='text'
+          sx={{ fontWeight: 400, fontSize: '14px', lineHeight: '20px' }}
+        >
           Сбросить фильтры
         </Button>
       </Box>
 
       <Stack direction={'row'} spacing={'16px'} alignItems={'flex-end'}>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <Typography variant="caption" fontWeight={500}>
+          <Typography variant='caption' fontWeight={500}>
             Город
           </Typography>
-          <TextField size="small" value={city} onChange={handleCityChange}/>
+          <TextField size='small' value={city} onChange={handleCityChange} />
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <Typography variant="caption" fontWeight={500}>
+          <Typography variant='caption' fontWeight={500}>
             Опыт
           </Typography>
           <Box sx={{ display: 'flex', gap: '8px' }}>
-            <TextField size="small" placeholder="От" sx={{ width: '76.5px' }} />
-            <TextField size="small" placeholder="До" sx={{ width: '76.5px' }} />
+            <TextField size='small' placeholder='От' sx={{ width: '76.5px' }} />
+            <TextField size='small' placeholder='До' sx={{ width: '76.5px' }} />
           </Box>
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <Typography variant="caption" fontWeight={500}>
+          <Typography variant='caption' fontWeight={500}>
             Навыки
           </Typography>
           <MultipleSelect skills={testStudent.skills} fullwidth={false} />
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <Typography variant="caption" fontWeight={500}>
+          <Typography variant='caption' fontWeight={500}>
             Уровень
           </Typography>
-          <FormControl sx={{ width: 112 }} size="small">
+          <FormControl sx={{ width: 112 }} size='small'>
             <Select value={level} onChange={handleLevelChange}>
               <MenuItem value={'Junior'}>Junior</MenuItem>
               <MenuItem value={'Middle'}>Middle</MenuItem>
@@ -96,10 +131,10 @@ function FilterComponent() {
           </FormControl>
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <Typography variant="caption" fontWeight={500}>
+          <Typography variant='caption' fontWeight={500}>
             Активность
           </Typography>
-          <FormControl sx={{ width: 112 }} size="small">
+          <FormControl sx={{ width: 112 }} size='small'>
             <Select
               input={<OutlinedInput />}
               value={activity}
@@ -116,7 +151,7 @@ function FilterComponent() {
             </Select>
           </FormControl>
         </Box>
-        <FormControlLabel control={<Checkbox />} label="С опытом" />
+        <FormControlLabel control={<Checkbox />} label='С опытом' />
       </Stack>
     </Box>
   );
