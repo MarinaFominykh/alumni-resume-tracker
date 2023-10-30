@@ -98,7 +98,7 @@ export default function CustomizedTables() {
                   <LikeButton handleLikeClick={handleLikeClick} isLiked={isLiked} />
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  <Link className="link" to="{`/${id}`}" onClick={() => setWatched(true)}>
+                  <Link className="link" to={`/search/${row.id}`} onClick={() => setWatched(true)}>
                     <Box sx={tableStyles.nameBox}>
                       <Avatar src={row.photo} sx={{ width: 36, height: 36 }} />
                       <Typography sx={tableStyles.text}>{row.name}</Typography>
@@ -107,12 +107,12 @@ export default function CustomizedTables() {
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <Link className="link" to="{`/${id}`}">
+                  <Link className="link" to={`/search/${row.id}`}>
                     <Typography sx={tableStyles.text}> {row.specialization}</Typography>
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <Link className="link" to="{`/${id}`}">
+                  <Link className="link" to={`/search/${row.id}`}>
                     <Typography sx={tableStyles.text}>
                       {row.experience === 0 && 'Без опыта'}
                       {row.experience === 1 && `${row.experience} год`}
@@ -122,12 +122,12 @@ export default function CustomizedTables() {
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <Link className="link" to="{`/${id}`}">
+                  <Link className="link" to={`/search/${row.id}`}>
                     <GradeElementTable experience={row.experience}></GradeElementTable>
                   </Link>
                 </TableCell>
                 <TableCell sx={tableStyles.activityChell}>
-                  <Link className="link" to="{`/${id}`}">
+                  <Link className="link" to={`/search/${row.id}`}>
                     <ActivityElement
                       activity={row.activity}
                       sx={{ display: 'flex', justifyContent: 'center' }}
@@ -135,7 +135,7 @@ export default function CustomizedTables() {
                   </Link>
                 </TableCell>
                 <TableCell sx={tableStyles.skillsChell}>
-                  <Link className="link" to="{`/${id}`}">
+                  <Link className="link" to={`/search/${row.id}`}>
                     <ChipsContainer>
                       {row.skills.slice(0, 4).map((skill, i) => (
                         <ChipElement key={i} label={skill} sx={chipStyles.chip} />

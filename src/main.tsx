@@ -15,28 +15,26 @@ import AllVacancies from './pages/AllVacancies/AllVacancies.tsx';
 import { Provider } from 'react-redux';
 import { setupStore } from './store/store.ts';
 
-const store = setupStore()
+const store = setupStore();
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
     <ThemeProvider theme={projectTheme}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route path="search" element={<Search />} />
-          <Route path="favourites" element={<Favourites />} />
-          <Route path="vacancies" element={<Vacancies />} />
-          <Route path="all-vacancies" element={<AllVacancies />} />
-          <Route path="vacancies/new" element={<NewVacancy />} />
-          <Route path="student" element={<StudentPage />} />
-        </Route>
-      </Routes>
-      <Routes>
-        <Route path="/sign-in" element={<Login />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-      </Routes>
-    </BrowserRouter>
-  </ThemeProvider>
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="search" element={<Search />} />
+            <Route path="favourites" element={<Favourites />} />
+            <Route path="vacancies" element={<Vacancies />} />
+            <Route path="all-vacancies" element={<AllVacancies />} />
+            <Route path="vacancies/new" element={<NewVacancy />} />
+            <Route path="search/:id" element={<StudentPage />} />
+          </Route>
+        </Routes>
+        <Routes>
+          <Route path="/sign-in" element={<Login />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+        </Routes>
+      </BrowserRouter>
+    </ThemeProvider>
   </Provider>
-  
 );
