@@ -6,12 +6,14 @@ export interface filterState {
   city: string;
   level: string;
   activity: number;
+  vacName: string,
   filteredApplicants: IApplicant[];
 }
 const initialState: filterState = {
   city: '',
   level: '',
   activity: 0,
+  vacName: '',
   filteredApplicants: [],
 };
 
@@ -28,10 +30,15 @@ export const filterSlice = createSlice({
     activityValue: (state, action: PayloadAction<number>) => {
       state.activity = action.payload;
     },
+     vacNameValue: (state, action: PayloadAction<string>) => {
+      state.vacName = action.payload;
+      
+    },
     filteredApplicants: (state, action: PayloadAction<IApplicant[]>) => {
       state.filteredApplicants = action.payload;
     },
   },
 });
-export const {cityValue, levelValue, activityValue, filteredApplicants} = filterSlice.actions;
+export const { cityValue, levelValue, activityValue, filteredApplicants } =
+  filterSlice.actions;
 export default filterSlice.reducer;

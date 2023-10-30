@@ -1,7 +1,9 @@
 import { Card, CardContent, Typography } from '@mui/material';
 import { vacancyStyles } from './styles';
-import { Link } from 'react-router-dom'; 
-import './VacancyCard.css'
+// import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../../../hooks/redux';
+import { vacNameValue } from '../../../store/reducers/filterForVacancSlice';
+import './VacancyCard.css';
 
 interface CardProps {
   vacancyName: string;
@@ -12,24 +14,25 @@ interface CardProps {
 }
 
 function VacancyCard({ vacancyName, place, city, experience, sx }: CardProps) {
-  return (
+  const dispatch = useAppDispatch();
+ 
+ return (
     <Card
       variant='outlined'
-      onClick={() => console.log('clicked')}
+      onClick={() => {dispatch(vacNameValue(vacancyName))}}
       sx={sx}
-      // sx={vacancyStyles.card}
+    
     >
-      <Link to='/vacancies' className='link'>
-         <CardContent sx={vacancyStyles.wrapper}>
-        <Typography sx={vacancyStyles.title}>{vacancyName}</Typography>
-        <Typography sx={vacancyStyles.place}>{place}</Typography>
-        <Typography sx={vacancyStyles.text}>{city}</Typography>
-        <Typography sx={vacancyStyles.text}>{`От ${experience} ${
-          experience === 1 ? 'года' : 'лет'
-        }`}</Typography>
-      </CardContent>
-      </Link>
-      
+       
+        <CardContent sx={vacancyStyles.wrapper}>
+          <Typography sx={vacancyStyles.title}>{vacancyName}</Typography>
+          <Typography sx={vacancyStyles.place}>{place}</Typography>
+          <Typography sx={vacancyStyles.text}>{city}</Typography>
+          <Typography sx={vacancyStyles.text}>{`От ${experience} ${
+            experience === 1 ? 'года' : 'лет'
+          }`}</Typography>
+        </CardContent>
+
     </Card>
   );
 }

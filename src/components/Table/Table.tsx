@@ -23,33 +23,69 @@ import { CandidatesContexMenu } from '../elements/ContexMenu/CandidatesContexMen
 import { useEffect, useState } from 'react';
 import LikeButton from '../elements/LikeButton/LikeButton';
 // import ModalElement from '../ModalElement/ModalElement';
-import { useAppSelector} from '../../hooks/redux';
+import { useAppSelector } from '../../hooks/redux';
 // import { applicantSlice } from '../../store/reducers/applicantSlice';
 import { applicantAPI } from '../../services/applicantService';
 import tgIcon from '../../../images/telegram_blue.svg';
 import emailIcon from '../../../images/email.svg';
 import { IApplicant } from '../../models/IApplicant';
+import {
+  filteredForCityApplicants,
+  filteredForLevelApplicants,
+  filteredForActivityApplicants,
+} from '../../functions/functions';
 
 export default function CustomizedTables() {
   const [watched, setWatched] = useState(false);
   // const [isLiked, setIsLiked] = useState(false);
   // const [modalOpened, setModalOpened] = useState(false);
-  const { city, level } = useAppSelector((state) => state.filterReducer);
+  const { city, level, activity, vacName } = useAppSelector(
+    (state) => state.filterReducer
+  );
   const {
     data: applicants,
     error,
     isLoading,
   } = applicantAPI.useFetchAllApplicantQuery('');
 
-  const { filteredApplicants } = useAppSelector((state) => state.filterReducer);
   const [allApplicants, setAllApplicants] = useState(applicants);
-   
+  function getSpecialization(arr: IApplicant[], str: string) {
+    const newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].specialization.name.includes(str)) {
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
+  }
   useEffect(() => {
     setAllApplicants(applicants);
   }, [applicants]);
+
   useEffect(() => {
-    setAllApplicants(filteredApplicants);
-  }, [city, level]);
+    if (applicants) {
+      setAllApplicants(filteredForLevelApplicants(applicants, level));
+    }
+  }, [level]);
+
+  useEffect(() => {
+    if (applicants) {
+      setAllApplicants(filteredForCityApplicants(applicants, city));
+    }
+  }, [city]);
+
+  useEffect(() => {
+    if (applicants) {
+      setAllApplicants(filteredForActivityApplicants(applicants, activity));
+    }
+  }, [activity]);
+
+  useEffect(() => {
+    if (applicants) {
+      setAllApplicants(getSpecialization(applicants, vacName));
+    }
+  }, [vacName]);
+
   // function handleLikeClick() {
   //   // переписать логику на проверку id и вынести ее в app
   //   if (isLiked) {
@@ -71,6 +107,8 @@ export default function CustomizedTables() {
 
   return (
     <>
+      {isLoading && <div>Идет загрузка...</div>}
+      {error && <div>Произошла ошибка</div>}
       <Box sx={tableStyles.toolbarfilter}>
         <Box sx={tableStyles.filter}>
           <CandidatesContexMenu />
@@ -105,15 +143,12 @@ export default function CustomizedTables() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {isLoading && <h1>Идет загрузка...</h1>}
-            {error && <h1>Произошла ошибка</h1>}
             {allApplicants?.map((row: IApplicant) => (
               <TableRow key={row.id} sx={tableStyles.row}>
                 <TableCell size='small'>
                   <LikeButton
-                    // handleLikeClick={handleLikeClick}
-                    // isLiked={isLiked}
-                    
+                  // handleLikeClick={handleLikeClick}
+                  // isLiked={isLiked}
                   />
                 </TableCell>
                 <TableCell component='th' scope='row'>

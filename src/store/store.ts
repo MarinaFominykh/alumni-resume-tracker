@@ -2,10 +2,12 @@ import {combineReducers, configureStore,} from '@reduxjs/toolkit';
 // import applicantReducer from './reducers/applicantSlice'
 import { applicantAPI } from '../services/applicantService';
 import { vacancyAPI } from '../services/vacancyService';
-import filterReducer from './reducers/filterSlice'
+import filterReducer from './reducers/filterSlice';
+import filterForVacancyReduce from './reducers/filterForVacancSlice'
 export const rootReducer = combineReducers({
 // applicantReducer,
 filterReducer,
+filterForVacancyReduce,
 [applicantAPI.reducerPath]: applicantAPI.reducer,
 [vacancyAPI.reducerPath]: vacancyAPI.reducer,
    
