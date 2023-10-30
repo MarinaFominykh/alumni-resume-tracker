@@ -28,7 +28,7 @@ export const CandidatesContexMenu = () => {
           <IconButton
             onClick={handleClick}
             size="small"
-            aria-controls={open ? "account-menu" : undefined}
+            aria-controls={open ? "-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
             sx={{ p: 0, h: "100%"}}
@@ -47,8 +47,8 @@ export const CandidatesContexMenu = () => {
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-        transformOrigin={{ horizontal: "right", vertical: "top" }}
+        anchorOrigin={{ horizontal: 0, vertical: 35 }}
+        transformOrigin={{ horizontal: 0, vertical: "top" }}
       >
         <MenuItem onClick={handleClose} sx={{ width: "188px", height: "36px" }}>
           <Typography>Сначала новые</Typography>
