@@ -23,7 +23,7 @@ function FilterComponent() {
     dispatch(levelValue(event.target.value));
     dispatch(filteredApplicants(filteredForTextApplicants(applicants, event.target.value)))
   };
-console.log(level, level)
+
   const handleActivityChange = (event: SelectChangeEvent<typeof activity>) => {
     dispatch(activityValue(Number(event.target.value)));
   };
@@ -32,9 +32,6 @@ console.log(level, level)
     dispatch(cityValue(event.target.value));
     dispatch(filteredApplicants(filteredForTextApplicants(applicants, event.target.value)))
   };
-
-  console.log('level=>', level)
-
 
   return (
     <Box

@@ -1,9 +1,10 @@
 import { IApplicant } from '../models/IApplicant';
 export const filteredForTextApplicants = (
   array: IApplicant[],
-  value: string
+  value: string,
+  
 ) => {
-  if (!value) {
+  if (value==='') {
     return array;
   } else return array?.filter((item) => item.city.includes(value));
 };
