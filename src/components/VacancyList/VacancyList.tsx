@@ -7,6 +7,7 @@ import { Typography, Box } from '@mui/material';
 import { vacancyListStyle } from './styles';
 import 'swiper/css';
 import './VacancyList.css';
+import { vacancyAPI } from '../../services/vacancyService';
 
 // interface IVacancy {
 //   id: string;
@@ -21,6 +22,8 @@ import './VacancyList.css';
 //   vacancies: IVacancy[];
 // }
 export const VacancyList: FC = () => {
+  const { data: vacancies } = vacancyAPI.useFetchAllVacancyQuery('');
+  console.log(vacancies);
   return (
     <>
       <Box sx={vacancyListStyle.wrapper}>
@@ -46,14 +49,14 @@ export const VacancyList: FC = () => {
             }
           }}
         >
-          {testVacancies.map(vacancy => (
-            <SwiperSlide key={vacancy.id}>
+          {vacancies?.map(vacancy => (
+            <SwiperSlide key={vacancy?.id}>
               <VacancyCard
-              sx={vacancyListStyle.card}
-                vacancyName={vacancy.vacancy_name}
-                place={vacancy.place}
-                city={vacancy.city}
-                experience={vacancy.experience}
+                sx={vacancyListStyle.card}
+                vacancyName={vacancy?.name}
+                place={vacancy?.workplace}
+                city={vacancy?.city}
+                experience={vacancy?.experience}
               />
             </SwiperSlide>
           ))}

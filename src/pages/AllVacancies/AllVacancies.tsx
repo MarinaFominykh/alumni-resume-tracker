@@ -15,11 +15,10 @@ function VacanciesList() {
         flexWrap="wrap"
         maxWidth={'1164px'}
         margin={'0 auto'}
-        
       >
         {testVacancies.map(vacancy => (
           <VacancyCard
-          sx={allVacanciesStyle.card}
+            sx={allVacanciesStyle.card}
             vacancyName={vacancy.vacancy_name}
             place={vacancy.place}
             city={vacancy.city}

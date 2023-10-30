@@ -10,9 +10,8 @@ export const applicantAPI = createApi({
       query: () => ({
         url: '/applicants',
         headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${localStorage.getItem("token")}`
-        },
+          'Content-Type': 'application/json'
+        }
       })
     }),
     fetchApplicantById: build.query<IApplicant, string>({
