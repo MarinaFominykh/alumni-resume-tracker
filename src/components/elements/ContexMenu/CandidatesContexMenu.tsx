@@ -31,7 +31,7 @@ export const CandidatesContexMenu = () => {
             aria-controls={open ? "account-menu" : undefined}
             aria-haspopup="true"
             aria-expanded={open ? "true" : undefined}
-            sx={{ p: 0, h: "100%" }}
+            sx={{ p: 0, h: "100%"}}
           >
             <SortingIcon sx={{ mr: 2 }} />
             <Typography sx={tableStyles.textfilter}>Сортировка</Typography>
@@ -40,6 +40,7 @@ export const CandidatesContexMenu = () => {
           </IconButton>
         </Tooltip>
       </Box>
+      
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
