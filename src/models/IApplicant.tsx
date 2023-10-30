@@ -1,6 +1,6 @@
 export interface IApplicant {
-  id: string;
-  photo: string;
+  id: string ;
+  photo: string ;
   first_name: string;
   last_name: string;
   is_Liked: boolean;

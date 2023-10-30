@@ -16,56 +16,59 @@ import { chipStyles } from '../elements/ChipElement/styles';
 import GradeElementTable from '../elements/GradeElementTable/GradeElementTable';
 import { testStudentsArray } from '../../consts/testStudentsArray';
 import ActivityElement from '../elements/ActivityElement/ActivityElement';
-import ContactElement from '../elements/ContactElement/ContactElement';
 import { ChipsContainer } from '../ChipsContainer/ChipsContainer';
 import { tableStyles } from './styles';
 import './Table.css';
 import { CandidatesContexMenu } from '../elements/ContexMenu/CandidatesContexMenu';
 import { useEffect, useState } from 'react';
 import LikeButton from '../elements/LikeButton/LikeButton';
-import ModalElement from '../ModalElement/ModalElement';
-import { useAppSelector, useAppDispatch } from '../../hooks/redux';
+// import ModalElement from '../ModalElement/ModalElement';
+import { useAppSelector} from '../../hooks/redux';
 // import { applicantSlice } from '../../store/reducers/applicantSlice';
 import { applicantAPI } from '../../services/applicantService';
+import tgIcon from '../../../images/telegram_blue.svg';
+import emailIcon from '../../../images/email.svg';
+import { IApplicant } from '../../models/IApplicant';
 
 export default function CustomizedTables() {
   const [watched, setWatched] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-  const [modalOpened, setModalOpened] = useState(false);
+  // const [isLiked, setIsLiked] = useState(false);
+  // const [modalOpened, setModalOpened] = useState(false);
   const { city } = useAppSelector((state) => state.filterReducer);
   const {
     data: applicants,
     error,
     isLoading,
   } = applicantAPI.useFetchAllApplicantQuery('');
+  console.log(applicants);
   // const dispatch = useAppDispatch();
   const { filteredApplicants } = useAppSelector((state) => state.filterReducer);
   const [allApplicants, setAllApplicants] = useState(applicants);
-    useEffect(() => {
+  useEffect(() => {
     setAllApplicants(applicants);
   }, [applicants]);
   useEffect(() => {
     setAllApplicants(filteredApplicants);
   }, [city]);
-  function handleLikeClick() {
-    // переписать логику на проверку id и вынести ее в app
-    if (isLiked) {
-      setModalOpened(true);
-    }
-    if (!isLiked) {
-      setIsLiked(true);
-    }
-  }
+  // function handleLikeClick() {
+  //   // переписать логику на проверку id и вынести ее в app
+  //   if (isLiked) {
+  //     setModalOpened(true);
+  //   }
+  //   if (!isLiked) {
+  //     setIsLiked(true);
+  //   }
+  // }
 
-  function handleCancelClick() {
-    setModalOpened(false);
-  }
+  // function handleCancelClick() {
+  //   setModalOpened(false);
+  // }
 
-  function handleDeleteClick() {
-    setIsLiked(false);
-    setModalOpened(false);
-  }
-console.log(allApplicants)
+  // function handleDeleteClick() {
+  //   setIsLiked(false);
+  //   setModalOpened(false);
+  // }
+
   return (
     <>
       <Box sx={tableStyles.toolbarfilter}>
@@ -104,12 +107,13 @@ console.log(allApplicants)
           <TableBody>
             {isLoading && <h1>Идет загрузка...</h1>}
             {error && <h1>Произошла ошибка</h1>}
-            {allApplicants?.map((row) => (
+            {allApplicants?.map((row: IApplicant) => (
               <TableRow key={row.id} sx={tableStyles.row}>
                 <TableCell size='small'>
                   <LikeButton
-                    handleLikeClick={handleLikeClick}
-                    isLiked={isLiked}
+                    // handleLikeClick={handleLikeClick}
+                    // isLiked={isLiked}
+                    
                   />
                 </TableCell>
                 <TableCell component='th' scope='row'>
@@ -180,7 +184,24 @@ console.log(allApplicants)
                   </Link>
                 </TableCell>
                 <TableCell>
-                  {/* <ContactElement sx={tableStyles.contacts} contacts={row.telegram} /> */}
+                  {/* <ContactElement
+                    sx={tableStyles.contacts}
+                    contacts={row.telegram}
+                  /> */}
+                  <Box sx={{ display: 'flex', gap: '8px' }}>
+                    <Link to={`https://telegram.im/${row.telegram}`}>
+                      {' '}
+                      <Box sx={tableStyles.contacts}>
+                        <img src={tgIcon} />
+                      </Box>
+                    </Link>
+
+                    <Link to={`mailto:/${row.email}`}>
+                      <Box sx={tableStyles.contacts}>
+                        <img src={emailIcon} />
+                      </Box>
+                    </Link>
+                  </Box>
                 </TableCell>
               </TableRow>
             ))}
@@ -198,13 +219,13 @@ console.log(allApplicants)
         </Table>
       </TableContainer>
 
-      {modalOpened && (
+      {/* {modalOpened && (
         <ModalElement
           open={modalOpened}
           handleCancelClick={handleCancelClick}
           handleDeleteClick={handleDeleteClick}
         />
-      )}
+      )} */}
     </>
   );
 }

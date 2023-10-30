@@ -56,7 +56,7 @@ function Login() {
            navigate('/vacancies');
            console.log("Авторизация прошла успешно")
         }
-        console.log('Токен не передан или передан не в том формате');
+        else console.log('Токен не передан или передан не в том формате');
       })
       .catch((error) => {
         if (error === 400) {

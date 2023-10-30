@@ -14,7 +14,7 @@ import { useParams } from 'react-router';
 
 function StudentPage() {
   const { id } = useParams<{ id: string }>();
-  const { data: applicant } = applicantAPI.useFetchApplicantByIdQuery(id);
+  const { data: applicant } = applicantAPI.useFetchApplicantByIdQuery(id || '');
 
   console.log(applicant);
 
@@ -102,7 +102,7 @@ function StudentPage() {
             <Typography variant="subtitle1" fontWeight={'500'}>
               Уровень
             </Typography>
-            <GradeElement experience={applicant?.experience} />
+           <GradeElement experience={applicant && applicant.experience || 0} />
           </Box>
 
           <Box sx={studentStyles.stack}>
@@ -114,7 +114,7 @@ function StudentPage() {
                 ? 'Без опыта'
                 : applicant?.experience === 1
                 ? `${applicant?.experience} год`
-                : applicant?.experience < 5
+                : (applicant && applicant.experience || 0) < 5
                 ? `${applicant?.experience} годa`
                 : `${applicant?.experience} лет`}
             </Typography>
@@ -125,7 +125,7 @@ function StudentPage() {
               Активность
             </Typography>
 
-            <ActivityElement activity={applicant?.activity} sx={studentStyles.activity} />
+            <ActivityElement activity={applicant && applicant.activity || 0} sx={studentStyles.activity} />
           </Box>
         </Stack>
         <Stack sx={studentStyles.about}>
