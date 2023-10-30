@@ -1,5 +1,4 @@
 import { Avatar, Box, Typography, Link, Container } from '@mui/material';
-import { testStudent } from '../../consts/testStudent';
 import Stack from '@mui/material/Stack';
 import ChipElement from '../../components/elements/ChipElement/ChipElement';
 import ActivityElement from '../../components/elements/ActivityElement/ActivityElement';
@@ -15,7 +14,7 @@ import { useParams } from 'react-router';
 
 function StudentPage() {
   const { id } = useParams<{ id: string }>();
-  const { data: applicant, isError } = applicantAPI.useFetchApplicantByIdQuery(id);
+  const { data: applicant } = applicantAPI.useFetchApplicantByIdQuery(id);
 
   console.log(applicant);
 
@@ -23,7 +22,6 @@ function StudentPage() {
     <Container sx={studentStyles.wrapper}>
       <BackLink />
       <Box sx={studentStyles.header}>
-      
         <Avatar alt="Аватар выпускника" src={applicant?.photo} sx={{ width: 72, height: 72 }} />
         <Box sx={studentStyles.info}>
           <Typography
@@ -32,15 +30,15 @@ function StudentPage() {
             margin={'4px 0'}
             sx={{ display: 'flex', gap: '12px' }}
           >
-            {`${applicant?.name} ${testStudent.last_name}`}
+            {`${applicant?.first_name} ${applicant?.last_name}`}
             <LikeButton isLiked={true} />
           </Typography>
 
           <Typography variant="body2" sx={{ color: '#1A1B22' }}>
-            {testStudent.specialization}
+            {applicant?.specialization.name}
           </Typography>
           <Typography variant="body2" sx={{ color: '#1A1B22' }}>
-            {`${testStudent.city}, ${testStudent.country}`}
+            {`${applicant?.city}, ${applicant?.country}`}
           </Typography>
         </Box>
       </Box>
@@ -53,18 +51,18 @@ function StudentPage() {
             </Typography>
             <Box sx={studentStyles.iconLink}>
               <PhoneInTalkOutlinedIcon />
-              <Typography variant="body2">{testStudent.contacts.phone}</Typography>
+              <Typography variant="body2">{applicant?.phone}</Typography>
             </Box>
             <Box sx={studentStyles.iconLink}>
               <EmailIcon />
-              <Link sx={studentStyles.link} href={`mailto:${testStudent.contacts.email}`}>
-                {testStudent.contacts.email}
+              <Link sx={studentStyles.link} href={`mailto:${applicant?.email}`}>
+                {applicant?.email}
               </Link>
             </Box>
             <Box sx={studentStyles.iconLink}>
               <TelegramIcon />
-              <Link sx={studentStyles.link} href={`${testStudent.contacts.telegram}`}>
-                {testStudent.contacts.telegram}
+              <Link sx={studentStyles.link} href={`${applicant?.telegram}`}>
+                {applicant?.telegram}
               </Link>
             </Box>
           </Box>
@@ -76,14 +74,14 @@ function StudentPage() {
 
             <Box sx={studentStyles.iconLink}>
               <PdfIcon />
-              <Link sx={studentStyles.link} href={testStudent.resume.file.resume_pdf} download>
-                {testStudent.resume.file.resume_pdf}
+              <Link sx={studentStyles.link} href={applicant?.resume_pdf} download>
+                {applicant?.resume_pdf}
               </Link>
             </Box>
             <Box sx={studentStyles.iconLink}>
               <CopyIcon />
-              <Link sx={studentStyles.link} href={testStudent.resume.platform.url}>
-                {testStudent.resume.platform.name}
+              <Link sx={studentStyles.link} href={applicant?.resume_url}>
+                {applicant?.resume_domain}
               </Link>
             </Box>
           </Box>
@@ -94,8 +92,8 @@ function StudentPage() {
             </Typography>
             <Box sx={studentStyles.iconLink}>
               <CopyIcon />
-              <Link sx={studentStyles.link} href={testStudent.portfolio.portfolio_url}>
-                {testStudent.portfolio.pageName}
+              <Link sx={studentStyles.link} href={applicant?.portfolio_url}>
+                {applicant?.portfolio_url}
               </Link>
             </Box>
           </Box>
@@ -104,7 +102,7 @@ function StudentPage() {
             <Typography variant="subtitle1" fontWeight={'500'}>
               Уровень
             </Typography>
-            <GradeElement experience={testStudent.experience} />
+            <GradeElement experience={applicant?.experience} />
           </Box>
 
           <Box sx={studentStyles.stack}>
@@ -112,13 +110,13 @@ function StudentPage() {
               Опыт работы
             </Typography>
             <Typography variant="body2" sx={{ color: '#1A1B22' }}>
-              {testStudent.experience === 0
+              {applicant?.experience === 0
                 ? 'Без опыта'
-                : testStudent.experience === 1
-                ? `${testStudent.experience} год`
-                : testStudent.experience < 5
-                ? `${testStudent.experience} годa`
-                : `${testStudent.experience} лет`}
+                : applicant?.experience === 1
+                ? `${applicant?.experience} год`
+                : applicant?.experience < 5
+                ? `${applicant?.experience} годa`
+                : `${applicant?.experience} лет`}
             </Typography>
           </Box>
 
@@ -127,7 +125,7 @@ function StudentPage() {
               Активность
             </Typography>
 
-            <ActivityElement activity={testStudent.activity} sx={studentStyles.activity} />
+            <ActivityElement activity={applicant?.activity} sx={studentStyles.activity} />
           </Box>
         </Stack>
         <Stack sx={studentStyles.about}>
@@ -136,7 +134,7 @@ function StudentPage() {
               О себе
             </Typography>
             <Typography variant="body2" sx={{ color: '#1A1B22' }}>
-              {testStudent.about_me}
+              {applicant?.about_me}
             </Typography>
           </Box>
           <Box sx={studentStyles.about}>
@@ -144,7 +142,7 @@ function StudentPage() {
               Активность
             </Typography>
             <Stack sx={studentStyles.chipList} flexWrap="wrap" direction="row" gap={'8px 4px'}>
-              {testStudent.skills.map(chip => (
+              {applicant?.skills.map(chip => (
                 <ChipElement label={chip} sx={chipStyles.chip} />
               ))}
             </Stack>

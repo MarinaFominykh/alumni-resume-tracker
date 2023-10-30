@@ -101,14 +101,16 @@ export default function CustomizedTables() {
                   <Link className="link" to={`/search/${row.id}`} onClick={() => setWatched(true)}>
                     <Box sx={tableStyles.nameBox}>
                       <Avatar src={row.photo} sx={{ width: 36, height: 36 }} />
-                      <Typography sx={tableStyles.text}>{row.name}</Typography>
+                      <Typography
+                        sx={tableStyles.text}
+                      >{`${row.first_name} ${row.last_name}`}</Typography>
                       {watched ? <Typography variant="caption">Просмотрено</Typography> : ''}
                     </Box>
                   </Link>
                 </TableCell>
                 <TableCell>
                   <Link className="link" to={`/search/${row.id}`}>
-                    <Typography sx={tableStyles.text}> {row.specialization}</Typography>
+                    <Typography sx={tableStyles.text}> {row.specialization.name}</Typography>
                   </Link>
                 </TableCell>
                 <TableCell>
@@ -144,7 +146,7 @@ export default function CustomizedTables() {
                   </Link>
                 </TableCell>
                 <TableCell>
-                  <ContactElement sx={tableStyles.contacts} contacts={row.contacts} />
+                  <ContactElement sx={tableStyles.contacts} contacts={row.telegram} />
                 </TableCell>
               </TableRow>
             ))}
