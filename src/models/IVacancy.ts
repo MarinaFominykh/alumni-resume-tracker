@@ -1,24 +1,24 @@
 export interface IVacancy {
-  companyName?: string;
-  vacName?: string;
-  salaryMin?: number;
-  salaryMax?: number;
-  currency?: string;
+  id?: number;
+  company_name?: string;
+  name?: string;
+  wage_min?: number;
+  wage_max?: number;
+  wage_currency?: string;
   description?: string;
   requirements?: string;
-  experienceMin?: number;
-  experienceMax?: number;
+  experience_min?: number;
+  experience_max?: number;
   skills?: string[];
-  departmentName?: string;
-  format?: string;
+  department?: string;
+  employment_type?: string;
   responsibilities?: string;
-  conditions?: string;
+  benefits?: string;
   city?: string;
   level?: string;
-  contract?: string;
+  workplace?: string;
+  sx?: object;
 }
-
-
 
 // export interface IVacancy {
 //   id: string;
@@ -52,5 +52,3 @@ export interface IVacancy {
 // vacName:string,
 
 // }
-
-

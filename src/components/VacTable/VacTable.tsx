@@ -4,12 +4,14 @@ import { Stack, Box, Typography } from '@mui/material';
 import { vacTableStyle } from './styles';
 
 import { ReactNode } from 'react';
+import { vacancyAPI } from '../../services/vacancyService';
+import { VacancyRow } from '../VacancyRow/VacancyRow';
 
 interface VacTableProps {
   children?: ReactNode;
 }
 export const VacTable = ({ children }: VacTableProps) => {
-
+  const { data: vacancies } = vacancyAPI.useFetchAllVacancyQuery('');
   return (
     <>
       <Box sx={vacTableStyle.titlebar}>
@@ -21,13 +23,11 @@ export const VacTable = ({ children }: VacTableProps) => {
         </Box>
         <Typography sx={vacTableStyle.leftEl}></Typography>
       </Box>
-      <Stack direction='column' spacing={2} sx={vacTableStyle.panel}>
+      <Stack direction="column" spacing={2} sx={vacTableStyle.panel}>
         {children}
-        {/* {isLoading && <h1>Идет загрузка...</h1>}
-        {isError && <h1>Ошибка при загрузк</h1>}
-        {vacancies?.map((vacancy) => (
+        {vacancies?.map(vacancy => (
           <VacancyRow key={vacancy.id} vacancy={vacancy} />
-        ))} */}
+        ))}
       </Stack>
     </>
   );

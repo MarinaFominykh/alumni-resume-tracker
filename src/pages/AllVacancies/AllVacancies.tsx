@@ -1,10 +1,12 @@
 import { Stack } from '@mui/material';
 import BackIconHeader from '../../components/Headers/BackIconHeader';
 import VacancyCard from '../../components/elements/VacancyCard/VacancyCard';
-import { testVacancies } from '../../consts/testVacancy';
 import { allVacanciesStyle } from './styles';
+import { vacancyAPI } from '../../services/vacancyService';
 
 function VacanciesList() {
+  const { data: vacancies } = vacancyAPI.useFetchAllVacancyQuery('');
+
   return (
     <>
       <BackIconHeader title="Подобрать избранное по вакансии" />
@@ -16,13 +18,13 @@ function VacanciesList() {
         maxWidth={'1164px'}
         margin={'0 auto'}
       >
-        {testVacancies.map(vacancy => (
+        {vacancies?.map(vacancy => (
           <VacancyCard
             sx={allVacanciesStyle.card}
-            vacancyName={vacancy.vacancy_name}
-            place={vacancy.place}
+            name={vacancy.name}
+            department={vacancy.department}
             city={vacancy.city}
-            experience={vacancy.experience}
+            experience_min={vacancy.experience_min}
           />
         ))}
       </Stack>

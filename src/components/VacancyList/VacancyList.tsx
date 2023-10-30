@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FC } from 'react';
 import VacancyCard from '../elements/VacancyCard/VacancyCard';
-import { testVacancies } from '../../consts/testVacancy';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Typography, Box } from '@mui/material';
 import { vacancyListStyle } from './styles';
@@ -23,7 +22,7 @@ import { vacancyAPI } from '../../services/vacancyService';
 // }
 export const VacancyList: FC = () => {
   const { data: vacancies } = vacancyAPI.useFetchAllVacancyQuery('');
-  console.log(vacancies);
+
   return (
     <>
       <Box sx={vacancyListStyle.wrapper}>
@@ -49,14 +48,14 @@ export const VacancyList: FC = () => {
             }
           }}
         >
-          {vacancies?.map(vacancy => (
+          {vacancies?.slice(0, 6).map(vacancy => (
             <SwiperSlide key={vacancy?.id}>
               <VacancyCard
                 sx={vacancyListStyle.card}
-                vacancyName={vacancy?.name}
-                place={vacancy?.workplace}
+                name={vacancy?.name}
+                department={vacancy?.department}
                 city={vacancy?.city}
-                experience={vacancy?.experience}
+                experience_min={vacancy?.experience_min}
               />
             </SwiperSlide>
           ))}
