@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, {ChangeEvent} from 'react';
+
 import { Stack, Box, Typography, Button, TextField, OutlinedInput } from '@mui/material';
 import MultipleSelect from '../elements/MultipleSelect/MultipleSelect';
 import { testStudent } from '../../consts/testStudent';
@@ -7,18 +8,33 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import {activityValue, cityValue, levelValue, filteredApplicants} from '../../store/reducers/filterSlice'
+import { filteredForTextApplicants } from '../../functions/functions';
+import { applicantAPI } from '../../services/applicantService';
 function FilterComponent() {
-  const [level, setLevel] = React.useState('');
-
-  const handleLevelChange = (event: SelectChangeEvent<typeof level>) => {
-    setLevel(event.target.value);
+  // const [level, setLevel] = React.useState('');
+    // const [activity, setActivity] = React.useState('');
+ // const [city, setCity] = React.useState('');
+   const dispatch = useAppDispatch();
+ const {city, activity, level} = useAppSelector((state => state.filterReducer))
+    const {data: applicants} = applicantAPI.useFetchAllApplicantQuery('');
+ const handleLevelChange = (event: SelectChangeEvent<typeof level>) => {
+    dispatch(levelValue(event.target.value));
+    dispatch(filteredApplicants(filteredForTextApplicants(applicants, event.target.value)))
   };
-  const [activity, setActivity] = React.useState('');
-
+console.log(level, level)
   const handleActivityChange = (event: SelectChangeEvent<typeof activity>) => {
-    setActivity(event.target.value);
+    dispatch(activityValue(Number(event.target.value)));
   };
+
+  const handleCityChange = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(cityValue(event.target.value));
+    dispatch(filteredApplicants(filteredForTextApplicants(applicants, event.target.value)))
+  };
+
+  console.log('level=>', level)
+
 
   return (
     <Box
@@ -53,7 +69,7 @@ function FilterComponent() {
           <Typography variant="caption" fontWeight={500}>
             Город
           </Typography>
-          <TextField size="small" />
+          <TextField size="small" value={city} onChange={handleCityChange}/>
         </Box>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
           <Typography variant="caption" fontWeight={500}>
@@ -93,9 +109,13 @@ function FilterComponent() {
               onChange={handleActivityChange}
               displayEmpty
             >
+              <MenuItem value={4}>Низкая</MenuItem>
+              <MenuItem value={9}>Средняя</MenuItem>
+              <MenuItem value={11}>Высокая</MenuItem>
+              {/* Если фильтры везде работают, то убрать:
               <MenuItem value={'Низкая'}>Низкая</MenuItem>
               <MenuItem value={'Средняя'}>Средняя</MenuItem>
-              <MenuItem value={'Высокая'}>Высокая</MenuItem>
+              <MenuItem value={'Высокая'}>Высокая</MenuItem> */}
             </Select>
           </FormControl>
         </Box>

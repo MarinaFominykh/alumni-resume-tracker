@@ -24,18 +24,33 @@ import { CandidatesContexMenu } from '../elements/ContexMenu/CandidatesContexMen
 import { useState } from 'react';
 import LikeButton from '../elements/LikeButton/LikeButton';
 import ModalElement from '../ModalElement/ModalElement';
-// import { useAppSelector, useAppDispatch } from '../../hooks/redux';
+import { useAppSelector, useAppDispatch } from '../../hooks/redux';
 // import { applicantSlice } from '../../store/reducers/applicantSlice';
 import { applicantAPI } from '../../services/applicantService';
+
+
+
 export default function CustomizedTables() {
   const [watched, setWatched] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [modalOpened, setModalOpened] = useState(false);
 
+<<<<<<< Updated upstream
   const { data: applicants, error, isLoading } = applicantAPI.useFetchAllApplicantQuery('');
 
   console.log(applicants);
   function handleLikeClick() {
+=======
+  const {
+    data: applicants,
+    error,
+    isLoading,
+  } = applicantAPI.useFetchAllApplicantQuery('');
+// const dispatch = useAppDispatch();
+const {city, activity, level, filteredApplicants} = useAppSelector((state => state.filterReducer))
+  
+function handleLikeClick() {
+>>>>>>> Stashed changes
     // переписать логику на проверку id и вынести ее в app
     if (isLiked) {
       setModalOpened(true);
@@ -92,7 +107,11 @@ export default function CustomizedTables() {
           <TableBody>
             {isLoading && <h1>Идет загрузка...</h1>}
             {error && <h1>Произошла ошибка</h1>}
+<<<<<<< Updated upstream
             {applicants?.map(row => (
+=======
+            {filteredApplicants?.map((row) => (
+>>>>>>> Stashed changes
               <TableRow key={row.id} sx={tableStyles.row}>
                 <TableCell size="small">
                   <LikeButton handleLikeClick={handleLikeClick} isLiked={isLiked} />
