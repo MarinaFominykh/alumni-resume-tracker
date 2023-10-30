@@ -1,5 +1,5 @@
 import { Grid } from '@mui/material';
-import Header from '../../components/Haders/Header';
+import Header from '../../components/Headers/Header';
 import FilterComponent from '../../components/FilterComponent/FilterComponent';
 import { VacancyList } from '../../components/VacancyList/VacancyList';
 import CustomizedTables from '../../components/Table/Table';

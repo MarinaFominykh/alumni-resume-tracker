@@ -7,7 +7,8 @@ import {
   IconButton,
   Typography,
 } from "@mui/material";
-
+import './contexMenu.css'
+import { contexMenuStyles } from "./contexMenuStyles"; 
 import { tableStyles } from "../../Table/styles";
 import { ArrowIcon, SortingIcon } from "../../../consts/icons";
 
@@ -20,6 +21,8 @@ export const CandidatesContexMenu = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+
 
   return (
     <>
@@ -50,17 +53,17 @@ export const CandidatesContexMenu = () => {
         anchorOrigin={{ horizontal: 0, vertical: 35 }}
         transformOrigin={{ horizontal: 0, vertical: "top" }}
       >
-        <MenuItem onClick={handleClose} sx={{ width: "188px", height: "36px" }}>
-          <Typography>Сначала новые</Typography>
+        <MenuItem onClick={handleClose} sx={contexMenuStyles.candidatesMenuItem}>
+          <Typography variant="body2">Сначала новые</Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Typography>Сначала активные</Typography>
+        <MenuItem onClick={handleClose} sx={contexMenuStyles.candidatesMenuItem}>
+          <Typography variant="body2">Сначала активные</Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Typography>Сначала опытные</Typography>
+        <MenuItem onClick={handleClose} sx={contexMenuStyles.candidatesMenuItem}>
+          <Typography variant="body2">Сначала опытные</Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose}>
-          <Typography>Сначала новички</Typography>
+        <MenuItem onClick={handleClose} sx={contexMenuStyles.candidatesMenuItem}>
+          <Typography variant="body2">Сначала новички</Typography>
         </MenuItem>
       </Menu>
     </>

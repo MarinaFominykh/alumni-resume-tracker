@@ -4,6 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { ArchiveIcon, DeleteIcon, EditIcon } from '../../../consts/icons';
+import { contexMenuStyles } from './contexMenuStyles';
 
 export const ContexMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -44,14 +45,14 @@ export const ContexMenu = () => {
         }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem sx={contexMenuStyles.vacanciesMenuItem} onClick={handleClose} disableRipple>
           <EditIcon sx={{ mr: '8px' }} />
           Редактировать
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem sx={contexMenuStyles.vacanciesMenuItem} onClick={handleClose} disableRipple>
           <ArchiveIcon sx={{ mr: '8px' }} />В архив
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        <MenuItem sx={contexMenuStyles.vacanciesMenuItem} onClick={handleClose} disableRipple>
           <DeleteIcon sx={{ mr: '8px' }} />
           Удалить
         </MenuItem>

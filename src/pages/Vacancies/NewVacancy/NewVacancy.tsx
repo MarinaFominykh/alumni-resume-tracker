@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { testStudent } from '../../../consts/testStudent';
 import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
-import BackIconHeader from '../../../components/Haders/BackIconHeader';
+import BackIconHeader from '../../../components/Headers/BackIconHeader';
 import { IVacancy } from '../../../models/IVacancy';
 import { vacancyAPI } from '../../../services/vacancyService';
 import { useNavigate } from 'react-router';
