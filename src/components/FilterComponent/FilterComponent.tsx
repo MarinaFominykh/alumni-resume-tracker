@@ -22,7 +22,7 @@ import {
   levelValue,
   filteredApplicants,
 } from '../../store/reducers/filterSlice';
-import { filteredForTextApplicants } from '../../functions/functions';
+import { filteredForCityApplicants, filteredForLevelApplicants } from '../../functions/functions';
 import { applicantAPI } from '../../services/applicantService';
 // import { IApplicant } from '../../models/IApplicant';
 function FilterComponent() {
@@ -39,7 +39,7 @@ function FilterComponent() {
     if (applicants) {
       dispatch(
         filteredApplicants(
-          filteredForTextApplicants(applicants, event.target.value)
+          filteredForLevelApplicants(applicants, event.target.value)
         )
       );
     }
@@ -54,7 +54,7 @@ function FilterComponent() {
     if (applicants) {
       dispatch(
         filteredApplicants(
-          filteredForTextApplicants(applicants, event.target.value)
+          filteredForCityApplicants(applicants, event.target.value)
         )
       );
     }
@@ -63,8 +63,7 @@ function FilterComponent() {
   return (
     <Box
       sx={{
-        // Растягивать на весь экран?
-        // maxWidth: '1164px',
+      
         width: '100%',
         display: 'flex',
         flexDirection: 'column',

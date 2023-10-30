@@ -129,294 +129,102 @@
       "id": 6
     }
   ],
-  "applicant": [
+  "applicants": [
     {
-      "id": "1",
-      "photo": "https://cdn-icons-png.flaticon.com/512/5556/5556468.png",
-      "name": "Артем Мусгалиев",
-      "isLike": true,
-      "specialization": "UX/UI Дизайнер",
-      "city": "Саратов",
-      "country": "Россия",
-      "contacts": {
-        "phone": "8 903 705 60 17",
-        "email": "Musgaliev@yandex.ru",
-        "telegram": "@musgaliev"
+      "id": 0,
+      "first_name": "string",
+      "last_name": "string",
+      "city": "string",
+      "country": "string",
+      "about_me": "string",
+      "phone": "string",
+      "email": "user@example.com",
+      "telegram": "string",
+      "specialization": {
+        "name": "string",
+        "position": "string"
       },
-      "resume": {
-        "resume_pdf": "Мусгалиев_Резюме.pdf",
-        "resume_url": "https://www.example-link.test.com"
-      },
-      "portfolio": {
-        "pageName": "Behance",
-        "portfolio_url": "https://www.example-link.test.com"
-      },
-      "experience": 0,
-      "activity": 10,
-      "about_me": "Меня зовут Артем. И я дизайнер интерфейсов UX/UI , создаю сайты и приложения. Использую показатели закупки и тесты, чтобы каждая последующая версия сайта привлекала больше покупателей, чем предыдущая. Умею работать с сервисами аналитики трафика. Редактирую тексты с учетом задач лендинга и целей аудитории. Буду полезен компаниям, которые осознанно повышают конверсию рекламы. С детства люблю комиксы и стараюсь добавлять мелкий растр в дизайн, чтобы сделать его более ламповым. После работы учусь играть на басу и подумываю присоединиться к группе для бодрящих выступлений со сцены. Черкните мне пару строк, если ищете дизайнера для своего нового проекта или хотите просто уютно пообщаться.",
-      "skills": [
-        "UI",
-        "UX",
-        "Design",
-        "Figma",
-        "UX исследования",
-        "UX-копирайтинг",
-        "UI-киты и дизайн системы",
-        "А/В и коридорные тестирования",
-        "Прототипирование",
-        "Адаптивность",
-        "Проектирование пользовательских интерфейсов",
-        "Тестирование пользовательских интерфейсов",
-        "Гайдлайны  IOS/Android",
-        "Adobe  Photoshop",
-        "Midjourney",
-        "Notion",
-        "Web Design",
-        "Landing page",
-        "MS Excel, MS PowerPoint",
-        "Research/Аналитические исследования",
-        "Грамотная речь"
-      ]
+      "experience": 32767,
+      "activity": 32767,
+      "photo": "http://example.com",
+      "skills": ["string"],
+      "resume_pdf": "http://example.com",
+      "resume_url": "http://example.com",
+      "portfolio_url": "http://example.com",
+      "is_liked": true,
+      "resume_domain": "string"
     },
     {
-      "id": "2",
-      "photo": "https://cdn-icons-png.flaticon.com/512/5556/5556468.png",
-      "name": "Александр Рыбаков",
-      "isLike": true,
-      "specialization": "UX/UI Дизайнер",
-      "city": "Москва",
-      "country": "Россия",
-      "contacts": {
-        "phone": "8 903 705 60 17",
-        "email": "Musgaliev@yandex.ru",
-        "telegram": "@musgaliev"
-      },
-      "resume": {
-        "resume_pdf": "Мусгалиев_Резюме.pdf",
-        "resume_url": "https://www.example-link.test.com"
-      },
-      "portfolio": {
-        "pageName": "Behance",
-        "portfolio_url": "https://www.example-link.test.com"
+      "id": 5,
+      "first_name": "string",
+      "last_name": "string",
+      "city": "string",
+      "country": "string",
+      "about_me": "string",
+      "phone": "string",
+      "email": "user@example.com",
+      "telegram": "string",
+      "specialization": {
+        "name": "string",
+        "position": "string"
       },
       "experience": 0,
-      "activity": 10,
-      "about_me": "Меня зовут Артем. И я дизайнер интерфейсов UX/UI , создаю сайты и приложения. Использую показатели закупки и тесты, чтобы каждая последующая версия сайта привлекала больше покупателей, чем предыдущая. Умею работать с сервисами аналитики трафика. Редактирую тексты с учетом задач лендинга и целей аудитории. Буду полезен компаниям, которые осознанно повышают конверсию рекламы. С детства люблю комиксы и стараюсь добавлять мелкий растр в дизайн, чтобы сделать его более ламповым. После работы учусь играть на басу и подумываю присоединиться к группе для бодрящих выступлений со сцены. Черкните мне пару строк, если ищете дизайнера для своего нового проекта или хотите просто уютно пообщаться.",
-      "skills": [
-        "UI",
-        "UX",
-        "Design",
-        "Figma",
-        "UX исследования",
-        "UX-копирайтинг",
-        "UI-киты и дизайн системы",
-        "А/В и коридорные тестирования",
-        "Прототипирование",
-        "Адаптивность",
-        "Проектирование пользовательских интерфейсов",
-        "Тестирование пользовательских интерфейсов",
-        "Гайдлайны  IOS/Android",
-        "Adobe  Photoshop",
-        "Midjourney",
-        "Notion",
-        "Web Design",
-        "Landing page",
-        "MS Excel, MS PowerPoint",
-        "Research/Аналитические исследования",
-        "Грамотная речь"
-      ]
+      "activity": 32767,
+      "photo": "http://example.com",
+      "skills": ["string"],
+      "resume_pdf": "http://example.com",
+      "resume_url": "http://example.com",
+      "portfolio_url": "http://example.com",
+      "is_liked": true,
+      "resume_domain": "string"
     },
     {
-      "id": "3",
-      "photo": "https://cdn-icons-png.flaticon.com/512/5556/5556468.png",
-      "name": "Михаил Кононов",
-      "isLike": true,
-      "specialization": "UX/UI Дизайнер",
-      "city": "Москва",
-      "country": "Россия",
-      "contacts": {
-        "phone": "8 903 705 60 17",
-        "email": "Musgaliev@yandex.ru",
-        "telegram": "@musgaliev"
+      "id": 1,
+      "first_name": "string",
+      "last_name": "string",
+      "city": "string",
+      "country": "string",
+      "about_me": "string",
+      "phone": "string",
+      "email": "user@example.com",
+      "telegram": "string",
+      "specialization": {
+        "name": "string",
+        "position": "string"
       },
-      "resume": {
-        "resume_pdf": "Мусгалиев_Резюме.pdf",
-        "resume_url": "https://www.example-link.test.com"
-      },
-      "portfolio": {
-        "pageName": "Behance",
-        "portfolio_url": "https://www.example-link.test.com"
-      },
-      "experience": 0,
-      "activity": 10,
-      "about_me": "Меня зовут Артем. И я дизайнер интерфейсов UX/UI , создаю сайты и приложения. Использую показатели закупки и тесты, чтобы каждая последующая версия сайта привлекала больше покупателей, чем предыдущая. Умею работать с сервисами аналитики трафика. Редактирую тексты с учетом задач лендинга и целей аудитории. Буду полезен компаниям, которые осознанно повышают конверсию рекламы. С детства люблю комиксы и стараюсь добавлять мелкий растр в дизайн, чтобы сделать его более ламповым. После работы учусь играть на басу и подумываю присоединиться к группе для бодрящих выступлений со сцены. Черкните мне пару строк, если ищете дизайнера для своего нового проекта или хотите просто уютно пообщаться.",
-      "skills": [
-        "UI",
-        "UX",
-        "Design",
-        "Figma",
-        "UX исследования",
-        "UX-копирайтинг",
-        "UI-киты и дизайн системы",
-        "А/В и коридорные тестирования",
-        "Прототипирование",
-        "Адаптивность",
-        "Проектирование пользовательских интерфейсов",
-        "Тестирование пользовательских интерфейсов",
-        "Гайдлайны  IOS/Android",
-        "Adobe  Photoshop",
-        "Midjourney",
-        "Notion",
-        "Web Design",
-        "Landing page",
-        "MS Excel, MS PowerPoint",
-        "Research/Аналитические исследования",
-        "Грамотная речь"
-      ]
+      "experience": 2,
+      "activity": 32767,
+      "photo": "http://example.com",
+      "skills": ["string"],
+      "resume_pdf": "http://example.com",
+      "resume_url": "http://example.com",
+      "portfolio_url": "http://example.com",
+      "is_liked": true,
+      "resume_domain": "string"
     },
     {
-      "id": "4",
-      "photo": "https://cdn-icons-png.flaticon.com/512/5556/5556468.png",
-      "name": "Кирилл Рыбковский",
-      "isLike": true,
-      "specialization": "UX/UI Дизайнер",
-      "city": "Пермь",
-      "country": "Россия",
-      "contacts": {
-        "phone": "8 903 705 60 17",
-        "email": "Musgaliev@yandex.ru",
-        "telegram": "@musgaliev"
+      "id": 2,
+      "first_name": "string",
+      "last_name": "string",
+      "city": "string",
+      "country": "string",
+      "about_me": "string",
+      "phone": "string",
+      "email": "user@example.com",
+      "telegram": "string",
+      "specialization": {
+        "name": "string",
+        "position": "string"
       },
-      "resume": {
-        "resume_pdf": "Мусгалиев_Резюме.pdf",
-        "resume_url": "https://www.example-link.test.com"
-      },
-      "portfolio": {
-        "pageName": "Behance",
-        "portfolio_url": "https://www.example-link.test.com"
-      },
-      "experience": 0,
-      "activity": 10,
-      "about_me": "Меня зовут Артем. И я дизайнер интерфейсов UX/UI , создаю сайты и приложения. Использую показатели закупки и тесты, чтобы каждая последующая версия сайта привлекала больше покупателей, чем предыдущая. Умею работать с сервисами аналитики трафика. Редактирую тексты с учетом задач лендинга и целей аудитории. Буду полезен компаниям, которые осознанно повышают конверсию рекламы. С детства люблю комиксы и стараюсь добавлять мелкий растр в дизайн, чтобы сделать его более ламповым. После работы учусь играть на басу и подумываю присоединиться к группе для бодрящих выступлений со сцены. Черкните мне пару строк, если ищете дизайнера для своего нового проекта или хотите просто уютно пообщаться.",
-      "skills": [
-        "UI",
-        "UX",
-        "Design",
-        "Figma",
-        "UX исследования",
-        "UX-копирайтинг",
-        "UI-киты и дизайн системы",
-        "А/В и коридорные тестирования",
-        "Прототипирование",
-        "Адаптивность",
-        "Проектирование пользовательских интерфейсов",
-        "Тестирование пользовательских интерфейсов",
-        "Гайдлайны  IOS/Android",
-        "Adobe  Photoshop",
-        "Midjourney",
-        "Notion",
-        "Web Design",
-        "Landing page",
-        "MS Excel, MS PowerPoint",
-        "Research/Аналитические исследования",
-        "Грамотная речь"
-      ]
-    },
-    {
-      "id": "5",
-      "photo": "https://cdn-icons-png.flaticon.com/512/5556/5556468.png",
-      "name": "Артем Мусгалиев",
-      "isLike": true,
-      "specialization": "UX/UI Дизайнер",
-      "city": "Самара",
-      "country": "Россия",
-      "contacts": {
-        "phone": "8 903 705 60 17",
-        "email": "Musgaliev@yandex.ru",
-        "telegram": "@musgaliev"
-      },
-      "resume": {
-        "resume_pdf": "Мусгалиев_Резюме.pdf",
-        "resume_url": "https://www.example-link.test.com"
-      },
-      "portfolio": {
-        "pageName": "Behance",
-        "portfolio_url": "https://www.example-link.test.com"
-      },
-      "experience": 0,
-      "activity": 10,
-      "about_me": "Меня зовут Артем. И я дизайнер интерфейсов UX/UI , создаю сайты и приложения. Использую показатели закупки и тесты, чтобы каждая последующая версия сайта привлекала больше покупателей, чем предыдущая. Умею работать с сервисами аналитики трафика. Редактирую тексты с учетом задач лендинга и целей аудитории. Буду полезен компаниям, которые осознанно повышают конверсию рекламы. С детства люблю комиксы и стараюсь добавлять мелкий растр в дизайн, чтобы сделать его более ламповым. После работы учусь играть на басу и подумываю присоединиться к группе для бодрящих выступлений со сцены. Черкните мне пару строк, если ищете дизайнера для своего нового проекта или хотите просто уютно пообщаться.",
-      "skills": [
-        "UI",
-        "UX",
-        "Design",
-        "Figma",
-        "UX исследования",
-        "UX-копирайтинг",
-        "UI-киты и дизайн системы",
-        "А/В и коридорные тестирования",
-        "Прототипирование",
-        "Адаптивность",
-        "Проектирование пользовательских интерфейсов",
-        "Тестирование пользовательских интерфейсов",
-        "Гайдлайны  IOS/Android",
-        "Adobe  Photoshop",
-        "Midjourney",
-        "Notion",
-        "Web Design",
-        "Landing page",
-        "MS Excel, MS PowerPoint",
-        "Research/Аналитические исследования",
-        "Грамотная речь"
-      ]
-    },
-    {
-      "id": "6",
-      "photo": "https://cdn-icons-png.flaticon.com/512/5556/5556468.png",
-      "name": "Артем Мусгалиев",
-      "isLike": true,
-      "specialization": "UX/UI Дизайнер",
-      "city": "Саратов",
-      "country": "Россия",
-      "contacts": {
-        "phone": "8 903 705 60 17",
-        "email": "Musgaliev@yandex.ru",
-        "telegram": "@musgaliev"
-      },
-      "resume": {
-        "resume_pdf": "Мусгалиев_Резюме.pdf",
-        "resume_url": "https://www.example-link.test.com"
-      },
-      "portfolio": {
-        "pageName": "Behance",
-        "portfolio_url": "https://www.example-link.test.com"
-      },
-      "experience": 0,
-      "activity": 10,
-      "about_me": "Меня зовут Артем. И я дизайнер интерфейсов UX/UI , создаю сайты и приложения. Использую показатели закупки и тесты, чтобы каждая последующая версия сайта привлекала больше покупателей, чем предыдущая. Умею работать с сервисами аналитики трафика. Редактирую тексты с учетом задач лендинга и целей аудитории. Буду полезен компаниям, которые осознанно повышают конверсию рекламы. С детства люблю комиксы и стараюсь добавлять мелкий растр в дизайн, чтобы сделать его более ламповым. После работы учусь играть на басу и подумываю присоединиться к группе для бодрящих выступлений со сцены. Черкните мне пару строк, если ищете дизайнера для своего нового проекта или хотите просто уютно пообщаться.",
-      "skills": [
-        "UI",
-        "UX",
-        "Design",
-        "Figma",
-        "UX исследования",
-        "UX-копирайтинг",
-        "UI-киты и дизайн системы",
-        "А/В и коридорные тестирования",
-        "Прототипирование",
-        "Адаптивность",
-        "Проектирование пользовательских интерфейсов",
-        "Тестирование пользовательских интерфейсов",
-        "Гайдлайны  IOS/Android",
-        "Adobe  Photoshop",
-        "Midjourney",
-        "Notion",
-        "Web Design",
-        "Landing page",
-        "MS Excel, MS PowerPoint",
-        "Research/Аналитические исследования",
-        "Грамотная речь"
-      ]
+      "experience": 32767,
+      "activity": 32767,
+      "photo": "http://example.com",
+      "skills": ["string"],
+      "resume_pdf": "http://example.com",
+      "resume_url": "http://example.com",
+      "portfolio_url": "http://example.com",
+      "is_liked": true,
+      "resume_domain": "string"
     }
   ],
   "applicant1": {

@@ -52,7 +52,7 @@ function Login() {
     .then((jwt) => {
       
         if (jwt.access) {
-          localStorage.setItem("token", jwt.token);
+          localStorage.setItem("token", jwt.access);
            navigate('/vacancies');
            console.log("Авторизация прошла успешно")
         }

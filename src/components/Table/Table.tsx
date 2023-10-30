@@ -34,22 +34,22 @@ export default function CustomizedTables() {
   const [watched, setWatched] = useState(false);
   // const [isLiked, setIsLiked] = useState(false);
   // const [modalOpened, setModalOpened] = useState(false);
-  const { city } = useAppSelector((state) => state.filterReducer);
+  const { city, level } = useAppSelector((state) => state.filterReducer);
   const {
     data: applicants,
     error,
     isLoading,
   } = applicantAPI.useFetchAllApplicantQuery('');
-  console.log(applicants);
-  // const dispatch = useAppDispatch();
+
   const { filteredApplicants } = useAppSelector((state) => state.filterReducer);
   const [allApplicants, setAllApplicants] = useState(applicants);
+   
   useEffect(() => {
     setAllApplicants(applicants);
   }, [applicants]);
   useEffect(() => {
     setAllApplicants(filteredApplicants);
-  }, [city]);
+  }, [city, level]);
   // function handleLikeClick() {
   //   // переписать логику на проверку id и вынести ее в app
   //   if (isLiked) {
