@@ -15,7 +15,7 @@ import { useParams } from 'react-router';
 
 function StudentPage() {
   const { id } = useParams<{ id: string }>();
-  const { data: applicant } = applicantAPI.useFetchApplicantByIdQuery(id);
+  const { data: applicant, isError } = applicantAPI.useFetchApplicantByIdQuery(id);
 
   console.log(applicant);
 
@@ -23,6 +23,7 @@ function StudentPage() {
     <Container sx={studentStyles.wrapper}>
       <BackLink />
       <Box sx={studentStyles.header}>
+      
         <Avatar alt="Аватар выпускника" src={applicant?.photo} sx={{ width: 72, height: 72 }} />
         <Box sx={studentStyles.info}>
           <Typography
@@ -31,7 +32,7 @@ function StudentPage() {
             margin={'4px 0'}
             sx={{ display: 'flex', gap: '12px' }}
           >
-            {`${testStudent.first_name} ${testStudent.last_name}`}
+            {`${applicant?.name} ${testStudent.last_name}`}
             <LikeButton isLiked={true} />
           </Typography>
 

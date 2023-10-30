@@ -11,7 +11,7 @@ export const applicantAPI = createApi({
       })
     }),
     fetchApplicantById: build.query<IApplicant[], string>({
-      query: id => ({ url: `applicant/${id}` })
+      query: id => ({ url: `applicant${id}` })
     })
   })
 });

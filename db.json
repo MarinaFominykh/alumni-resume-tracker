@@ -10,13 +10,7 @@
       "requirements": "Уметь сидеть, уметь писать код",
       "experienceMin": "1",
       "experienceMax": "3",
-      "skills": [
-        "UX",
-        "Design",
-        "Figma",
-        "UX исследования",
-        "UX-копирайтинг"
-      ],
+      "skills": ["UX", "Design", "Figma", "UX исследования", "UX-копирайтинг"],
       "departmentName": "Канцелярия",
       "format": "Офис",
       "responsibilities": "Сидеть и писать код",
@@ -36,11 +30,7 @@
       "requirements": "знание figma, photoshop",
       "experienceMin": "5",
       "experienceMax": "10",
-      "skills": [
-        "UX",
-        "Design",
-        "Figma"
-      ],
+      "skills": ["UX", "Design", "Figma"],
       "departmentName": "отдел дизайна",
       "format": "Удаленный",
       "responsibilities": "Создание макетов",
@@ -84,9 +74,7 @@
       "requirements": "wew",
       "experienceMin": "1",
       "experienceMax": "2",
-      "skills": [
-        "Notion"
-      ],
+      "skills": ["Notion"],
       "departmentName": "efef",
       "format": "Удаленный",
       "responsibilities": "wefwe",
@@ -430,5 +418,53 @@
         "Грамотная речь"
       ]
     }
-  ]
+  ],
+  "applicant1": {
+    "id": "1",
+    "photo": "https://cdn-icons-png.flaticon.com/512/5556/5556468.png",
+    "name": "sdfsdfsdfsdf",
+    "isLike": true,
+    "specialization": "frontend",
+    "city": "Саратов",
+    "country": "Россия",
+    "contacts": {
+      "phone": "8 903 705 60 17",
+      "email": "Musgaliev@yandex.ru",
+      "telegram": "@musgaliev"
+    },
+    "resume": {
+      "resume_pdf": "Мусгалиев_Резюме.pdf",
+      "resume_url": "https://www.example-link.test.com"
+    },
+    "portfolio": {
+      "pageName": "Behance",
+      "portfolio_url": "https://www.example-link.test.com"
+    },
+    "experience": 0,
+    "activity": 10,
+    "about_me": "Меня зовут Артем. И я дизайнер интерфейсов UX/UI , создаю сайты и приложения. Использую показатели закупки и тесты, чтобы каждая последующая версия сайта привлекала больше покупателей, чем предыдущая. Умею работать с сервисами аналитики трафика. Редактирую тексты с учетом задач лендинга и целей аудитории. Буду полезен компаниям, которые осознанно повышают конверсию рекламы. С детства люблю комиксы и стараюсь добавлять мелкий растр в дизайн, чтобы сделать его более ламповым. После работы учусь играть на басу и подумываю присоединиться к группе для бодрящих выступлений со сцены. Черкните мне пару строк, если ищете дизайнера для своего нового проекта или хотите просто уютно пообщаться.",
+    "skills": [
+      "UI",
+      "UX",
+      "Design",
+      "Figma",
+      "UX исследования",
+      "UX-копирайтинг",
+      "UI-киты и дизайн системы",
+      "А/В и коридорные тестирования",
+      "Прототипирование",
+      "Адаптивность",
+      "Проектирование пользовательских интерфейсов",
+      "Тестирование пользовательских интерфейсов",
+      "Гайдлайны  IOS/Android",
+      "Adobe  Photoshop",
+      "Midjourney",
+      "Notion",
+      "Web Design",
+      "Landing page",
+      "MS Excel, MS PowerPoint",
+      "Research/Аналитические исследования",
+      "Грамотная речь"
+    ]
+  }
 }
