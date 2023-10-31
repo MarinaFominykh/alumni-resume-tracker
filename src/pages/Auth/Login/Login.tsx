@@ -1,18 +1,26 @@
 import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import '../Auth.css';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router';
 import Typography from '@mui/material/Typography/Typography';
-import { Link } from '@mui/material';
+import { IconButton, InputAdornment, Link, TextField } from '@mui/material';
 import Auth from '../Auth';
-import InputElement from '../../../components/elements/InputElement/InputElement';
 import { authStyles } from '../consts/authStyles';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { useState } from 'react';
+import { authorize } from '../../../api/authApi';
 
 interface LoginInputs {
   email: string;
   password: string;
+}
+
+interface EndAdornmentTypes {
+  visible: boolean;
+  setVisible: any;
 }
 
 const schema = yup.object().shape({
@@ -28,6 +36,7 @@ const schema = yup.object().shape({
 });
 
 function Login() {
+  const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
   const {
     handleSubmit,
@@ -38,8 +47,39 @@ function Login() {
   });
 
   const loginSubmitHandler: SubmitHandler<LoginInputs> = (data: LoginInputs) => {
-    console.log('form data is', data);
-    navigate('/');
+    const {email, password} = data;
+    authorize(email, password)
+    .then((jwt) => {
+      
+        if (jwt.access) {
+          localStorage.setItem("token", jwt.access);
+           navigate('/vacancies');
+           console.log("Авторизация прошла успешно")
+        }
+        else console.log('Токен не передан или передан не в том формате');
+      })
+      .catch((error) => {
+        if (error === 400) {
+          console.log('Переданы некорректные данные');
+        } else if (error === 401) {
+          console.log('Ошибка авторизации');
+        } else {
+          console.log('Неизвестная ошибка сервера');
+        }
+      });
+    // navigate('/vacancies');
+    // console.log('form data is', data);
+    
+  };
+
+  const EndAdornment = ({ visible, setVisible }: EndAdornmentTypes) => {
+    return (
+      <InputAdornment position="end">
+        <IconButton onClick={() => setVisible(!visible)}>
+          {visible ? <VisibilityOffIcon /> : <VisibilityIcon />}
+        </IconButton>
+      </InputAdornment>
+    );
   };
 
   return (
@@ -47,46 +87,53 @@ function Login() {
       <form onSubmit={handleSubmit(loginSubmitHandler)} noValidate className="auth__form">
         <Typography variant="h2">Карьерный трекер</Typography>
         <Typography variant="body2">Войти в аккаунт</Typography>
-        <InputElement
+        <Controller
           name="email"
-          defaultValue=""
           control={control}
-          type="email"
-          label="Email"
-          variant="outlined"
-          error={!!errors.email}
-          helperText={errors.email ? errors.email?.message : ''}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField
+              {...field}
+              type="email"
+              variant="outlined"
+              label="Email"
+              error={!!errors.email}
+              helperText={errors.email ? errors.email?.message : ''}
+            />
+          )}
         />
-
-        <InputElement
+        <Controller
           name="password"
-          defaultValue=""
           control={control}
-          type="password"
-          label="Пароль"
-          variant="outlined"
-          error={!!errors.password}
-          helperText={errors.password ? errors.password?.message : ''}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField
+              {...field}
+              type={visible ? 'text' : 'password'}
+              variant="outlined"
+              label="Пароль"
+              error={!!errors.password}
+              helperText={errors.password ? errors.password?.message : ''}
+              InputProps={{
+                endAdornment: <EndAdornment visible={visible} setVisible={setVisible} />
+              }}
+            />
+          )}
         />
 
         <Link sx={authStyles.formLink} variant="body2" onClick={() => navigate('/reset-password')}>
           Не помню пароль
         </Link>
 
-        <ButtonElement variant="contained" type="submit">
+        <ButtonElement
+          color="secondary"
+          variant="contained"
+          type="submit"
+          sx={{ padding: '18px 0', height: '56px' }}
+        >
           Войти
         </ButtonElement>
       </form>
-      <Typography variant="body2" sx={authStyles.formCaption.fonts}>
-        Новый пользователь?{' '}
-        <Link
-          variant="body2"
-          sx={authStyles.formCaption.link}
-          onClick={() => navigate('/get-access')}
-        >
-          Получить доступ
-        </Link>
-      </Typography>
     </Auth>
   );
 }

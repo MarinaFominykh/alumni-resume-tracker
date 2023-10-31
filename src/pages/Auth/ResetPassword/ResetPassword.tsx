@@ -1,13 +1,12 @@
 import ButtonElement from '../../../components/elements/ButtonElement/ButtonElement';
-import InputElement from '../../../components/elements/InputElement/InputElement';
 import { authStyles } from '../consts/authStyles';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import Auth from '../Auth';
 import Typography from '@mui/material/Typography/Typography';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router';
-import { Link } from '@mui/material';
+import { Link, TextField } from '@mui/material';
 import Box from '@mui/material/Box';
 
 interface InputsValue {
@@ -44,18 +43,28 @@ function ResetPassword() {
             Введите электронный адрес, указанный при регистрации
           </Typography>
         </Box>
-        <InputElement
+        <Controller
           name="email"
-          defaultValue=""
           control={control}
-          type="email"
-          label="Почта"
-          variant="outlined"
-          error={!!errors.email}
-          helperText={errors.email ? errors.email?.message : ''}
+          defaultValue=""
+          render={({ field }) => (
+            <TextField
+              {...field}
+              type="email"
+              variant="outlined"
+              label="Email"
+              error={!!errors.email}
+              helperText={errors.email ? errors.email?.message : ''}
+            />
+          )}
         />
 
-        <ButtonElement variant="contained" type="submit">
+        <ButtonElement
+          variant="contained"
+          type="submit"
+          color="secondary"
+          sx={{ padding: '18px 0', height: '56px' }}
+        >
           Восстановить пароль
         </ButtonElement>
       </form>

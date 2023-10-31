@@ -1,6 +1,6 @@
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import WorkOutlineOutlinedIcon from '@mui/icons-material/WorkOutlineOutlined';
+import { VacanciesIcon } from '../../../consts/icons';
 
 export const mainNavbarItems = [
   {
@@ -17,7 +17,7 @@ export const mainNavbarItems = [
   },
   {
     id: 2,
-    icon: <WorkOutlineOutlinedIcon />,
+    icon: <VacanciesIcon />,
     label: 'Мои вакансии',
     route: 'vacancies'
   }
