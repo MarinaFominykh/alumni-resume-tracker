@@ -19,10 +19,10 @@ function CardList({ vacancies }: CardListTypes) {
       {vacancies.slice(0, 6).map((vacancy: VacancyTypes) => (
         <VacancyCard
           key={vacancy.id}
-          vacancyName={vacancy.vacancy_name}
-          place={vacancy.place}
+          name={vacancy.vacancy_name}
+          department={vacancy.place}
           city={vacancy.city}
-          experience={vacancy.experience}
+          experience_min={vacancy.experience}
         />
       ))}
     </Stack>

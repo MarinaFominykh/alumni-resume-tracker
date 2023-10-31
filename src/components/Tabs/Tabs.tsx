@@ -64,7 +64,7 @@ export default function BasicTabs() {
        <CustomTabPanel value={value} index={0}>
         <VacTable>
           {vacancies?.map((vacancy) => (
-            <VacancyRow key={vacancy.vacName} vacancy={vacancy} buttonText="63 кандидата" />
+            <VacancyRow key={vacancy.name} vacancy={vacancy} buttonText="63 кандидата" />
           ))}
         </VacTable>
       </CustomTabPanel>
@@ -72,14 +72,14 @@ export default function BasicTabs() {
       <CustomTabPanel value={value} index={1}>
         <VacTable>
           {vacancies?.map((vacancy) => (
-            <VacancyRow  key={vacancy.vacName} vacancy={vacancy} buttonText="Опубликовать" />
+            <VacancyRow  key={vacancy.name} vacancy={vacancy} buttonText="Опубликовать" />
           ))}
         </VacTable>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <VacTable>
           {vacancies?.map((vacancy) => (
-            <VacancyRow key={vacancy.vacName} vacancy={vacancy} buttonText="Восстановить" />
+            <VacancyRow key={vacancy.name} vacancy={vacancy} buttonText="Восстановить" />
           ))}
         </VacTable>
       </CustomTabPanel>

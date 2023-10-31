@@ -20,29 +20,19 @@ import {
   activityValue,
   cityValue,
   levelValue,
-  filteredApplicants,
+
 } from '../../store/reducers/filterSlice';
-import { filteredForCityApplicants, filteredForLevelApplicants } from '../../functions/functions';
-import { applicantAPI } from '../../services/applicantService';
-// import { IApplicant } from '../../models/IApplicant';
+
 function FilterComponent() {
-  // const [level, setLevel] = React.useState('');
-  // const [activity, setActivity] = React.useState('');
-  // const [city, setCity] = React.useState('');
+
   const dispatch = useAppDispatch();
   const { city, activity, level } = useAppSelector(
     (state) => state.filterReducer
   );
-  const { data: applicants } = applicantAPI.useFetchAllApplicantQuery('');
+  
   const handleLevelChange = (event: SelectChangeEvent<typeof level>) => {
     dispatch(levelValue(event.target.value));
-    if (applicants) {
-      dispatch(
-        filteredApplicants(
-          filteredForLevelApplicants(applicants, event.target.value)
-        )
-      );
-    }
+   
   };
 
   const handleActivityChange = (event: SelectChangeEvent<typeof activity>) => {
@@ -51,13 +41,7 @@ function FilterComponent() {
 
   const handleCityChange = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(cityValue(event.target.value));
-    if (applicants) {
-      dispatch(
-        filteredApplicants(
-          filteredForCityApplicants(applicants, event.target.value)
-        )
-      );
-    }
+   
   };
 
   return (

@@ -10,7 +10,7 @@ function VacancyCard({ name, department, city, experience_min, sx }: IVacancy) {
       variant="outlined"
       onClick={() => console.log('clicked')}
       sx={sx}
-      // sx={vacancyStyles.card}
+    
     >
       <Link to="/vacancies" className="link">
         <CardContent sx={vacancyStyles.wrapper}>

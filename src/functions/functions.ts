@@ -19,3 +19,14 @@ export const filteredForLevelApplicants = (array: IApplicant[], value: string, )
   }
   else return array;
 };
+export const filteredForActivityApplicants =  (array: IApplicant[], value: number, ) => {
+ if(value <= 4) {
+  return array?.filter((item) => item.activity <= 4)
+ } else if(value >= 5 && value <= 9) {
+  return array?.filter((item) => item.activity >=5 && item.activity <=9)
+ }
+ else if(value > 10) {
+  return array?.filter((item) => item.activity > 10)
+ }
+ else return array;
+}
