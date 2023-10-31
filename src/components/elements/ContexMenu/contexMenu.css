@@ -1,4 +1,5 @@
 .MuiMenu-root .MuiMenu-paper {
+  padding: 0;
   border-radius: 0 0 4px 4px;
   box-shadow: none;
   border: 1px solid #DDE0E4;

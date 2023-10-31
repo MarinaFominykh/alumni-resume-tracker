@@ -54,16 +54,16 @@ export const CandidatesContexMenu = () => {
         transformOrigin={{ horizontal: 0, vertical: "top" }}
       >
         <MenuItem onClick={handleClose} sx={contexMenuStyles.candidatesMenuItem}>
-          <Typography variant="body2">Сначала новые</Typography>
+          <Typography variant="body2" sx={{ color: "black" }}>Сначала новые</Typography>
         </MenuItem>
         <MenuItem onClick={handleClose} sx={contexMenuStyles.candidatesMenuItem}>
-          <Typography variant="body2">Сначала активные</Typography>
+          <Typography variant="body2" sx={{ color: "black" }}>Сначала активные</Typography>
         </MenuItem>
         <MenuItem onClick={handleClose} sx={contexMenuStyles.candidatesMenuItem}>
-          <Typography variant="body2">Сначала опытные</Typography>
+          <Typography variant="body2" sx={{ color: "black" }}>Сначала опытные</Typography>
         </MenuItem>
         <MenuItem onClick={handleClose} sx={contexMenuStyles.candidatesMenuItem}>
-          <Typography variant="body2">Сначала новички</Typography>
+          <Typography variant="body2" sx={{ color: "black" }}>Сначала новички</Typography>
         </MenuItem>
       </Menu>
     </>

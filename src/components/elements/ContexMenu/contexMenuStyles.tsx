@@ -9,6 +9,7 @@ export const contexMenuStyles = {
   },
 
   vacanciesMenuItem: {
+    padding: "12px",
     "&:hover": {
       background: "95% center no-repeat url(../../images/check_mini.svg)",
       backgroundColor: "#F1F6FF",
